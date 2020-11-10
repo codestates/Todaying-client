@@ -1,0 +1,214 @@
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.bgTop {
+  height: 50vh;
+  background-color: #0083ba;
+}
+
+.bgBottom {
+  height: 50vh;
+  background-color: white;
+}
+
+.container {
+  min-width: 21rem;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  margin: 0;
+  color: white;
+  font-size: 4.5rem;
+  font-family: MarkerFelt-Wide;
+}
+
+.description {
+  margin: 0;
+  color: white;
+  font-weight: normal;
+  font-size: 1.5rem;
+}
+
+.box {
+  margin-top: 2rem;
+  width: 30rem;
+  height: 24rem;
+  background: #00648f;
+  border-radius: 28px;
+  box-shadow: 2px 4px 9px 0 rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.email {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.emailIcon {
+  width: 1.875rem;
+}
+
+.input_email {
+  margin-left: 0.75rem;
+  padding-left: 0.75rem;
+  width: 70%;
+  height: 2.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 0;
+  outline: none;
+}
+
+.password {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.passwordIcon {
+  width: 1.875rem;
+}
+
+.input_password {
+  margin-left: 0.75rem;
+  padding-left: 0.75rem;
+  width: 70%;
+  height: 2.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 0;
+  outline: none;
+}
+
+.btn_signIn {
+  width: 80%;
+  height: 2.75rem;
+  margin-top: 1.25rem;
+  border-radius: 1.5rem;
+  border: 1px solid white;
+  background: #00abf2;
+  color: white;
+  font-size: 1.25rem;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn_signIn:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
+.btn_newAccount {
+  width: 80%;
+  height: 2.75rem;
+  margin-top: 1rem;
+  border-radius: 1.5rem;
+  border: 1px solid white;
+  background: #00648f;
+  color: white;
+  font-size: 1.25rem;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn_newAccount:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
+.logins {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  width: 13rem;
+}
+.googleIcon {
+  width: 50px;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+
+.googleIcon:hover {
+  transform: scale(1.2);
+}
+
+.githubIcon {
+  width: 50px;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+}
+
+.githubIcon:hover {
+  transform: scale(1.2);
+}
+
+.facebookIcon {
+  width: 50px;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+}
+
+.facebookIcon:hover {
+  transform: scale(1.2);
+}
+
+.desc1 {
+  margin: 0;
+  margin-top: 1.5rem;
+  color: #00648f;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+.desc {
+  margin: 0.2rem 0 0 0;
+  padding: 0;
+  color: #00648f;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 62rem) {
+  .title {
+    font-size: 4rem;
+  }
+
+  .description {
+    font-size: 1.25rem;
+  }
+
+  .box {
+    width: 20rem;
+  }
+
+  .desc,
+  .desc1 {
+    font-size: 1rem;
+  }
+}
