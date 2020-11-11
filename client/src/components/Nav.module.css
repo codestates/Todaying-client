@@ -1,0 +1,84 @@
+.nav {
+  background-color: #0083ba;
+  position: fixed;
+  color: white;
+  font-size: 2.4rem;
+  font-family: MarkerFelt-Wide;
+  padding: 0.8rem;
+  z-index: 99;
+  width: 100%;
+}
+
+.title {
+  margin: 0;
+  display: inline-block;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  float: right;
+}
+.menu_home,
+.menu_logout,
+.menu_my_page {
+  background-image: -webkit-linear-gradient(left, #0083ba 50%, white 50%);
+  background-image: linear-gradient(to right, #0083ba 50%, white 50%);
+  background-position: 0;
+  background-size: 200%;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+
+  font-weight: bold;
+  color: white;
+  height: 2.5rem;
+  margin-left: 0.8rem;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 0.2rem;
+  outline: none;
+  font-size: 1.1rem;
+}
+
+.menu_home:hover,
+.menu_logout:hover,
+.menu_my_page:hover {
+  background-position: -100%;
+  color: #00abf2;
+  cursor: pointer;
+}
+
+.menu_my_page {
+}
+
+.menu_logout {
+  margin-right: 1.5rem;
+}
+
+@media screen and (max-width: 62rem) {
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .menu_home,
+  .menu_logout,
+  .menu_my_page {
+    background-color: #0083ba;
+    background-image: unset;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    height: 1.8rem;
+  }
+
+  .menu_home:hover,
+  .menu_logout:hover,
+  .menu_my_page:hover {
+    background-position: unset;
+    color: #00abf2;
+    cursor: pointer;
+  }
+
+  .menu_logout {
+    margin-right: -0.1rem;
+  }
+}

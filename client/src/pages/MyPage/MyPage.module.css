@@ -1,0 +1,61 @@
+.mypage {
+  display: flex;
+  flex-direction: column;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 60%;
+  padding-top: 7rem;
+  padding-bottom: 5rem;
+  text-align: left;
+  left: 22%;
+}
+
+.title,
+.contents {
+  margin-left: 1.5rem;
+}
+
+.title {
+  margin-top: 0.5rem;
+}
+
+.contents {
+  margin-left: 2.5rem;
+  font-weight: unset;
+}
+
+.contents:hover {
+  cursor: pointer;
+}
+.information_user .contents:hover {
+  cursor: default;
+}
+
+.information_user,
+.information_delete,
+.information_settings {
+  background-color: white;
+  padding: 1.6rem;
+  margin-top: 0.7rem;
+  border: 0.15rem solid #00abf2;
+  border-radius: 0.4rem;
+}
+
+@media screen and (max-width: 62rem) {
+  .title {
+    font-size: 0.8rem;
+  }
+
+  .contents {
+    font-size: 0.8rem;
+  }
+
+  .information {
+    left: 17%;
+    width: 70%;
+  }
+}
