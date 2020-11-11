@@ -5,10 +5,12 @@ import passwordIcon from '../../images/baseline_lock_white_18dp.png';
 import googleIcon from '../../images/google.png';
 import githubIcon from '../../images/github.png';
 import facebookIcon from '../../images/facebook.png';
+import SignUp from '../../components/SignUp/SignUp';
 
 const LandingPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isModalOn, setIsModalOn] = useState(false);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -29,6 +31,10 @@ const LandingPage = () => {
     setPassword('');
   };
 
+  const handleModal = () => {
+    setIsModalOn((prevState) => !prevState);
+  };
+
   const handleSocialLogin = (e) => {
     if (e.target.name === 'google') {
       console.log('google social login!!!');
@@ -41,6 +47,12 @@ const LandingPage = () => {
 
   return (
     <>
+      <SignUp
+        isModalOn={isModalOn}
+        handleModal={handleModal}
+        handleSocialLogin={handleSocialLogin}
+      />
+
       <div className={styles.section}>
         <div className={styles.bgTop}></div>
         <div className={styles.bgBottom}></div>
@@ -86,7 +98,11 @@ const LandingPage = () => {
             </button>
           </form>
 
-          <button type="button" className={styles.btn_newAccount}>
+          <button
+            type="button"
+            className={styles.btn_newAccount}
+            onClick={handleModal}
+          >
             Create new account
           </button>
 

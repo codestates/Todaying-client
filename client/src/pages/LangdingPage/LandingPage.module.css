@@ -150,7 +150,7 @@
   width: 13rem;
 }
 .googleIcon {
-  width: 50px;
+  width: 3rem;
   cursor: pointer;
   transition: all 250ms ease-in-out;
 }
@@ -160,7 +160,7 @@
 }
 
 .githubIcon {
-  width: 50px;
+  width: 3rem;
   transition: all 250ms ease-in-out;
   cursor: pointer;
 }
@@ -170,7 +170,7 @@
 }
 
 .facebookIcon {
-  width: 50px;
+  width: 3rem;
   transition: all 250ms ease-in-out;
   cursor: pointer;
 }

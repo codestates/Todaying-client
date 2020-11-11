@@ -6,3 +6,7 @@ body {
   margin: 0;
   font-family: 'Spoqa Han Sans', 'Sans-serif';
 }
+
+input::placeholder {
+  color: rgb(162, 162, 162);
+}
