@@ -40,7 +40,9 @@
       "react/jsx-boolean-value": 1,
       "react/jsx-closing-tag-location": 0,
       "no-unused-vars": 1,
-      "jsx-a11y/control-has-associated-label": 0
+      "jsx-a11y/control-has-associated-label": 0,
+      "no-useless-escape": 0,
+      "no-nested-ternary": 0
     }
   },
   "browserslist": {
