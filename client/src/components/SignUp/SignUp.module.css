@@ -1,0 +1,104 @@
+/* Inside Box */
+
+.form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  width: 75%;
+}
+
+.input_email {
+  padding-left: 0.75rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 0;
+  outline: none;
+}
+
+.input_password {
+  margin-top: 0.75rem;
+  padding-left: 0.75rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 0;
+  outline: none;
+}
+.input_password_check {
+  margin-top: 0.25rem;
+  padding-left: 0.75rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 0;
+  outline: none;
+}
+
+.input_nickname {
+  margin-top: 0.75rem;
+  padding-left: 0.75rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 0;
+  outline: none;
+}
+
+.btn {
+  height: 2.75rem;
+  margin-top: 0.75rem;
+  border-radius: 1.5rem;
+  border: 1px solid white;
+  background: #00abf2;
+  color: white;
+  font-size: 1.25rem;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  outline: none;
+}
+
+/*  */
+
+.msg {
+  color: white;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.logins {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 7rem;
+}
+
+.googleIcon {
+  width: 1.5rem;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+
+.googleIcon:hover {
+  transform: scale(1.2);
+}
+
+.githubIcon {
+  width: 1.5rem;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+}
+
+.githubIcon:hover {
+  transform: scale(1.2);
+}
+
+.facebookIcon {
+  width: 1.5rem;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+}
+
+.facebookIcon:hover {
+  transform: scale(1.2);
+}
