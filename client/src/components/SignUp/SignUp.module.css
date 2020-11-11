@@ -4,11 +4,50 @@
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
-
   width: 75%;
 }
 
+/* Input Container */
+.email_container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.pwd_container {
+  position: relative;
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+.pwdCheck_container {
+  margin-top: 0.25rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.nickname_container {
+  margin-top: 0.75rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Icons */
+.checkIcon {
+  position: absolute;
+  width: 1rem;
+  right: 0.5rem;
+}
+.errorIcon {
+  position: absolute;
+  width: 1rem;
+  right: 0.5rem;
+}
+
+/* Inputs */
 .input_email {
+  width: 100%;
   padding-left: 0.75rem;
   height: 2.5rem;
   font-size: 1rem;
@@ -18,7 +57,8 @@
 }
 
 .input_password {
-  margin-top: 0.75rem;
+  width: 100%;
+
   padding-left: 0.75rem;
   height: 2.5rem;
   font-size: 1rem;
@@ -27,7 +67,8 @@
   outline: none;
 }
 .input_password_check {
-  margin-top: 0.25rem;
+  width: 100%;
+
   padding-left: 0.75rem;
   height: 2.5rem;
   font-size: 1rem;
@@ -37,12 +78,25 @@
 }
 
 .input_nickname {
-  margin-top: 0.75rem;
+  width: 100%;
+
   padding-left: 0.75rem;
   height: 2.5rem;
   font-size: 1rem;
   border-radius: 6px;
   border: 0;
+  outline: none;
+}
+
+.btn_off {
+  height: 2.75rem;
+  margin-top: 0.75rem;
+  border-radius: 1.5rem;
+  border: 1px solid white;
+  background: #dfdfdf;
+  color: white;
+  font-size: 1.25rem;
+  transition: all 250ms ease-in-out;
   outline: none;
 }
 
@@ -57,6 +111,10 @@
   transition: all 250ms ease-in-out;
   cursor: pointer;
   outline: none;
+}
+
+.btn:hover {
+  transform: scale(1.03);
 }
 
 /*  */
