@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import GoogleLogin from 'react-google-login'
 import Modal from '../Modal/Modal';
 import styles from './SignUp.module.css';
 import googleIcon from '../../images/google.png';
@@ -88,22 +89,24 @@ const SignUp = ({ isModalOn, handleModal, handleSocialLogin }) => {
       </form>
       <p className={styles.msg}>or you can sign in with</p>
       <div className={styles.logins}>
-        <img
-          className={styles.googleIcon}
-          src={googleIcon}
-          alt="google"
-          name="google"
-          onClick={handleSocialLogin}
-        />
-
-        <img
-          className={styles.githubIcon}
-          src={githubIcon}
-          alt="github"
-          name="github"
-          onClick={handleSocialLogin}
-        />
-
+        <GoogleLogin className={styles.googleLogin} icon={false} buttonText='' clientId="873832405311-8nodgb78u7lc4iaqbjfgsdhacs7frjoj.apps.googleusercontent.com">
+          <img
+            className={styles.googleIcon}
+            src={googleIcon}
+            alt="google"
+            name="google"
+            onClick={handleSocialLogin}
+          />
+        </GoogleLogin>
+        <a href="http://github.com/login/oauth/authorize?client_id=a31a399f5225b01cf66a">
+          <img
+            className={styles.githubIcon}
+            src={githubIcon}
+            alt="github"
+            name="github"
+            onClick={handleSocialLogin}
+          />
+        </a>
         <img
           className={styles.facebookIcon}
           src={facebookIcon}

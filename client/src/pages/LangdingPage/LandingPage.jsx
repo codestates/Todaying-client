@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import GoogleLogin from 'react-google-login'
 import styles from './LandingPage.module.css';
 import emailIcon from '../../images/baseline_email_white_18dp.png';
 import passwordIcon from '../../images/baseline_lock_white_18dp.png';
@@ -7,7 +8,7 @@ import githubIcon from '../../images/github.png';
 import facebookIcon from '../../images/facebook.png';
 import SignUp from '../../components/SignUp/SignUp';
 
-const LandingPage = () => {
+const LandingPage = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isModalOn, setIsModalOn] = useState(false);
@@ -39,11 +40,20 @@ const LandingPage = () => {
     if (e.target.name === 'google') {
       console.log('google social login!!!');
     } else if (e.target.name === 'github') {
+      // history.push('https://github.com/login/oauth/authorize?client_id=a31a399f5225b01cf66a');
       console.log('github  !!!!');
     } else if (e.target.name === 'facebook') {
       console.log('facebook  !!!');
     }
   };
+
+  const googleSuccess = (res) => {
+    console.log('구글 로그인 성공!')
+  }
+
+  const googleFailure= (res) => {
+    console.log('구글 로그인 실패!')
+  }
 
   return (
     <>
@@ -107,22 +117,25 @@ const LandingPage = () => {
           </button>
 
           <div className={styles.logins}>
-            <img
-              className={styles.googleIcon}
-              src={googleIcon}
-              alt="google"
-              name="google"
-              onClick={handleSocialLogin}
-            />
+            <GoogleLogin className={styles.googleLogin} icon={false} buttonText='' clientId="873832405311-8nodgb78u7lc4iaqbjfgsdhacs7frjoj.apps.googleusercontent.com" onSuccess={googleSuccess} onFailure={googleFailure}>
+              <img
+                className={styles.googleIcon}
+                src={googleIcon}
+                alt="google"
+                name="google"
+                onClick={handleSocialLogin}
+              />
+            </GoogleLogin>
 
-            <img
-              className={styles.githubIcon}
-              src={githubIcon}
-              alt="github"
-              name="github"
-              onClick={handleSocialLogin}
-            />
-
+            <a href="http://github.com/login/oauth/authorize?client_id=a31a399f5225b01cf66a">
+              <img
+                className={styles.githubIcon}
+                src={githubIcon}
+                alt="github"
+                name="github"
+                onClick={handleSocialLogin}
+              />
+            </a>
             <img
               className={styles.facebookIcon}
               src={facebookIcon}

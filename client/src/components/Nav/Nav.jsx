@@ -2,6 +2,11 @@ import React from 'react';
 import styles from './Nav.module.css';
 
 const Nav = () => {
+
+    const handleLogout = () => {
+        console.log('로그아웃 POST 요청');
+    }
+
     return (
       <>
         <div className={styles.nav}>
@@ -20,7 +25,7 @@ const Nav = () => {
               My page
             </button>
 
-            <button type="button" className={styles.menu_logout}>
+            <button type="button" className={styles.menu_logout} onClick={handleLogout}>
               Logout
             </button>
           </div>
