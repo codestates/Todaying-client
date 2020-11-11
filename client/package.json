@@ -42,7 +42,8 @@
       "no-unused-vars": 1,
       "jsx-a11y/control-has-associated-label": 0,
       "no-useless-escape": 0,
-      "no-nested-ternary": 0
+      "no-nested-ternary": 0,
+      "react/no-unescaped-entities": 0
     }
   },
   "browserslist": {
