@@ -53,78 +53,8 @@
   align-items: center;
 }
 
-.form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.email {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.emailIcon {
-  width: 1.875rem;
-}
-
-.input_email {
-  margin-left: 0.75rem;
-  padding-left: 0.75rem;
-  width: 70%;
-  height: 2.5rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 0;
-  outline: none;
-}
-
-.password {
-  margin-top: 1rem;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.passwordIcon {
-  width: 1.875rem;
-}
-
-.input_password {
-  margin-left: 0.75rem;
-  padding-left: 0.75rem;
-  width: 70%;
-  height: 2.5rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 0;
-  outline: none;
-}
-
-.btn_signIn {
-  width: 80%;
-  height: 2.75rem;
-  margin-top: 1.25rem;
-  border-radius: 1.5rem;
-  border: 1px solid white;
-  background: #00abf2;
-  color: white;
-  font-size: 1.25rem;
-  transition: all 250ms ease-in-out;
-  cursor: pointer;
-  outline: none;
-}
-
-.btn_signIn:hover {
-  opacity: 0.8;
-  transform: scale(1.02);
-}
-
 .btn_newAccount {
-  width: 80%;
+  width: 85%;
   height: 2.75rem;
   margin-top: 1rem;
   border-radius: 1.5rem;
@@ -146,7 +76,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   width: 13rem;
 }
 .googleIcon {
@@ -205,6 +135,20 @@
 
   .box {
     width: 20rem;
+  }
+
+  .btn_newAccount {
+    font-size: 1rem;
+  }
+
+  .logins {
+    width: 10rem;
+  }
+
+  .googleIcon,
+  .githubIcon,
+  .facebookIcon {
+    width: 2rem;
   }
 
   .desc,
