@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import Modal from '../Modal/Modal';
 import styles from './SignUp.module.css';
 import googleIcon from '../../images/google.png';

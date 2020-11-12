@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react';
+import { React, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 // import axios from 'axios';
 import styles from './DeleteModal.module.css';
@@ -39,7 +39,7 @@ const DeleteModal = ({ isModalOn, handleModal }) => {
     const deleted = 'collect password';
     if (deleted === 'collect password') {
       setDelete(true);
-      setTimeout(function () {
+      setTimeout(() => {
         history.push('/');
       }, 4000);
     } else if (deleted === 'wrong password') {

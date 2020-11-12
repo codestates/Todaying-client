@@ -4,7 +4,7 @@ import Modal from '../Modal/Modal';
 // import axios from 'axios';
 
 const NicknameModal = ({
-  userInforms,
+  // userInforms,
   nickname: propsnickname,
   isModalOn,
   handleModal,
@@ -14,7 +14,6 @@ const NicknameModal = ({
   //   email: userInform.email,
   //   nickname: userInform.nickname,
   // });
-  const [isValid, setIsValid] = useState(true);
 
   const changeNickname = () => {
     console.log('닉네임 변경!');
