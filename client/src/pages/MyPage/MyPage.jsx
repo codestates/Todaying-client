@@ -29,13 +29,22 @@ const MyPage = () => {
   return (
     <div className={styles.mypage}>
       {modalName === 'password' ? (
-        <PwdModal isModalOn={isModalOn} handleModal={handleModal} />
+        <PwdModal
+          isModalOn={isModalOn}
+          handleModal={handleModal}
+          modalName={modalName}
+        />
       ) : modalName === 'delete' ? (
-        <DeleteModal isModalOn={isModalOn} handleModal={handleModal} />
+        <DeleteModal
+          isModalOn={isModalOn}
+          handleModal={handleModal}
+          modalName={modalName}
+        />
       ) : modalName === 'nickname' ? (
         <NicknameModal
           nickname={nickname}
           isModalOn={isModalOn}
+          modalName={modalName}
           handleModal={handleModal}
         />
       ) : null}
@@ -44,10 +53,10 @@ const MyPage = () => {
         <div className={styles.information_user}>
           <h3 className={styles.title}>User Informations</h3>
           <h4 id={styles.email} className={styles.contents}>
-            email : {email}
+            Email : {email}
           </h4>
           <h4 id={styles.nickname} className={styles.contents}>
-            nickname : {nickname}
+            Nickname : {nickname}
           </h4>
         </div>
         <div className={styles.information_settings}>

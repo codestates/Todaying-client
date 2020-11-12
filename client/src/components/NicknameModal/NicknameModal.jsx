@@ -1,10 +1,12 @@
 import { React, useState } from 'react';
+import axios from 'axios';
 import styles from './NicknameModal.module.css';
 import Modal from '../Modal/Modal';
 // import axios from 'axios';
 
 const NicknameModal = ({
   // userInforms,
+  modalName,
   nickname: propsnickname,
   isModalOn,
   handleModal,
@@ -14,9 +16,35 @@ const NicknameModal = ({
   //   email: userInform.email,
   //   nickname: userInform.nickname,
   // });
+  // 오류 상태 관리
+  const [isError, setIsError] = useState(false);
 
-  const changeNickname = () => {
-    console.log('닉네임 변경!');
+  const changeNickname = async () => {
+    try {
+      const response = await axios.post(
+        'http://ec2-13-125-255-14.ap-northeast-2.compute.amazonaws.com:3001/mypage/editnickname',
+        {
+          // email,
+          nickname,
+        },
+        { withCredentials: true },
+      );
+      if (response === 'success') {
+        handleModal();
+      }
+    } catch (err) {
+      if (err.response) {
+        if (err.response.status === 500) {
+          setIsError('500');
+          // 서버측 에러
+        } else if (err.response.status === 422) {
+          setIsError('422');
+          // 닉네임 혹은 이메일 누락의 경우
+        }
+      } else {
+        throw err;
+      }
+    }
     // axios.post('www.example.com/changeNickname', {
     // body에 바꿀 nickname 넣어서 post요청 =>
     // if(success) {
@@ -25,7 +53,14 @@ const NicknameModal = ({
   };
 
   return (
-    <Modal isModalOn={isModalOn} handleModal={handleModal}>
+    <Modal
+      setIsErrorNickname={setIsError}
+      isModalOn={isModalOn}
+      setNickname={setNickname}
+      handleModal={handleModal}
+      nickname={nickname}
+      modalName={modalName}
+    >
       <div className={styles.title}>Change Nickname</div>
       <div className={styles.alert}>please enter new nickname here</div>
       <div className={styles.container_nickname}></div>
@@ -36,8 +71,12 @@ const NicknameModal = ({
         value={nickname}
         onChange={(e) => {
           setNickname(e.target.value.trim());
+          setIsError(false);
         }}
       />
+      {isError ? (
+        <div className={styles.warning}>server error, please try again</div>
+      ) : null}
       {nickname.trim().length !== 0 ? null : (
         <div className={styles.warning}>you must type more than a word</div>
       )}

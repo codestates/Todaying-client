@@ -1,11 +1,11 @@
 import { React, useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import styles from './pwdModal.module.css';
 import Modal from '../Modal/Modal';
 import checkIcon from '../../images/check.png';
 import errorIcon from '../../images/error.png';
 
-const PwdModal = ({ isModalOn, handleModal }) => {
+const PwdModal = ({ modalName, isModalOn, handleModal }) => {
   // 여기서부터 password modal 관련한 로직
   // 1) 패스워드 입력을 했는지 여부(+) null이면 버튼 못누르고, 에러 메시지 띄우도록 + change 버튼 비활성화
   // 2) 패스워드 불일치시에는 불일치 에러 메시지
@@ -15,6 +15,8 @@ const PwdModal = ({ isModalOn, handleModal }) => {
     confirmPassword: '',
     currentPassword: '',
   });
+
+  const [isError, setIsError] = useState(false);
 
   const [valid, setValid] = useState({
     isValid: false,
@@ -32,6 +34,9 @@ const PwdModal = ({ isModalOn, handleModal }) => {
   };
 
   const checkForm = ({ target }) => {
+    // 만약 비밀번호가 틀렸으면 새로 수정하면 에러는 더이상 보여줄 필요가 없음
+    setIsError(false);
+
     if (target.name === 'newPassword') {
       setPassword({ ...password, newPassword: target.value.trim() });
       if (!validatePassword(target.value)) {
@@ -59,12 +64,42 @@ const PwdModal = ({ isModalOn, handleModal }) => {
   };
 
   const changePassword = async () => {
-    console.log('비밀번호 변경 성공!');
-    // axios.post()요청으로 현재 비밀번호, 바꿀 비밀번호를 포스트
+    try {
+      const response = await axios.post(
+        'http://ec2-13-125-255-14.ap-northeast-2.compute.amazonaws.com:3001/mypage/editpassword',
+        {
+          // email,
+          password,
+        },
+        { withCredentials: true },
+      );
+      if (response === 'success') {
+        handleModal();
+      }
+    } catch (err) {
+      if (err.response) {
+        if (err.response.status === 500) {
+          setIsError('500');
+          // 비밀번호 에러
+        } else if (err.response.status === 422) {
+          setIsError('422');
+          // 닉네임 혹은 이메일 누락의 경우
+        }
+      } else {
+        throw err;
+      }
+    }
   };
 
   return (
-    <Modal isModalOn={isModalOn} handleModal={handleModal}>
+    <Modal
+      setIsErrorPassword={setIsError}
+      isModalOn={isModalOn}
+      handleModal={handleModal}
+      modalName={modalName}
+      setPassword={setPassword}
+      setPwdValid={setValid}
+    >
       <div className={styles.title}>Change Password</div>
 
       <div className={styles.container_new}>
@@ -111,6 +146,7 @@ const PwdModal = ({ isModalOn, handleModal }) => {
           type="password"
           name="currentPassword"
           placeholder="Current Password"
+          value={password.currentPassword}
           onChange={checkForm}
         />
         {valid.currentPasswordValid === null ? (
@@ -121,6 +157,14 @@ const PwdModal = ({ isModalOn, handleModal }) => {
           <img className={styles.errorIcon} src={errorIcon} alt="error" />
         )}
       </div>
+
+      {isError ? (
+        isError === '500' ? (
+          <div className={styles.error}>wrong password !</div>
+        ) : isError === '422' ? (
+          <div className={styles.error}>server error, please try later</div>
+        ) : null
+      ) : null}
 
       {valid.newPasswordValid &&
       valid.confirmPasswordValid &&

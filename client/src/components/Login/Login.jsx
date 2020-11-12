@@ -22,6 +22,8 @@ const Login = ({ getUserInfo }) => {
   };
 
   const handleEmailChange = (e) => {
+    // error 메시지를 띄워주고 나서 다시 시도하기 위해 인풋에 입력을 시작하면 더이상 에러 메시지는 필요없음!
+    setIsError(false);
     setEmail(e.target.value);
     if (!validateEmail(e.target.value)) {
       setIsValid({ ...isValid, email: false });
@@ -31,6 +33,8 @@ const Login = ({ getUserInfo }) => {
   };
 
   const handlePasswordChange = (e) => {
+    // error 메시지를 띄워주고 나서 다시 시도하기 위해 인풋에 입력을 시작하면 더이상 에러 메시지는 필요없음!
+    setIsError(false);
     setPassword(e.target.value);
     if (!validatePassword(e.target.value)) {
       setIsValid({ ...isValid, password: false });

@@ -58,6 +58,10 @@
   outline: none;
 }
 
+.error {
+  color:#ff6969;
+}
+
 .btn {
   width: 80%;
   padding: 0.8rem;

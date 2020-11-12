@@ -71,6 +71,24 @@
   color: #f70b0fe7;
 }
 
+.error {
+  color:#ff6969;
+}
+
+.btn_off {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  width: 80%;
+  padding: 0.8rem;
+  color: white;
+  font-weight: unset;
+  border-radius: 1.5rem;
+  background-color: #dfdfdf;
+  border: 1px solid white;
+  transition: all 250ms ease-in-out;
+  outline: none;
+}
+
 .btn {
   margin-top: 1.5rem;
   font-size: 1.25rem;
@@ -98,6 +116,6 @@
   font-size: 0.8rem;
 }
 .warning {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 }
