@@ -1,7 +1,12 @@
 import React from 'react';
+import {
+  useHistory
+} from 'react-router-dom';
+
 import styles from './Nav.module.css';
 
 const Nav = () => {
+    const history = useHistory();
     return (
       <>
         <div className={styles.nav}>
@@ -12,15 +17,15 @@ const Nav = () => {
 
           <div className={styles.menu}>
 
-            <button type="button" className={styles.menu_home}>
+            <button type="button" onClick={()=>{history.push('/main')}} className={styles.menu_home}>
               Home
             </button>
 
-            <button type="button" className={styles.menu_my_page}>
+            <button type="button" onClick={()=>{history.push('/mypage')}} className={styles.menu_my_page}>
               My page
             </button>
 
-            <button type="button" className={styles.menu_logout}>
+            <button type="button" onClick={()=>{history.push('/')}} className={styles.menu_logout}>
               Logout
             </button>
           </div>
