@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import styles from './pwdModal.module.css';
 import Modal from '../Modal/Modal';
 import checkIcon from '../../images/check.png';
