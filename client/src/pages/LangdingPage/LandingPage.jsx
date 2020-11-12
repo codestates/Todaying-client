@@ -1,36 +1,14 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styles from './LandingPage.module.css';
-import emailIcon from '../../images/baseline_email_white_18dp.png';
-import passwordIcon from '../../images/baseline_lock_white_18dp.png';
 import googleIcon from '../../images/google.png';
 import githubIcon from '../../images/github.png';
 import facebookIcon from '../../images/facebook.png';
 import SignUp from '../../components/SignUp/SignUp';
+import Login from '../../components/Login/Login';
 
 const LandingPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [isModalOn, setIsModalOn] = useState(false);
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSignIn = async (e) => {
-    e.preventDefault();
-    // const response = await axios.post('http://aaaa.com:3000', {
-    //   data: { email, password },
-    // });
-
-    console.log('Email:', email, 'Password:', password);
-    setEmail('');
-    setPassword('');
-  };
 
   const handleModal = () => {
     setIsModalOn((prevState) => !prevState);
@@ -71,42 +49,7 @@ const LandingPage = () => {
         <h1 className={styles.title}>Today-ing</h1>
         <h3 className={styles.description}>Write out your plan every day</h3>
         <div className={styles.box}>
-          <form className={styles.form}>
-            <div className={styles.email}>
-              <img className={styles.emailIcon} src={emailIcon} alt="email" />
-              <input
-                className={styles.input_email}
-                type="email"
-                value={email}
-                placeholder="Email"
-                onChange={handleEmailChange}
-              />
-            </div>
-
-            <div className={styles.password}>
-              <img
-                className={styles.passwordIcon}
-                src={passwordIcon}
-                alt="pwd"
-              />
-              <input
-                className={styles.input_password}
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={handlePasswordChange}
-              />
-            </div>
-
-            <button
-              type="submit"
-              className={styles.btn_signIn}
-              onClick={handleSignIn}
-            >
-              Sign in
-            </button>
-          </form>
-
+          <Login />
           <button
             type="button"
             className={styles.btn_newAccount}
