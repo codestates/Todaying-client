@@ -19,6 +19,20 @@
   margin-bottom: 1rem;
 }
 
+.btn_off {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  width: 80%;
+  padding: 0.8rem;
+  color: white;
+  font-weight: unset;
+  border-radius: 1.5rem;
+  background-color: #dfdfdf;
+  border: 1px solid white;
+  transition: all 250ms ease-in-out;
+  outline: none;
+}
+
 .btn {
   margin-top: 2rem;
   font-size: 1.25rem;
@@ -37,4 +51,9 @@
   cursor: pointer;
   background-color: #00abf2;
   color: white;
+}
+
+.warning {
+  color: #f70b0fe7;
+  margin-top: 0.2rem;
 }

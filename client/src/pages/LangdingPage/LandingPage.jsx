@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import styles from './LandingPage.module.css';
 import googleIcon from '../../images/google.png';
 import githubIcon from '../../images/github.png';
@@ -16,20 +15,14 @@ const LandingPage = () => {
 
   const handleSocialLogin = (e) => {
     if (e.target.name === 'google') {
-      console.log('google social login!!!');
+      window.location.href =
+        'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&client_id=617535918494-33pln0uqg6aeu3lam22b7go4c7n2ra6c.apps.googleusercontent.com&response_type=code';
     } else if (e.target.name === 'github') {
-      console.log('github  !!!!');
+      window.location.href =
+        'https://github.com/login/oauth/authorize?client_id=5eab3157a830fb8a372f';
     } else if (e.target.name === 'facebook') {
       console.log('facebook  !!!');
     }
-  };
-
-  const googleSuccess = (res) => {
-    console.log('구글 로그인 성공!');
-  };
-
-  const googleFailure = (res) => {
-    console.log('구글 로그인 실패!');
   };
 
   return (
