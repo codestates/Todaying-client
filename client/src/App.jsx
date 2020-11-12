@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import LandingPage from './pages/LangdingPage/LandingPage';
+import MainPage from './pages/MainPage/MainPage';
 import MyPage from './pages/MyPage/MyPage';
-// 라우터를 사용하기 전에 테스트를 위해 App.jsx에서 MyPage 테스트
 
 function App() {
   const [userInfo, setUserInfo] = useState({ email: '', nickname: '' });
@@ -16,14 +16,14 @@ function App() {
   return (
     <div>
       <Switch>
-        <Route
-          path="/"
-          exact
-          render={() => <LandingPage getUserInfo={getUserInfo} />}
-        />
-        <Route path="/main">{/* <Main /> */}</Route>
+        <Route path="/" exact>
+          <LandingPage getUserInfo={getUserInfo} />
+        </Route>
+        <Route path="/main">
+          <MainPage />
+        </Route>
         <Route path="/mypage">
-          <MyPage />
+          <MyPage userInfo={userInfo} />
         </Route>
       </Switch>
     </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import Modal from '../Modal/Modal';
 import styles from './SignUp.module.css';
 import googleIcon from '../../images/google.png';
@@ -9,13 +10,13 @@ import checkIcon from '../../images/check.png';
 import errorIcon from '../../images/error.png';
 
 const SignUp = ({ isModalOn, handleModal, handleSocialLogin, getUserInfo }) => {
+  const history = useHistory();
   const [form, setForm] = useState({
     email: '',
     password: '',
     passwordCheck: '',
     nickname: '',
   });
-
   // 각 인풋 유효성 검사 상태
   const [isValid, setIsValid] = useState({
     email: null,
@@ -23,8 +24,7 @@ const SignUp = ({ isModalOn, handleModal, handleSocialLogin, getUserInfo }) => {
     passwordCheck: null,
     nickname: null,
   });
-
-  // 오류메시지
+  // 오류 상태 관리
   const [isError, setIsError] = useState(false);
 
   // Utility functions for Validation
@@ -102,7 +102,6 @@ const SignUp = ({ isModalOn, handleModal, handleSocialLogin, getUserInfo }) => {
       //
       // ************ 추가할 사항
       // 로딩하는 동안 스피너 돌려주기
-      // 서버 응답 ok -> 정상적으로 가입 되었음 안내 -> 확인 누르면 -> 페이지로 이동
       alert('Completed! Welcome aboard'); // 임시로 얼럿창 사용
 
       setForm({ email: '', password: '', passwordCheck: '', nickname: '' });
@@ -112,11 +111,8 @@ const SignUp = ({ isModalOn, handleModal, handleSocialLogin, getUserInfo }) => {
         passwordCheck: null,
         nickname: null,
       });
-
-      // 마이페이지 리디렉션
-
-      // 모달창 닫기
-      // handleModal();
+      // 리디렉션
+      history.push('/main');
     } catch (err) {
       if (err.response) {
         if (err.response.status === 409) {
