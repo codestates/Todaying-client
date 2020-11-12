@@ -4,7 +4,7 @@ import styles from './Login.module.css';
 import emailIcon from '../../images/baseline_email_white_18dp.png';
 import passwordIcon from '../../images/baseline_lock_white_18dp.png';
 
-const Login = () => {
+const Login = ({ getUserInfo, history }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isValid, setIsValid] = useState({ email: null, password: null });
@@ -46,25 +46,29 @@ const Login = () => {
       // 위에서 클라이언트 유효성 검사가 통과되었고, 이제 서버요청 및 핸들링
       try {
         const response = await axios.post(
-          'http://ec2-13-125-255-14.ap-northeast-2.compute.amazonaws.com:3001/signup',
+          'http://ec2-13-125-255-14.ap-northeast-2.compute.amazonaws.com:3001/users/signin',
           {
             email,
             password,
           },
+          { withCredentials: true },
         );
         setEmail('');
         setPassword('');
 
         console.log(response.data);
+        // 응답으로 온 userInfo를 최상단컴포넌트로 끌어올려주기.
+        getUserInfo(response.data);
         // *****************************
-        // (추가할 사항) 여기에서 응답으로 온 response.data의
-        // email, nickname를 최상단컴포넌트로 끌어올려주기.
-        // + 라우트 push로 Today페이지로 넘겨주기
-        // *****************************
+        // Today페이지로 redirect <<<<<페이지 아직 없으므로 임시로 mypage로 리디렉션>>>>>
+        history.push('/mypage');
+        //
       } catch (err) {
-        if (err.response.status === 404) {
+        if (err.response && err.response.status === 404) {
           setIsError(true);
           setPassword('');
+        } else {
+          throw err;
         }
       }
     }

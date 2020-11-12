@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import Modal from '../Modal/Modal';
 import styles from './SignUp.module.css';
 import googleIcon from '../../images/google.png';
@@ -8,7 +8,7 @@ import facebookIcon from '../../images/facebook.png';
 import checkIcon from '../../images/check.png';
 import errorIcon from '../../images/error.png';
 
-const SignUp = ({ isModalOn, handleModal, handleSocialLogin }) => {
+const SignUp = ({ isModalOn, handleModal, handleSocialLogin, getUserInfo }) => {
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -23,6 +23,9 @@ const SignUp = ({ isModalOn, handleModal, handleSocialLogin }) => {
     passwordCheck: null,
     nickname: null,
   });
+
+  // 오류메시지
+  const [isError, setIsError] = useState(false);
 
   // Utility functions for Validation
   const validateEmail = (email) => {
@@ -80,36 +83,51 @@ const SignUp = ({ isModalOn, handleModal, handleSocialLogin }) => {
   // Sign Up Button
   const handleSignUp = async (e) => {
     e.preventDefault();
-    // const { email, password, nickname } = form;
-    // 1. 서버통신
-    // try {
-    //   const response = await axios.post('http://localhost:3000', {
-    //     email,
-    //     password,
-    //     nickname,
-    //   });
-    // } catch (err) {
-    //   // 오류메시지 status에 따라서 핸들링
-    // }
+    const { email, password, nickname } = form;
 
-    // 2. 로딩하는 동안 스피너 돌려주기
+    try {
+      const response = await axios.post(
+        'http://ec2-13-125-255-14.ap-northeast-2.compute.amazonaws.com:3001/user/signup',
+        {
+          email,
+          password,
+          nickname,
+        },
+        { withCredentials: true },
+      );
 
-    // 3. 서버 응답에 오류 코드에 따라서. 오류 처리 로직
+      console.log(response.data);
+      // 최상위 컴포넌트로 응답으로 온 userInfo 올려보내줌
+      getUserInfo(response.data);
+      //
+      // ************ 추가할 사항
+      // 로딩하는 동안 스피너 돌려주기
+      // 서버 응답 ok -> 정상적으로 가입 되었음 안내 -> 확인 누르면 -> 페이지로 이동
+      alert('Completed! Welcome aboard'); // 임시로 얼럿창 사용
 
-    // 4. 서버 응답 ok -> 정상적으로 가입 되었음 안내 -> 확인 누르면 -> 로그인페이지로 이동
+      setForm({ email: '', password: '', passwordCheck: '', nickname: '' });
+      setIsValid({
+        email: null,
+        password: null,
+        passwordCheck: null,
+        nickname: null,
+      });
 
-    alert('Completed! Welcome aboard'); // 임시로 얼럿창 사용
+      // 마이페이지 리디렉션
 
-    setForm({ email: '', password: '', passwordCheck: '', nickname: '' });
-    setIsValid({
-      email: null,
-      password: null,
-      passwordCheck: null,
-      nickname: null,
-    });
-
-    // 모달창 닫기
-    handleModal();
+      // 모달창 닫기
+      // handleModal();
+    } catch (err) {
+      if (err.response) {
+        if (err.response.status === 409) {
+          setIsError('409');
+        } else if (err.response.status === 422) {
+          setIsError('422');
+        }
+      } else {
+        throw err;
+      }
+    }
   };
 
   return (
@@ -186,6 +204,13 @@ const SignUp = ({ isModalOn, handleModal, handleSocialLogin }) => {
             <img className={styles.errorIcon} src={errorIcon} alt="error" />
           )}
         </div>
+        <p className={styles.error}>
+          {isError === '409'
+            ? 'This email is already registered'
+            : isError === '404'
+            ? 'Wrong information !'
+            : 'ㅤ'}
+        </p>
 
         {isValid.email &&
         isValid.password &&
