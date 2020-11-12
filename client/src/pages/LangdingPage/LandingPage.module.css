@@ -149,6 +149,15 @@
   margin-top: 2rem;
   width: 13rem;
 }
+
+.googleLogin {
+  padding: -5rem !important;
+  margin-left: -0.5rem;
+  box-shadow: unset !important;
+  border: 0 !important;
+  background-color: #00648f !important;
+}
+
 .googleIcon {
   width: 3rem;
   cursor: pointer;
@@ -160,6 +169,7 @@
 }
 
 .githubIcon {
+  margin-left: -0.5rem;
   width: 3rem;
   transition: all 250ms ease-in-out;
   cursor: pointer;

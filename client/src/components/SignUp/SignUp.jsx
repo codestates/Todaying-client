@@ -209,15 +209,15 @@ const SignUp = ({ isModalOn, handleModal, handleSocialLogin }) => {
           name="google"
           onClick={handleSocialLogin}
         />
-
-        <img
-          className={styles.githubIcon}
-          src={githubIcon}
-          alt="github"
-          name="github"
-          onClick={handleSocialLogin}
-        />
-
+        <a href="http://github.com/login/oauth/authorize?client_id=a31a399f5225b01cf66a">
+          <img
+            className={styles.githubIcon}
+            src={githubIcon}
+            alt="github"
+            name="github"
+            onClick={handleSocialLogin}
+          />
+        </a>
         <img
           className={styles.facebookIcon}
           src={facebookIcon}
