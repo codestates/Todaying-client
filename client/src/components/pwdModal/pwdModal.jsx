@@ -23,56 +23,58 @@ const PwdModal = ({ isModalOn, handleModal }) => {
     currentPasswordValid: null,
   });
 
+  const validatePasswordCheck = (passwordCheck) => {
+    return password.newPassword !== passwordCheck;
+  };
+
   const validatePassword = (pwd) => {
     return pwd.length >= 8 && pwd.length <= 20;
   };
 
   const checkForm = ({ target }) => {
     if (target.name === 'newPassword') {
-      setPassword({ ...password, newPassword: target.value });
+      setPassword({ ...password, newPassword: target.value.trim() });
       if (!validatePassword(target.value)) {
         setValid({ ...valid, newPasswordValid: false });
       } else {
         setValid({ ...valid, newPasswordValid: true });
       }
     } else if (target.name === 'confirmPassword') {
-      setPassword({ ...password, confirmPassword: target.value });
-      if (!validatePassword(password.confirmPassword)) {
+      setPassword({ ...password, confirmPassword: target.value.trim() });
+      if (!validatePassword(target.value)) {
         setValid({ ...valid, confirmPasswordValid: false });
-      } else if (password.newPassword !== password.confirmPassword) {
+      } else if (validatePasswordCheck(target.value)) {
         setValid({ ...valid, confirmPasswordValid: false });
       } else {
         setValid({ ...valid, confirmPasswordValid: true });
       }
     } else if (target.name === 'currentPassword') {
       setPassword({ ...password, currentPassword: target.value });
-      if (password.currentPassword.length <= 0) {
+      if (target.value.trim().length <= 0) {
         setValid({ ...valid, currentPasswordValid: false });
       } else {
         setValid({ ...valid, currentPasswordValid: true });
       }
     }
-    if (
-      valid.newPasswordValid &&
-      valid.confirmPasswordValid &&
-      valid.currentPasswordValid
-    ) {
-      setValid({ ...valid, isValid: true });
-    }
   };
 
-  const changePassword = async () => {};
+  const changePassword = async () => {
+    console.log('비밀번호 변경 성공!');
+    // axios.post()요청으로 현재 비밀번호, 바꿀 비밀번호를 포스트
+  };
 
   return (
     <Modal isModalOn={isModalOn} handleModal={handleModal}>
       <div className={styles.title}>Change Password</div>
-      <div className={styles.newPasswordPart}>
+
+      <div className={styles.container_new}>
         <input
           className={styles.input_pwd}
           id={styles.input_newPwd}
           name="newPassword"
           type="password"
           placeholder="New Password"
+          value={password.newPassword}
           onChange={checkForm}
         />
         {valid.newPasswordValid === null ? (
@@ -83,12 +85,14 @@ const PwdModal = ({ isModalOn, handleModal }) => {
           <img className={styles.errorIcon} src={errorIcon} alt="error" />
         )}
       </div>
-      <div className={styles.confirmPasswordPart}>
+
+      <div className={styles.container_confirm}>
         <input
           className={styles.input_pwd}
           id={styles.input_confirmPwd}
           name="confirmPassword"
           type="password"
+          value={password.confirmPassword}
           placeholder="Confirm Password"
           onChange={checkForm}
         />
@@ -100,7 +104,8 @@ const PwdModal = ({ isModalOn, handleModal }) => {
           <img className={styles.errorIcon} src={errorIcon} alt="error" />
         )}
       </div>
-      <div className={styles.currentPasswordPart}>
+
+      <div className={styles.container_current}>
         <input
           className={styles.input_pwd}
           type="password"
@@ -117,13 +122,14 @@ const PwdModal = ({ isModalOn, handleModal }) => {
         )}
       </div>
 
-      <div className={styles.alert_2}>{alert.confirmPasswordAlert}</div>
-      {valid ? (
-        <button className={styles.btn_off} type="submit">
+      {valid.newPasswordValid &&
+      valid.confirmPasswordValid &&
+      valid.currentPasswordValid ? (
+        <button className={styles.btn} type="submit" onClick={changePassword}>
           Change
         </button>
       ) : (
-        <button className={styles.btn} type="submit" onClick={changePassword}>
+        <button className={styles.btn_off} type="submit">
           Change
         </button>
       )}

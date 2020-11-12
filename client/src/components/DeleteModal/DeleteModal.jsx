@@ -3,18 +3,27 @@ import { useHistory } from 'react-router-dom';
 // import axios from 'axios';
 import styles from './DeleteModal.module.css';
 import Modal from '../Modal/Modal';
+import checkIcon from '../../images/check.png';
+import errorIcon from '../../images/error.png';
 
 const DeleteModal = ({ isModalOn, handleModal }) => {
   const history = useHistory();
   const [pwdCollect, setPwdCollect] = useState(true);
-  const [pwd, handlePwd] = useState('');
+  const [isValid, setValid] = useState(null);
+  const [password, setPassword] = useState('');
   const [removal, setDelete] = useState(false);
-  const handlePassword = (e) => {
-    handlePwd(e.target.value);
+
+  const handleChangePassword = ({ target }) => {
+    setPassword(target.value);
+    // 유효성검사
+    if (target.value.length <= 0) {
+      setValid(false);
+    } else {
+      setValid(true);
+    }
   };
 
   const deleteAccount = async () => {
-    console.log(pwd);
     // const removal = await axios.post('http://todaying.com/logout', {
     // method:"POST",
     // body: {
@@ -62,12 +71,23 @@ const DeleteModal = ({ isModalOn, handleModal }) => {
               wrong password, please try again
             </div>
           )}
-          <input
-            className={styles.input_delete}
-            type="text"
-            placeholder="Confirm password"
-            onChange={handlePassword}
-          />
+          <div className={styles.container_delete}>
+            <input
+              className={styles.input_delete}
+              type="text"
+              value={password}
+              placeholder="Current password"
+              onChange={handleChangePassword}
+            />
+            {isValid === null ? (
+              ''
+            ) : isValid ? (
+              <img className={styles.checkIcon} src={checkIcon} alt="check" />
+            ) : (
+              <img className={styles.errorIcon} src={errorIcon} alt="error" />
+            )}
+          </div>
+
           <div className={styles.warning}>
             deleted account cannot be recovered
           </div>

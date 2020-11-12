@@ -28,14 +28,33 @@
 }
 
 .input_delete {
-  width: 60%;
+  width: 100%;
   padding-left: 0.75rem;
   height: 2.5rem;
   font-size: 1rem;
   border-radius: 6px;
   border: 0;
   outline: none;
-  margin-bottom: 1rem;
+}
+
+.container_delete {
+  display: flex;
+  width: 60%;
+  position: relative;
+}
+
+/* Icons */
+.checkIcon {
+  position: absolute;
+  width: 1rem;
+  top: 0.6rem;
+  right: 0.5rem;
+}
+.errorIcon {
+  position: absolute;
+  width: 1rem;
+  top: 0.6rem;
+  right: 0.5rem;
 }
 
 .alert_1,
@@ -48,8 +67,8 @@
 }
 
 .warning {
+  margin-top: 0.5rem;
   color: #f70b0fe7;
-  font-weight: bold;
 }
 
 .btn {
