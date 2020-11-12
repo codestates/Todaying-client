@@ -1,0 +1,40 @@
+.title {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.input_nickname {
+  width: 60%;
+  padding-left: 0.75rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 0;
+  outline: none;
+}
+
+.alert {
+  color: lightgrey;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  margin-top: 2rem;
+  font-size: 1.25rem;
+  width: 80%;
+  padding: 0.8rem;
+  color: white;
+  font-weight: unset;
+  border-radius: 1.5rem;
+  background-color: #0083ba;
+  border: 1px solid white;
+  transition: all 250ms ease-in-out;
+  outline: none;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #00abf2;
+  color: white;
+}

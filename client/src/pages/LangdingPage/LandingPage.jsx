@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styles from './LandingPage.module.css';
 import emailIcon from '../../images/baseline_email_white_18dp.png';
 import passwordIcon from '../../images/baseline_lock_white_18dp.png';
@@ -43,6 +44,14 @@ const LandingPage = () => {
     } else if (e.target.name === 'facebook') {
       console.log('facebook  !!!');
     }
+  };
+
+  const googleSuccess = (res) => {
+    console.log('구글 로그인 성공!');
+  };
+
+  const googleFailure = (res) => {
+    console.log('구글 로그인 실패!');
   };
 
   return (
@@ -114,7 +123,6 @@ const LandingPage = () => {
               name="google"
               onClick={handleSocialLogin}
             />
-
             <img
               className={styles.githubIcon}
               src={githubIcon}
@@ -122,7 +130,6 @@ const LandingPage = () => {
               name="github"
               onClick={handleSocialLogin}
             />
-
             <img
               className={styles.facebookIcon}
               src={facebookIcon}
