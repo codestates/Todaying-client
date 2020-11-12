@@ -90,3 +90,14 @@
   background-color: #00abf2;
   color: white;
 }
+
+
+@media screen and (max-width: 62rem) {
+.alert_1,
+.alert_2 {
+  font-size: 0.8rem;
+}
+.warning {
+  font-size: 0.8rem;
+}
+}
