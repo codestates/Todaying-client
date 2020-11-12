@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import styles from './LandingPage.module.css';
 import googleIcon from '../../images/google.png';
 import githubIcon from '../../images/github.png';
@@ -13,13 +14,23 @@ const LandingPage = ({ getUserInfo }) => {
     setIsModalOn((prevState) => !prevState);
   };
 
-  const handleSocialLogin = (e) => {
+  const handleSocialLogin = async (e) => {
     if (e.target.name === 'google') {
+      // const { email, nickname } = await axios.get(
+      //   'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&client_id=617535918494-33pln0uqg6aeu3lam22b7go4c7n2ra6c.apps.googleusercontent.com&response_type=code',
+      // );
       window.location.href =
-        'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&client_id=617535918494-33pln0uqg6aeu3lam22b7go4c7n2ra6c.apps.googleusercontent.com&response_type=code';
+        'https://accounts.google.com/o/oauth2/v2/auth?client_id=617535918494-33pln0uqg6aeu3lam22b7go4c7n2ra6c.apps.googleusercontent.com&redirect_uri=ec2-13-125-255-14.ap-northeast-2.compute.amazonaws.com:3001/auth/google&response_type=code&scope=openid%20profile%20email';
+      //   'https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&client_id=617535918494-33pln0uqg6aeu3lam22b7go4c7n2ra6c.apps.googleusercontent.com&response_type=code';
     } else if (e.target.name === 'github') {
+      // axios.post(
+      //   'https://github.com/login/oauth/authorize?client_id=5eab3157a830fb8a372f&scope=user&redirect_uri=https://ec2-13-125-255-14.ap-northeast-2.compute.amazonaws.com:3001/auth/git',
+      //   {
+      //     credentials: 'true',
+      //   },
+      // );
       window.location.href =
-        'https://github.com/login/oauth/authorize?client_id=5eab3157a830fb8a372f';
+        'https://github.com/login/oauth/authorize?client_id=5eab3157a830fb8a372f&scope=user&redirect_uri=https://e1980ee7472e.ngrok.io/auth/git';
     } else if (e.target.name === 'facebook') {
       console.log('facebook  !!!');
     }

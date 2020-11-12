@@ -45,6 +45,9 @@ const SignUp = ({ isModalOn, handleModal, handleSocialLogin, getUserInfo }) => {
 
   // HandleChange => validation check and set state
   const handleChangeForm = ({ target }) => {
+    // error 메시지를 띄워주고 나서 다시 시도하기 위해 인풋에 입력을 시작하면 더이상 에러 메시지는 필요없음!
+    setIsError(false);
+
     if (target.name === 'email') {
       setForm({ ...form, email: target.value });
       // if false
@@ -127,7 +130,14 @@ const SignUp = ({ isModalOn, handleModal, handleSocialLogin, getUserInfo }) => {
   };
 
   return (
-    <Modal isModalOn={isModalOn} handleModal={handleModal}>
+    <Modal
+      modalName="signup"
+      setForm={setForm}
+      setIsErrorSignup={setIsError}
+      isModalOn={isModalOn}
+      handleModal={handleModal}
+      setSignupValid={setIsValid}
+    >
       <form className={styles.form}>
         <div className={styles.email_container}>
           <input

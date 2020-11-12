@@ -3,7 +3,7 @@
   position: fixed;
   color: white;
   font-size: 2.4rem;
-  font-family: MarkerFelt-Wide;
+  font-family: 'Archivo Narrow', sans-serif;
   padding: 0.8rem;
   z-index: 99;
   width: 100%;
@@ -18,7 +18,9 @@
   display: flex;
   align-items: center;
   float: right;
+  margin-top:0.5rem;
 }
+
 .menu_home,
 .menu_logout,
 .menu_my_page {
@@ -48,16 +50,25 @@
   cursor: pointer;
 }
 
-.menu_my_page {
-}
-
 .menu_logout {
   margin-right: 1.5rem;
 }
 
 @media screen and (max-width: 62rem) {
+  .nav {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    align-items: center;
+  }
+
   .title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    margin-left:0.5rem;
+  }
+
+  .menu {
+    margin-top:0.5rem;
   }
 
   .menu_home,
@@ -65,9 +76,10 @@
   .menu_my_page {
     background-color: #0083ba;
     background-image: unset;
-    margin-top: 0.5rem;
-    font-size: 0.8rem;
+    font-size: 1rem;
     height: 1.8rem;
+    margin-left: 1rem;
+    padding:0.3rem;
   }
 
   .menu_home:hover,

@@ -29,55 +29,74 @@ const MyPage = () => {
   return (
     <div className={styles.mypage}>
       {modalName === 'password' ? (
-        <PwdModal isModalOn={isModalOn} handleModal={handleModal} />
+        <PwdModal
+          isModalOn={isModalOn}
+          handleModal={handleModal}
+          modalName={modalName}
+        />
       ) : modalName === 'delete' ? (
-        <DeleteModal isModalOn={isModalOn} handleModal={handleModal} />
+        <DeleteModal
+          isModalOn={isModalOn}
+          handleModal={handleModal}
+          modalName={modalName}
+        />
       ) : modalName === 'nickname' ? (
         <NicknameModal
           nickname={nickname}
           isModalOn={isModalOn}
+          modalName={modalName}
           handleModal={handleModal}
         />
       ) : null}
       <Nav />
       <div className={styles.information}>
         <div className={styles.information_user}>
-          <h3 className={styles.title}>내 정보</h3>
-          <h4 className={styles.contents}>이메일 : {email} </h4>
-          <h4 className={styles.contents}>닉네임 : {nickname}</h4>
+          <h3 className={styles.title}>User Informations</h3>
+          <h4 id={styles.email} className={styles.contents}>
+            Email : {email}
+          </h4>
+          <h4 id={styles.nickname} className={styles.contents}>
+            Nickname : {nickname}
+          </h4>
         </div>
         <div className={styles.information_settings}>
-          <h3 className={styles.title}>계정</h3>
-          <h4
+          <h3 className={styles.title}>Account Settings</h3>
+          <button
+            type="button"
+            id={styles.buttonPassword}
             className={styles.contents}
             onClick={async () => {
               await handleModalName('password');
               await handleModal();
             }}
           >
-            비밀번호 변경
-          </h4>
-          <h4
+            Change Password
+          </button>
+          <button
+            type="button"
+            id={styles.buttonNickname}
             className={styles.contents}
             onClick={async () => {
               await handleModalName('nickname');
               await handleModal();
             }}
           >
-            닉네임 설정
-          </h4>
+            Edit Nickname
+          </button>
         </div>
         <div className={styles.information_delete}>
-          <h3 className={styles.title}>기타</h3>
-          <h4
+          <h3 className={styles.title}>Etc</h3>
+          <button
+            type="button"
+            id={styles.buttonDelete}
             className={styles.contents}
             onClick={async () => {
               await handleModalName('delete');
               await handleModal();
             }}
           >
-            회원탈퇴
-          </h4>
+            Delete Account
+          </button>
         </div>
       </div>
       <Footer />
