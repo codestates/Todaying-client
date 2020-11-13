@@ -1,31 +1,43 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 import styles from './ToDoTask.module.css';
 import deleteIcon from '../../images/delete.png';
-import checkboxDoneIcon from '../../images/checkbox.png';
 
-const ToDoTask = () => {
-  return (
+const ToDoTask = ({ task, isDone, editOn }) => {
+  const [isDeleted, setIsDeleted] = useState(false);
+  const [checked, setChecked] = useState(isDone);
+  const [text, setText] = useState(task);
+
+  const deleteTask = () => {
+    setIsDeleted(!isDeleted);
+  };
+
+  return isDeleted ? null : (
     <div className={styles.task}>
-      <img
+      <input
+        type="checkbox"
         className={styles.task_checkboxDone}
-        src={checkboxDoneIcon}
-        alt="checkbox"
+        checked={checked}
+        onChange={() => {
+          setChecked(!checked);
+        }}
       />
       <input
-        className={`${styles.task_text} ${styles.isDone}`}
-        value="to do list 02 to do list 02 to do list 02"
+        className={`${styles.task_text} ${checked && styles.isDone}`}
+        value={text}
+        spellCheck="false"
+        onChange={(e) => {
+          setText(e.target.value);
+        }}
       />
-      {/* editIsOn ?? */}
-      {false ? (
+
+      {editOn ? (
         <img
           className={styles.task_delete}
           src={deleteIcon}
           alt="delete"
-          onClick={() => alert('여기에 삭제 기능 나중에 넣기')}
+          onClick={deleteTask}
         />
-      ) : (
-        <span></span>
-      )}
+      ) : null}
     </div>
   );
 };

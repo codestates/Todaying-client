@@ -44,7 +44,8 @@
       "jsx-a11y/control-has-associated-label": 0,
       "no-useless-escape": 0,
       "no-nested-ternary": 0,
-      "consistent-return": 1
+      "consistent-return": 1,
+      "no-else-return":0
     }
   },
   "browserslist": {
