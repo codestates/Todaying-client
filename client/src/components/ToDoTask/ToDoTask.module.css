@@ -2,16 +2,12 @@
     margin-bottom: 0.4rem;
     width: 100%;
     display: flex;
-    align-items: flex-end;
-  }
-  
-  .task_checkbox {
-    width: 1.2rem;
-    cursor: pointer;
+    align-items: center;
   }
   
   .task_checkboxDone {
-    width: 1.2rem;
+    width: 1.5rem;
+    height: 1.5rem;
     cursor: pointer;
   }
   
@@ -37,12 +33,13 @@
   }
   
   .addTask {
+    display: inline-block;
+    cursor: pointer;
     margin: 0.4rem 0 0 0;
     display: flex;
     justify-content: flex-start;
     text-decoration: underline;
     color: #ffffff;
-    cursor: pointer;
     font-size: 0.9rem;
   }
   
