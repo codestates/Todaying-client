@@ -16,21 +16,38 @@
   margin: 0;
   padding: 0;
   margin-left: 1.75rem;
-  margin-top: 8rem;
+  margin-top: 5rem;
+  font-family: 'Baloo Bhai 2', cursive;
   font-size: 2rem;
+  line-height: 2rem;
   color: #00648f;
   font-weight: bold;
+  cursor: pointer;
 }
 
+/* Cards */
 .cards {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.card {
+.addCard {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
   margin-top: 0.75rem;
-  min-height: 8.5rem;
+  text-decoration: underline;
+  color: #555555;
+  cursor: pointer;
+}
+
+/* 카드 공통 */
+.card {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.75rem;
+  min-height: 10.5rem;
   width: 90%;
   border-radius: 20px;
   border: solid 1px #979797;
@@ -38,11 +55,79 @@
   background: #00648f;
 }
 
-.msg {
+.card_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 1rem;
+  height: 95%;
 }
 
+.card_header {
+  width: 100%;
+  margin: 0.8rem 0 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card_header_title {
+  width: 100%;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: bold;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.card_header_setting {
+}
+
+.btn_delete {
+  color: rgb(152, 152, 152);
+  cursor: pointer;
+}
+
+.btn_done {
+  margin-left: 1.2rem;
+  color: white;
+  cursor: pointer;
+}
+
+.card_header_setting_editIcon {
+  height: 1.1rem;
+  cursor: pointer;
+}
+
+/* 노트카드 */
+.textArea {
+  margin-top: 0.4rem;
+  font-size: 1.25rem;
+  width: 100%;
+  height: 6.5rem;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  resize: none;
+}
+
+.textArea::placeholder {
+  color: rgb(142, 142, 142);
+}
+
+/* media */
 @media screen and (max-width: 48rem) {
   .container {
     width: 100%;
+    min-width: 21rem;
+  }
+
+  .date {
+    margin-top: 7rem;
+    font-size: 2rem;
+    line-height: 2rem;
   }
 }

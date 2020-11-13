@@ -8,7 +8,6 @@ import errorIcon from '../../images/error.png';
 
 const DeleteModal = ({ userInform, modalName, isModalOn, handleModal }) => {
   const history = useHistory();
-  // const [pwdCollect, setPwdCollect] = useState(true);
   const [isValid, setValid] = useState(null);
   const [password, setPassword] = useState('');
   const [removal, setDelete] = useState(false);
@@ -16,9 +15,9 @@ const DeleteModal = ({ userInform, modalName, isModalOn, handleModal }) => {
   // 오류 상태 관리
   const [isError, setIsError] = useState(false);
 
+  // 유효성 검사
   const handleChangePassword = ({ target }) => {
     setPassword(target.value);
-    // 유효성검사
     if (target.value.length <= 0) {
       setValid(false);
     } else {
@@ -26,52 +25,37 @@ const DeleteModal = ({ userInform, modalName, isModalOn, handleModal }) => {
     }
   };
 
+  // 회원 탈퇴 로직
   const deleteAccount = async () => {
-    // try {
-    //   const response = await axios.post(
-    //     'https://5a08b783965d.ngrok.io/mypage/delete',
-    //     {
-    //       email: 'test100@mail.com',
-    //       password,
-    //     },
-    //     { withCredentials: true },
-    //   );
-    if (true) {
-      setDelete(true);
-      setTimeout(() => {
-        history.push('/');
-      }, 4000);
+    try {
+      const response = await axios.post(
+        'https://5a08b783965d.ngrok.io/mypage/delete',
+        {
+          email: 'test100@mail.com',
+          password,
+        },
+        { withCredentials: true },
+      );
+      if (response.data === 'success') {
+        setDelete(true);
+        setTimeout(() => {
+          history.push('/');
+        }, 4000);
+      }
+    } catch (err) {
+      if (err.response) {
+        if (err.response.status === 403) {
+          setIsError('403');
+
+          // 비밀번호가 틀린 경우
+        } else if (err.response.status === 422) {
+          setIsError('422');
+          // 비밀번호 혹은 이메일 누락의 경우
+        }
+      } else {
+        throw err;
+      }
     }
-    // } catch (err) {
-    //   if (err.response) {
-    //     if (err.response.status === 403) {
-    //       setIsError('403');
-
-    //       // 비밀번호가 틀린 경우
-    //     } else if (err.response.status === 422) {
-    //       setIsError('422');
-    //       // 비밀번호 혹은 이메일 누락의 경우
-    //     }
-    //   } else {
-    //     throw err;
-    //   }
-    // }
-    // 계정 삭제 요청 (POST)
-    // 1) 삭제 요청 성공시=> state를 이용해 removal이라는 state를 true로 바꿔서 모달창에 탈퇴인사를 띄워주고, 4초 뒤에 랜딩 페이지로
-    // 2) 비밀번호가 일치하지 않아서 삭제 요청이 실패했을시 => modal 창에 wrong password 띄워주기
-    // 3) 서버쪽에서 오류가 발생했을 경우 => 404 error 페이지로
-
-    // const deleted = 'collect password';
-    // if (deleted === 'collect password') {
-    //   setDelete(true);
-    //   setTimeout(() => {
-    //     history.push('/');
-    //   }, 4000);
-    // } else if (deleted === 'wrong password') {
-    //   setPwdCollect(false);
-    // } else {
-    //   console.log('server side error');
-    // }
   };
 
   return (
