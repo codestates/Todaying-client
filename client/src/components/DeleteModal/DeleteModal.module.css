@@ -111,11 +111,23 @@
 
 
 @media screen and (max-width: 62rem) {
-.alert_1,
-.alert_2 {
-  font-size: 0.8rem;
-}
-.warning {
-  font-size: 0.9rem;
-}
+  .alert_1,
+  .alert_2 {
+    font-size: 0.8rem;
+  }
+
+  .warning {
+    font-size: 0.9rem;
+  }
+  
+  .delete1 {
+    color: white;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+  .delete2,
+  .delete3 {
+    color: lightgrey;
+    font-size: 1.2rem;
+  }
 }

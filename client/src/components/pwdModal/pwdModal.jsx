@@ -64,22 +64,24 @@ const PwdModal = ({ modalName, isModalOn, handleModal }) => {
   };
 
   const changePassword = async () => {
+    const obj = {
+      email: 'test2@mail.com',
+      newPassword: password.newPassword,
+      currentPassword: password.currentPassword,
+    };
     try {
       const response = await axios.post(
-        'http://ec2-13-125-255-14.ap-northeast-2.compute.amazonaws.com:3001/mypage/editpassword',
-        {
-          // email,
-          password,
-        },
+        'https://5a08b783965d.ngrok.io/mypage/editpassword',
+        obj,
         { withCredentials: true },
       );
-      if (response === 'success') {
+      if (response.data === 'success') {
         handleModal();
       }
     } catch (err) {
       if (err.response) {
-        if (err.response.status === 500) {
-          setIsError('500');
+        if (err.response.status === 403) {
+          setIsError('403');
           // 비밀번호 에러
         } else if (err.response.status === 422) {
           setIsError('422');
@@ -159,7 +161,7 @@ const PwdModal = ({ modalName, isModalOn, handleModal }) => {
       </div>
 
       {isError ? (
-        isError === '500' ? (
+        isError === '403' ? (
           <div className={styles.error}>wrong password !</div>
         ) : isError === '422' ? (
           <div className={styles.error}>server error, please try later</div>

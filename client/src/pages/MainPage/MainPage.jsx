@@ -3,6 +3,13 @@ import Nav from '../../components/Nav/Nav';
 import styles from './MainPage.module.css';
 
 const MainPage = () => {
+  const query = window.location.search.substring(1);
+  const queryArr = query.split('&');
+  let email = queryArr[0].split('=')[1];
+  let nickname = queryArr[1].split('=')[1];
+  email = decodeURIComponent(email);
+  nickname = decodeURIComponent(nickname);
+
   const today = new Date();
   const year = today.getFullYear();
   const month = today.getMonth() + 1;
