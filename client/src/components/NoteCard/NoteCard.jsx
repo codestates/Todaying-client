@@ -1,14 +1,11 @@
 import React from 'react';
 import styles from './NoteCard.module.css';
-import Card from '../Card/Card';
 
-const NoteCard = ({ title, text }) => {
+const NoteCard = ({ text }) => {
   return (
-    <Card title={title}>
-      <textarea className={styles.textArea} placeholder="write here">
-        {text}
-      </textarea>
-    </Card>
+    <textarea className={styles.textArea} placeholder="write here">
+      {text}
+    </textarea>
   );
 };
 
