@@ -4,14 +4,13 @@
 }
 
 .container {
+  position: relative;
   background: #f8f8f8;
   width: 47.5rem;
-/* 만약 그냥 계속 늘어나도록 하려면 100% (대신 이경우 add a new card 버튼을 위로 옮겨야 유저가 편함*/
-  height: 100%; 
-/* 만약 그냥 계속 늘어나도록 하려면 100vh */
-  /* height: 100vh; */
+  height: 100%;
   display: flex;
   flex-direction: column;
+  padding-bottom: 20rem;
 }
 
 .date {
@@ -25,99 +24,6 @@
   color: #00648f;
   font-weight: bold;
   cursor: pointer;
-}
-
-/* Cards */
-.cards {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.addCard {
-  width: 90%;
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 0.75rem;
-  text-decoration: underline;
-  color: #555555;
-  cursor: pointer;
-}
-
-/* 카드 공통 */
-.card {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.75rem;
-  min-height: 10.5rem;
-  width: 90%;
-  border-radius: 20px;
-  border: solid 1px #979797;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-  background: #00648f;
-}
-
-.card_container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 0 1rem;
-  height: 95%;
-}
-
-.card_header {
-  width: 100%;
-  margin: 0.8rem 0 0 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-.card_header_title {
-  width: 100%;
-  color: white;
-  font-size: 1.25rem;
-  font-weight: bold;
-  background: none;
-  border: none;
-  outline: none;
-  color: white;
-}
-
-.card_header_setting {
-}
-
-.btn_delete {
-  color: rgb(152, 152, 152);
-  cursor: pointer;
-}
-
-.btn_done {
-  margin-left: 1.2rem;
-  color: white;
-  cursor: pointer;
-}
-
-.card_header_setting_editIcon {
-  height: 1.1rem;
-  cursor: pointer;
-}
-
-/* 노트카드 */
-.textArea {
-  margin-top: 0.4rem;
-  font-size: 1.25rem;
-  width: 100%;
-  height: 6.5rem;
-  background: none;
-  border: none;
-  outline: none;
-  color: white;
-  resize: none;
-}
-
-.textArea::placeholder {
-  color: rgb(142, 142, 142);
 }
 
 /* media */
