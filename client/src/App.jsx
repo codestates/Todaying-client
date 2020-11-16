@@ -13,7 +13,7 @@ function App() {
     nickname: '',
   });
 
-  const getLoginToken = ({ token }) => {
+  const getLoginToken = (token) => {
     // token 디코딩 -> get Email, nickname
     const { email, nickname } = jwt.decode(token);
 

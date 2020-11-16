@@ -51,7 +51,7 @@ const Login = ({ getLoginToken }) => {
     } else {
       try {
         const response = await axios.post(
-          'http://ec2-13-125-255-14.ap-northeast-2.compute.amazonaws.com:3001/users/signin',
+          'https://434451181b32.ngrok.io/user/signin',
           {
             email,
             password,
