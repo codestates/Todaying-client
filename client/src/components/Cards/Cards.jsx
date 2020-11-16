@@ -7,6 +7,7 @@ const Cards = ({
   modifyNoteCardData,
   modifyToDoCardData,
   modifyCardTitle,
+  deleteToDoCardData,
 }) => {
   return (
     <>
@@ -19,6 +20,7 @@ const Cards = ({
             modifyNoteCardData={modifyNoteCardData}
             modifyToDoCardData={modifyToDoCardData}
             modifyCardTitle={modifyCardTitle}
+            deleteToDoCardData={deleteToDoCardData}
           />
         ))}
       </div>

@@ -9,7 +9,12 @@ import facebookIcon from '../../images/facebook.png';
 import checkIcon from '../../images/check.png';
 import errorIcon from '../../images/error.png';
 
-const SignUp = ({ isModalOn, handleModal, handleSocialLogin, getUserInfo }) => {
+const SignUp = ({
+  isModalOn,
+  handleModal,
+  handleSocialLogin,
+  getLoginToken,
+}) => {
   const history = useHistory();
   const [form, setForm] = useState({
     email: '',
@@ -99,9 +104,9 @@ const SignUp = ({ isModalOn, handleModal, handleSocialLogin, getUserInfo }) => {
         { withCredentials: true },
       );
 
-      console.log(response.data);
-      // 최상위 컴포넌트로 응답으로 온 userInfo 올려보내줌
-      getUserInfo(response.data);
+      // console.log(response.data);
+      // 최상위 컴포넌트로 응답으로 온 token 올려보내줌
+      getLoginToken(response.data);
       //
       // ************ 추가할 사항
       // 로딩하는 동안 스피너 돌려주기

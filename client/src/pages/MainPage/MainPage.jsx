@@ -48,6 +48,16 @@ const MainPage = () => {
     setCardsData({ ...cardsData, ...newData });
   };
 
+  // ToDoCard / Task Delete
+  const deleteToDoCardData = (cardId, taskId) => {
+    const newTasks = { ...cardsData[cardId].content };
+    delete newTasks[taskId];
+
+    const newData = {};
+    newData[cardId] = { ...cardsData[cardId], content: newTasks };
+    setCardsData({ ...cardsData, ...newData });
+  };
+
   // Card / Title 수정
   const modifyCardTitle = (cardId, newTitle) => {
     const newData = {};
@@ -77,6 +87,7 @@ const MainPage = () => {
             modifyNoteCardData={modifyNoteCardData}
             modifyToDoCardData={modifyToDoCardData}
             modifyCardTitle={modifyCardTitle}
+            deleteToDoCardData={deleteToDoCardData}
           />
         </div>
       </section>
