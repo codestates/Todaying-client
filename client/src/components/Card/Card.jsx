@@ -32,6 +32,7 @@ const Card = ({
       <div className={styles.card_container}>
         <div className={styles.card_header}>
           <input
+            spellCheck="false"
             type="text"
             className={styles.card_header_title}
             value={title}
