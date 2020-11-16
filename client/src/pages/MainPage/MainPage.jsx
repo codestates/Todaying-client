@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import jwt from 'jwt-decode';
 import Nav from '../../components/Nav/Nav';
 import styles from './MainPage.module.css';
 import Cards from '../../components/Cards/Cards';
-
 import FAKE_DATA from './fakeData';
 
-const MainPage = () => {
+const MainPage = ({ getUserInfo }) => {
   const today = new Date();
   const getDay = () => {
     const d = today.getDay();
@@ -24,6 +23,15 @@ const MainPage = () => {
     date: today.getDate(),
     day: getDay(),
   };
+
+  // social 로그인 성공시에 이메일과 닉네임을 jwt 토큰으로 받아오는 로직
+  const params = window.location.search;
+  if (params) {
+    const query = params.substring(1);
+    const token = query.split('token=')[1];
+    const decodedToken = jwt(token);
+    getUserInfo(decodedToken);
+  }
 
   // 처음 렌더링될 때 cards 받아오는 logic(에러 처리는 미완성)
   const [cardsData, setCardsData] = useState({});
