@@ -3,6 +3,7 @@ import Card from '../Card/Card';
 import styles from './Cards.module.css';
 
 const Cards = ({
+  token,
   cardsData,
   modifyNoteCardData,
   modifyToDoCardData,
@@ -14,6 +15,7 @@ const Cards = ({
       <div className={styles.cards}>
         {Object.keys(cardsData).map((key) => (
           <Card
+            token={token}
             key={key}
             card={cardsData[key]}
             cardId={key}

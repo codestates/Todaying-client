@@ -23,6 +23,7 @@
     border: none;
     outline: none;
     font-size: 1rem;
+    text-overflow: ellipsis ;
   }
   
   .task_text.isDone {
