@@ -89,7 +89,7 @@ const MainPage = ({ getLoginToken, token }) => {
 
     // const dates = new Date().toLocaleDateString();
     // const params = window.location.search;
-
+    // social 로그인 성공시에 이메일과 닉네임을 jwt 토큰으로 받아오는 로직
     // if (params) {
     //   const query = params.substring(1);
     //   const tokens = query.split('token=')[1];
@@ -99,7 +99,6 @@ const MainPage = ({ getLoginToken, token }) => {
     //   getAllCards(token, dates);
     // }
     setCardsData(FAKE_DATA);
-    // social 로그인 성공시에 이메일과 닉네임을 jwt 토큰으로 받아오는 로직
   }, []);
 
   return (
@@ -109,7 +108,6 @@ const MainPage = ({ getLoginToken, token }) => {
         <div className={styles.container}>
           <div
             className={styles.date}
-            onClick={() => alert('날짜 선택 팝업 달기')}
           >{`${date.year}.${date.month}.${date.date} ${date.day}`}</div>
 
           <Cards

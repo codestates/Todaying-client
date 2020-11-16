@@ -59,6 +59,7 @@ export default {
       // 컨텐츠 오더에 따라 순서
       1: { task: '6시 기상', isDone: true },
       5: { task: '비타민 먹기', isDone: false },
+      6: { task: '비타민 먹기', isDone: false },
     },
   },
   15: {
@@ -79,6 +80,7 @@ export default {
       // 컨텐츠 오더에 따라 순서
       1: { task: '6시 기상', isDone: true },
       5: { task: '비타민 먹기', isDone: false },
+      6: { task: '비타민 먹기', isDone: false },
     },
   },
   222: {
