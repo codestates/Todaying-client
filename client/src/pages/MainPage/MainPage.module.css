@@ -23,7 +23,6 @@
   line-height: 2rem;
   color: #00648f;
   font-weight: bold;
-  cursor: pointer;
 }
 
 /* media */
@@ -34,6 +33,7 @@
   }
 
   .date {
+    text-align: center;
     margin-top: 7rem;
     font-size: 2rem;
     line-height: 2rem;

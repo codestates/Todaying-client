@@ -1,11 +1,10 @@
 .card_tasks {
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
+    margin-top: 0.8rem;
     width: 100%;
     min-height: 4.8rem;
-    max-height: 4.8rem;
-    overflow: hidden;
+    padding-right:3rem;
 }
 
 .card_tasks.isSpread {
@@ -13,22 +12,12 @@
 }
 
 .bottomSide{
-  display: flex;
-  
+  margin-top: 0.4rem;
 }
 
 .addTask{
-  width:15%;
+  display: inline-block;
   cursor: pointer;
   text-decoration: underline;
   color:white;
-  margin-bottom: 1.2rem;
-  bottom: 0;
-}
-
-@media screen and (max-width: 48rem) {
-
-  .addTask{
-    width:30%;
-  }
 }

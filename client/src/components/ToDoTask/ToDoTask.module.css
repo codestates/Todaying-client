@@ -6,6 +6,7 @@
   }
   
   .task_checkbox {
+    flex-grow:1;
     width: 1.2rem;
     cursor: pointer;
   }
@@ -16,7 +17,8 @@
   }  
   
   .task_text {
-    min-width: 92%;
+    flex-grow:1;
+    min-width: 100%;
     margin-left: 0.6rem;
     color: white;
     background: none;
@@ -31,7 +33,8 @@
     color: rgb(176, 176, 176);
   }
   
-  .task_delete {
+  .task_delete { 
+    flex-grow:1;
     width: 1rem;
     cursor: pointer;
   }
@@ -45,7 +48,6 @@
   .addTask {
     display: inline-block;
     cursor: pointer;
-    margin: 0.4rem 0 0 0;
     display: flex;
     justify-content: flex-start;
     text-decoration: underline;
@@ -53,9 +55,3 @@
     font-size: 0.9rem;
   }
   
-  /* media */
-@media screen and (max-width: 48rem) {
-  .task_text {
-    min-width: 85%;
-  }
-}

@@ -4,6 +4,7 @@ import styles from './MainPage.module.css';
 import Cards from '../../components/Cards/Cards';
 import FAKE_DATA from './fakeData';
 import AddCardModal from '../../components/AddCardModal/AddCardModal';
+import SetDateModal from '../../components/SetDateModal/SetDateModal';
 
 const MainPage = ({ getLoginToken, token }) => {
   const today = new Date();
@@ -90,7 +91,7 @@ const MainPage = ({ getLoginToken, token }) => {
 
     // const dates = new Date().toLocaleDateString();
     // const params = window.location.search;
-
+    // social 로그인 성공시에 이메일과 닉네임을 jwt 토큰으로 받아오는 로직
     // if (params) {
     //   const query = params.substring(1);
     //   const tokens = query.split('token=')[1];
@@ -100,7 +101,6 @@ const MainPage = ({ getLoginToken, token }) => {
     //   getAllCards(token, dates);
     // }
     setCardsData(FAKE_DATA);
-    // social 로그인 성공시에 이메일과 닉네임을 jwt 토큰으로 받아오는 로직
   }, []);
 
   // AddCardModal 상태관리
@@ -109,15 +109,24 @@ const MainPage = ({ getLoginToken, token }) => {
     setIsAddCardOn((prev) => !prev);
   };
 
+  const [isSetDateOn, setIsSetDateOn] = useState(false);
+  const handleSetDateModal = () => {
+    setIsSetDateOn((prev) => !prev);
+  };
   return (
     <>
+      <SetDateModal
+        isModalOn={isSetDateOn}
+        handleModal={handleSetDateModal}
+        token={token}
+        setCardsData={setCardsData}
+      />
       <AddCardModal isModalOn={isAddCardOn} handleModal={handleAddCardModal} />
       <Nav />
       <section className={styles.page}>
         <div className={styles.container}>
           <div
             className={styles.date}
-            onClick={() => alert('날짜 선택 팝업 달기')}
           >{`${date.year}.${date.month}.${date.date} ${date.day}`}</div>
 
           <Cards
@@ -128,6 +137,7 @@ const MainPage = ({ getLoginToken, token }) => {
             modifyCardTitle={modifyCardTitle}
             deleteToDoCardData={deleteToDoCardData}
             handleAddCardModal={handleAddCardModal}
+            handleSetDateModal={handleSetDateModal}
           />
         </div>
       </section>
