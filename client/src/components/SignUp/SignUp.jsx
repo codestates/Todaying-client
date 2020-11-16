@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import Modal from '../Modal/Modal';
 import styles from './SignUp.module.css';
 import googleIcon from '../../images/google.png';
 import githubIcon from '../../images/github.png';
 import facebookIcon from '../../images/facebook.png';
 import checkIcon from '../../images/check.png';
 import errorIcon from '../../images/error.png';
+import PureModal from '../PureModal/PureModal';
 
 const SignUp = ({
   isModalOn,
@@ -22,6 +22,7 @@ const SignUp = ({
     passwordCheck: '',
     nickname: '',
   });
+
   // 각 인풋 유효성 검사 상태
   const [isValid, setIsValid] = useState({
     email: null,
@@ -29,6 +30,7 @@ const SignUp = ({
     passwordCheck: null,
     nickname: null,
   });
+
   // 오류 상태 관리
   const [isError, setIsError] = useState(false);
 
@@ -50,9 +52,7 @@ const SignUp = ({
 
   // HandleChange => validation check and set state
   const handleChangeForm = ({ target }) => {
-    // error 메시지를 띄워주고 나서 다시 시도하기 위해 인풋에 입력을 시작하면 더이상 에러 메시지는 필요없음!
-    setIsError(false);
-
+    // setIsError(false);
     if (target.name === 'email') {
       setForm({ ...form, email: target.value });
       // if false
@@ -104,8 +104,6 @@ const SignUp = ({
         { withCredentials: true },
       );
 
-      console.log(response.data);
-      // 최상위 컴포넌트로 응답으로 온 token 올려보내줌
       getLoginToken(response.data);
       //
       // ************ 추가할 사항
@@ -134,15 +132,19 @@ const SignUp = ({
     }
   };
 
+  const handleCloseModal = () => {
+    handleModal();
+    setForm({ email: '', password: '', passwordCheck: '', nickname: '' });
+    setIsValid({
+      email: null,
+      password: null,
+      passwordCheck: null,
+      nickname: null,
+    });
+  };
+
   return (
-    <Modal
-      modalName="signup"
-      setForm={setForm}
-      setIsErrorSignup={setIsError}
-      isModalOn={isModalOn}
-      handleModal={handleModal}
-      setSignupValid={setIsValid}
-    >
+    <PureModal isModalOn={isModalOn} handleModal={handleCloseModal}>
       <form className={styles.form}>
         <div className={styles.email_container}>
           <input
@@ -262,7 +264,7 @@ const SignUp = ({
           onClick={handleSocialLogin}
         />
       </div>
-    </Modal>
+    </PureModal>
   );
 };
 

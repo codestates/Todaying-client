@@ -5,6 +5,7 @@ import styles from './MainPage.module.css';
 import Cards from '../../components/Cards/Cards';
 
 import FAKE_DATA from './fakeData';
+import AddCardModal from '../../components/AddCardModal/AddCardModal';
 
 const MainPage = () => {
   const today = new Date();
@@ -72,8 +73,15 @@ const MainPage = () => {
     setCardsData(FAKE_DATA);
   }, []);
 
+  // AddCardModal 상태관리
+  const [isAddCardOn, setIsAddCardOn] = useState(false);
+  const handleAddCardModal = () => {
+    setIsAddCardOn((prev) => !prev);
+  };
+
   return (
     <>
+      <AddCardModal isModalOn={isAddCardOn} handleModal={handleAddCardModal} />
       <Nav />
       <section className={styles.page}>
         <div className={styles.container}>
@@ -88,6 +96,7 @@ const MainPage = () => {
             modifyToDoCardData={modifyToDoCardData}
             modifyCardTitle={modifyCardTitle}
             deleteToDoCardData={deleteToDoCardData}
+            handleAddCardModal={handleAddCardModal}
           />
         </div>
       </section>

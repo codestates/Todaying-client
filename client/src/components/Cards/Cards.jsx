@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '../Card/Card';
 import styles from './Cards.module.css';
 
@@ -8,6 +8,7 @@ const Cards = ({
   modifyToDoCardData,
   modifyCardTitle,
   deleteToDoCardData,
+  handleAddCardModal,
 }) => {
   return (
     <>
@@ -24,10 +25,7 @@ const Cards = ({
           />
         ))}
       </div>
-      <div
-        className={styles.addCard}
-        onClick={() => alert('카드추가 팝업 달기')}
-      >
+      <div className={styles.addCard} onClick={handleAddCardModal}>
         +
       </div>
     </>
