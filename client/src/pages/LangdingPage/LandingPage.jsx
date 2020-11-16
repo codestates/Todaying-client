@@ -7,7 +7,7 @@ import facebookIcon from '../../images/facebook.png';
 import SignUp from '../../components/SignUp/SignUp';
 import Login from '../../components/Login/Login';
 
-const LandingPage = ({ getUserInfo }) => {
+const LandingPage = ({ getLoginToken }) => {
   const [isModalOn, setIsModalOn] = useState(false);
 
   const handleModal = () => {
@@ -32,7 +32,7 @@ const LandingPage = ({ getUserInfo }) => {
         isModalOn={isModalOn}
         handleModal={handleModal}
         handleSocialLogin={handleSocialLogin}
-        getUserInfo={getUserInfo}
+        getLoginToken={getLoginToken}
       />
 
       <div className={styles.section}>
@@ -44,7 +44,7 @@ const LandingPage = ({ getUserInfo }) => {
         <h1 className={styles.title}>Today-ing</h1>
         <h3 className={styles.description}>Write out your plan every day</h3>
         <div className={styles.box}>
-          <Login getUserInfo={getUserInfo} />
+          <Login getLoginToken={getLoginToken} />
           <button
             type="button"
             className={styles.btn_newAccount}

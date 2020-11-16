@@ -12,6 +12,7 @@ const Card = ({
   modifyNoteCardData,
   modifyToDoCardData,
   modifyCardTitle,
+  deleteToDoCardData,
 }) => {
   // Title 변경 상태 관리
   const [title, setTitle] = useState(card.title);
@@ -88,6 +89,7 @@ const Card = ({
               tasks={card.content}
               cardId={cardId}
               modifyToDoCardData={modifyToDoCardData}
+              deleteToDoCardData={deleteToDoCardData}
             />
           ) : (
             ''
