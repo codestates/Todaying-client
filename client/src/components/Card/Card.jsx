@@ -7,11 +7,13 @@ import foldIcon from '../../images/expand-arrow.png';
 import expandIcon from '../../images/expand-button.png';
 
 const Card = ({
+  token,
   card,
   cardId,
   modifyNoteCardData,
   modifyToDoCardData,
   modifyCardTitle,
+  deleteToDoCardData,
 }) => {
   // Title 변경 상태 관리
   const [title, setTitle] = useState(card.title);
@@ -78,16 +80,19 @@ const Card = ({
         >
           {card.type === 'note' ? (
             <NoteCard
+              token={token}
               text={card.text}
               cardId={cardId}
               modifyNoteCardData={modifyNoteCardData}
             />
           ) : card.type === 'toDo' ? (
             <ToDoTasks
+              token={token}
               editOn={isEditOn}
               tasks={card.content}
               cardId={cardId}
               modifyToDoCardData={modifyToDoCardData}
+              deleteToDoCardData={deleteToDoCardData}
             />
           ) : (
             ''

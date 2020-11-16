@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import jwt from 'jwt-decode';
 import Nav from '../../components/Nav/Nav';
 import styles from './MainPage.module.css';
 import Cards from '../../components/Cards/Cards';
 import FAKE_DATA from './fakeData';
 
-const MainPage = ({ getUserInfo }) => {
+const MainPage = ({ getLoginToken, token }) => {
   const today = new Date();
   const getDay = () => {
     const d = today.getDay();
@@ -23,14 +22,6 @@ const MainPage = ({ getUserInfo }) => {
     date: today.getDate(),
     day: getDay(),
   };
-
-  // social 로그인 성공시에 이메일과 닉네임을 jwt 토큰으로 받아오는 로직
-  const params = window.location.search;
-  if (params) {
-    const query = params.substring(1);
-    const token = query.split('token=')[1];
-    getUserInfo(token);
-  }
 
   // 처음 렌더링될 때 cards 받아오는 logic(에러 처리는 미완성)
   const [cardsData, setCardsData] = useState({});
@@ -56,6 +47,16 @@ const MainPage = ({ getUserInfo }) => {
     setCardsData({ ...cardsData, ...newData });
   };
 
+  // ToDoCard / Task Delete
+  const deleteToDoCardData = (cardId, taskId) => {
+    const newTasks = { ...cardsData[cardId].content };
+    delete newTasks[taskId];
+
+    const newData = {};
+    newData[cardId] = { ...cardsData[cardId], content: newTasks };
+    setCardsData({ ...cardsData, ...newData });
+  };
+
   // Card / Title 수정
   const modifyCardTitle = (cardId, newTitle) => {
     const newData = {};
@@ -65,8 +66,40 @@ const MainPage = ({ getUserInfo }) => {
 
   // 마운트 시 데이터 받아오기
   useEffect(() => {
-    // axios.get()
+    // const getAllCards = async (tk, dates) => {
+    //   try {
+    //     const response = await axios.post(
+    //       'main/getAllCards',
+    //       {
+    //         date: dates,
+    //       },
+    // {
+    //   headers: {
+    //     Authorization: `Bearer ${tk}`,
+    //   },
+    // },
+    //     );
+    //     setCardsData(response.data);
+    //   } catch (err) {
+    //     if (err.response) {
+    //       throw err;
+    //     }
+    //   }
+    // };
+
+    // const dates = new Date().toLocaleDateString();
+    // const params = window.location.search;
+
+    // if (params) {
+    //   const query = params.substring(1);
+    //   const tokens = query.split('token=')[1];
+    //   getLoginToken(tokens);
+    //   getAllCards(tokens, dates);
+    // } else {
+    //   getAllCards(token, dates);
+    // }
     setCardsData(FAKE_DATA);
+    // social 로그인 성공시에 이메일과 닉네임을 jwt 토큰으로 받아오는 로직
   }, []);
 
   return (
@@ -80,10 +113,12 @@ const MainPage = ({ getUserInfo }) => {
           >{`${date.year}.${date.month}.${date.date} ${date.day}`}</div>
 
           <Cards
+            token={token}
             cardsData={cardsData}
             modifyNoteCardData={modifyNoteCardData}
             modifyToDoCardData={modifyToDoCardData}
             modifyCardTitle={modifyCardTitle}
+            deleteToDoCardData={deleteToDoCardData}
           />
         </div>
       </section>

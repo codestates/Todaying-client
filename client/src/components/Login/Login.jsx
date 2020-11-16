@@ -5,7 +5,7 @@ import styles from './Login.module.css';
 import emailIcon from '../../images/baseline_email_white_18dp.png';
 import passwordIcon from '../../images/baseline_lock_white_18dp.png';
 
-const Login = ({ getUserInfo }) => {
+const Login = ({ getLoginToken }) => {
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -51,7 +51,7 @@ const Login = ({ getUserInfo }) => {
     } else {
       try {
         const response = await axios.post(
-          'http://ec2-13-125-255-14.ap-northeast-2.compute.amazonaws.com:3001/users/signin',
+          'https://434451181b32.ngrok.io/user/signin',
           {
             email,
             password,
@@ -59,9 +59,8 @@ const Login = ({ getUserInfo }) => {
           { withCredentials: true },
         );
 
-        // 응답으로 온 userInfo를 최상단컴포넌트로 끌어올려주기.
-        console.log(response.data);
-        getUserInfo(response.data);
+        // 응답으로 온 token 최상단 컴포넌트로 끌어올려주기.
+        getLoginToken(response.data);
 
         setEmail('');
         setPassword('');

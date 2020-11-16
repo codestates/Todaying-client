@@ -7,7 +7,7 @@ import facebookIcon from '../../images/facebook.png';
 import SignUp from '../../components/SignUp/SignUp';
 import Login from '../../components/Login/Login';
 
-const LandingPage = ({ getUserInfo }) => {
+const LandingPage = ({ getLoginToken }) => {
   const [isModalOn, setIsModalOn] = useState(false);
 
   const handleModal = () => {
@@ -17,10 +17,10 @@ const LandingPage = ({ getUserInfo }) => {
   const handleSocialLogin = async (e) => {
     if (e.target.name === 'google') {
       window.location.href =
-        'https://accounts.google.com/o/oauth2/v2/auth?scope=openid%20profile%20email&response_type=code&state=state_parameter_passthrough_value&redirect_uri=https://319c325eb21d.ngrok.io/auth/google&client_id=617535918494-33pln0uqg6aeu3lam22b7go4c7n2ra6c.apps.googleusercontent.com';
+        'https://accounts.google.com/o/oauth2/v2/auth?client_id=617535918494-33pln0uqg6aeu3lam22b7go4c7n2ra6c.apps.googleusercontent.com&redirect_uri=https://f954414dd50a.ngrok.io/auth/google&response_type=code&scope=openid%20profile%20email';
     } else if (e.target.name === 'github') {
       window.location.href =
-        'https://github.com/login/oauth/authorize?client_id=5eab3157a830fb8a372f&scope=user&redirect_uri=https://319c325eb21d.ngrok.io/auth/git';
+        'https://github.com/login/oauth/authorize?client_id=5eab3157a830fb8a372f&scope=user&redirect_uri=https://f954414dd50a.ngrok.io/auth/git';
     } else if (e.target.name === 'facebook') {
       console.log('facebook  !!!');
     }
@@ -32,7 +32,7 @@ const LandingPage = ({ getUserInfo }) => {
         isModalOn={isModalOn}
         handleModal={handleModal}
         handleSocialLogin={handleSocialLogin}
-        getUserInfo={getUserInfo}
+        getLoginToken={getLoginToken}
       />
 
       <div className={styles.section}>
@@ -44,7 +44,7 @@ const LandingPage = ({ getUserInfo }) => {
         <h1 className={styles.title}>Today-ing</h1>
         <h3 className={styles.description}>Write out your plan every day</h3>
         <div className={styles.box}>
-          <Login getUserInfo={getUserInfo} />
+          <Login getLoginToken={getLoginToken} />
           <button
             type="button"
             className={styles.btn_newAccount}
