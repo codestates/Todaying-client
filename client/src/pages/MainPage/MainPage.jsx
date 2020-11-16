@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import Nav from '../../components/Nav/Nav';
 import styles from './MainPage.module.css';
 import Cards from '../../components/Cards/Cards';
-
 import FAKE_DATA from './fakeData';
 import AddCardModal from '../../components/AddCardModal/AddCardModal';
 
-const MainPage = () => {
+const MainPage = ({ getLoginToken, token }) => {
   const today = new Date();
   const getDay = () => {
     const d = today.getDay();
@@ -26,6 +24,7 @@ const MainPage = () => {
     day: getDay(),
   };
 
+  // 처음 렌더링될 때 cards 받아오는 logic(에러 처리는 미완성)
   const [cardsData, setCardsData] = useState({});
 
   // NoteCard / text 수정
@@ -37,7 +36,7 @@ const MainPage = () => {
   };
 
   // ToDoCard / task 수정
-  const modifyToDoCardData = (cardId, taskId, newTask, newIsDone) => {
+  const modifyToDoCardData = ({ cardId, taskId, newTask, newIsDone }) => {
     const newTasks = { ...cardsData[cardId].content };
     newTasks[taskId] = {
       task: newTask,
@@ -63,14 +62,45 @@ const MainPage = () => {
   const modifyCardTitle = (cardId, newTitle) => {
     const newData = {};
     newData[cardId] = { ...cardsData[cardId], title: newTitle };
-
     setCardsData({ ...cardsData, ...newData });
   };
 
   // 마운트 시 데이터 받아오기
   useEffect(() => {
-    // axios.get()
+    // const getAllCards = async (tk, dates) => {
+    //   try {
+    //     const response = await axios.post(
+    //       'main/getAllCards',
+    //       {
+    //         date: dates,
+    //       },
+    // {
+    //   headers: {
+    //     Authorization: `Bearer ${tk}`,
+    //   },
+    // },
+    //     );
+    //     setCardsData(response.data);
+    //   } catch (err) {
+    //     if (err.response) {
+    //       throw err;
+    //     }
+    //   }
+    // };
+
+    // const dates = new Date().toLocaleDateString();
+    // const params = window.location.search;
+
+    // if (params) {
+    //   const query = params.substring(1);
+    //   const tokens = query.split('token=')[1];
+    //   getLoginToken(tokens);
+    //   getAllCards(tokens, dates);
+    // } else {
+    //   getAllCards(token, dates);
+    // }
     setCardsData(FAKE_DATA);
+    // social 로그인 성공시에 이메일과 닉네임을 jwt 토큰으로 받아오는 로직
   }, []);
 
   // AddCardModal 상태관리
@@ -91,6 +121,7 @@ const MainPage = () => {
           >{`${date.year}.${date.month}.${date.date} ${date.day}`}</div>
 
           <Cards
+            token={token}
             cardsData={cardsData}
             modifyNoteCardData={modifyNoteCardData}
             modifyToDoCardData={modifyToDoCardData}
