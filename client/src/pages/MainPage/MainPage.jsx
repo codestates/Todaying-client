@@ -3,6 +3,7 @@ import Nav from '../../components/Nav/Nav';
 import styles from './MainPage.module.css';
 import Cards from '../../components/Cards/Cards';
 import FAKE_DATA from './fakeData';
+import AddCardModal from '../../components/AddCardModal/AddCardModal';
 
 const MainPage = ({ getLoginToken, token }) => {
   const today = new Date();
@@ -102,8 +103,15 @@ const MainPage = ({ getLoginToken, token }) => {
     // social 로그인 성공시에 이메일과 닉네임을 jwt 토큰으로 받아오는 로직
   }, []);
 
+  // AddCardModal 상태관리
+  const [isAddCardOn, setIsAddCardOn] = useState(false);
+  const handleAddCardModal = () => {
+    setIsAddCardOn((prev) => !prev);
+  };
+
   return (
     <>
+      <AddCardModal isModalOn={isAddCardOn} handleModal={handleAddCardModal} />
       <Nav />
       <section className={styles.page}>
         <div className={styles.container}>
@@ -119,6 +127,7 @@ const MainPage = ({ getLoginToken, token }) => {
             modifyToDoCardData={modifyToDoCardData}
             modifyCardTitle={modifyCardTitle}
             deleteToDoCardData={deleteToDoCardData}
+            handleAddCardModal={handleAddCardModal}
           />
         </div>
       </section>
