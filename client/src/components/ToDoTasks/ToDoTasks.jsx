@@ -4,7 +4,12 @@ import ToDoTask from '../ToDoTask/ToDoTask';
 import sortDown from '../../images/sort-down.png';
 // import Axios from 'axios';
 
-const ToDoTasks = ({ tasks: todoTasks, editOn, setEditOn }) => {
+const ToDoTasks = ({
+  tasks: todoTasks,
+  editOn,
+  cardId,
+  modifyToDoCardData,
+}) => {
   // dummy Data용 counter
   const [countForTestData, setCount] = useState(1000);
   const [tasks, setTasks] = useState(todoTasks);
@@ -19,10 +24,12 @@ const ToDoTasks = ({ tasks: todoTasks, editOn, setEditOn }) => {
               return (
                 <ToDoTask
                   key={key}
+                  taskId={key}
                   task={eachTask.task}
                   isDone={eachTask.isDone}
                   editOn={editOn}
-                  setEditOn={setEditOn}
+                  cardId={cardId}
+                  modifyToDoCardData={modifyToDoCardData}
                 />
               );
             })

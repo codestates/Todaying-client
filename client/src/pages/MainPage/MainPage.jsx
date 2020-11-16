@@ -29,14 +29,43 @@ const MainPage = ({ getUserInfo }) => {
   if (params) {
     const query = params.substring(1);
     const token = query.split('token=')[1];
-    const decodedToken = jwt(token);
-    getUserInfo(decodedToken);
+    getUserInfo(token);
   }
 
   // 처음 렌더링될 때 cards 받아오는 logic(에러 처리는 미완성)
   const [cardsData, setCardsData] = useState({});
 
+  // NoteCard / text 수정
+  const modifyNoteCardData = (cardId, newText) => {
+    const newData = {};
+    newData[cardId] = { ...cardsData[cardId], text: newText };
+
+    setCardsData({ ...cardsData, ...newData });
+  };
+
+  // ToDoCard / task 수정
+  const modifyToDoCardData = ({ cardId, taskId, newTask, newIsDone }) => {
+    const newTasks = { ...cardsData[cardId].content };
+    newTasks[taskId] = {
+      task: newTask,
+      isDone: newIsDone,
+    };
+    const newData = {};
+    newData[cardId] = { ...cardsData[cardId], content: newTasks };
+
+    setCardsData({ ...cardsData, ...newData });
+  };
+
+  // Card / Title 수정
+  const modifyCardTitle = (cardId, newTitle) => {
+    const newData = {};
+    newData[cardId] = { ...cardsData[cardId], title: newTitle };
+    setCardsData({ ...cardsData, ...newData });
+  };
+
+  // 마운트 시 데이터 받아오기
   useEffect(() => {
+    // axios.get()
     setCardsData(FAKE_DATA);
   }, []);
 
@@ -50,7 +79,12 @@ const MainPage = ({ getUserInfo }) => {
             onClick={() => alert('날짜 선택 팝업 달기')}
           >{`${date.year}.${date.month}.${date.date} ${date.day}`}</div>
 
-          <Cards cardsData={cardsData} />
+          <Cards
+            cardsData={cardsData}
+            modifyNoteCardData={modifyNoteCardData}
+            modifyToDoCardData={modifyToDoCardData}
+            modifyCardTitle={modifyCardTitle}
+          />
         </div>
       </section>
     </>
