@@ -4,6 +4,7 @@ import styles from './MainPage.module.css';
 import Cards from '../../components/Cards/Cards';
 import FAKE_DATA from './fakeData';
 import AddCardModal from '../../components/AddCardModal/AddCardModal';
+import SetDateModal from '../../components/SetDateModal/SetDateModal';
 
 const MainPage = ({ getLoginToken, token }) => {
   const today = new Date();
@@ -108,8 +109,18 @@ const MainPage = ({ getLoginToken, token }) => {
     setIsAddCardOn((prev) => !prev);
   };
 
+  const [isSetDateOn, setIsSetDateOn] = useState(false);
+  const handleSetDateModal = () => {
+    setIsSetDateOn((prev) => !prev);
+  };
   return (
     <>
+      <SetDateModal
+        isModalOn={isSetDateOn}
+        handleModal={handleSetDateModal}
+        token={token}
+        setCardsData={setCardsData}
+      />
       <AddCardModal isModalOn={isAddCardOn} handleModal={handleAddCardModal} />
       <Nav />
       <section className={styles.page}>
@@ -126,6 +137,7 @@ const MainPage = ({ getLoginToken, token }) => {
             modifyCardTitle={modifyCardTitle}
             deleteToDoCardData={deleteToDoCardData}
             handleAddCardModal={handleAddCardModal}
+            handleSetDateModal={handleSetDateModal}
           />
         </div>
       </section>
