@@ -5,7 +5,7 @@ import Modal from '../Modal/Modal';
 // import axios from 'axios';
 
 const NicknameModal = ({
-  changeNickname: chNickname,
+  changeNickname,
   userInfo,
   modalName,
   isModalOn,
@@ -14,7 +14,7 @@ const NicknameModal = ({
   const [nickname, setNickname] = useState(userInfo.nickname);
   const [isError, setIsError] = useState(false);
 
-  const changeNickname = async () => {
+  const handleChangeNickname = async () => {
     try {
       const response = await axios.post(
         'https://387b5293dc84.ngrok.io/mypage/editnickname',
@@ -29,7 +29,7 @@ const NicknameModal = ({
         },
         { withCredentials: true },
       );
-      chNickname(nickname);
+      changeNickname(nickname);
       if (response.data === 'success') {
         handleModal();
       }
@@ -75,7 +75,11 @@ const NicknameModal = ({
         <div className={styles.warning}>you must type more than a word</div>
       )}
       {nickname.trim().length !== 0 ? (
-        <button className={styles.btn} type="submit" onClick={changeNickname}>
+        <button
+          className={styles.btn}
+          type="submit"
+          onClick={handleChangeNickname}
+        >
           Change
         </button>
       ) : (
