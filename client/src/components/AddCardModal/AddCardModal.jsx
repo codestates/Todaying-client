@@ -3,7 +3,7 @@ import React, { createRef, useState } from 'react';
 import PureModal from '../PureModal/PureModal';
 import styles from './AddCardModal.module.css';
 
-const AddCardModal = ({ isModalOn, handleModal }) => {
+const AddCardModal = ({ isModalOn, handleModal, addNewCard, token }) => {
   const selectRef = createRef();
   const [title, setTitle] = useState('');
   const [isValid, setIsValid] = useState(false);
@@ -16,15 +16,29 @@ const AddCardModal = ({ isModalOn, handleModal }) => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(title, selectRef.current.value);
-    // ***axios.post()
-  };
-
   const handleClose = () => {
     handleModal();
     setTitle('');
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios //
+        .post(
+          'https://4512b5b7f744.ngrok.io/main/addCard',
+          { title, type: selectRef.current.value },
+          { headers: { Authorization: `Bearer ${token}` } },
+        );
+
+      const { cardId: id, title: ti, type: ty } = response.data;
+      await addNewCard(id, ti, ty);
+
+      handleClose();
+    } catch (err) {
+      throw err;
+    }
   };
 
   return (

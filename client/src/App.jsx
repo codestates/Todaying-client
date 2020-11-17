@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import jwt from 'jsonwebtoken';
 import LandingPage from './pages/LangdingPage/LandingPage';
 import MainPage from './pages/MainPage/MainPage';
@@ -7,9 +7,9 @@ import MyPage from './pages/MyPage/MyPage';
 
 function App() {
   const [userInfo, setUserInfo] = useState({
-    token: '',
-    email: '',
-    nickname: '',
+    token: null,
+    email: null,
+    nickname: null,
   });
 
   const getLoginToken = (token) => {
@@ -24,10 +24,20 @@ function App() {
           <LandingPage getLoginToken={getLoginToken} />
         </Route>
         <Route path="/main">
-          <MainPage token={userInfo.token} getLoginToken={getLoginToken} />
+          {userInfo.token ? (
+            <MainPage token={userInfo.token} getLoginToken={getLoginToken} />
+          ) : window.location.search ? (
+            <MainPage token={userInfo.token} getLoginToken={getLoginToken} />
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
         <Route path="/mypage">
-          <MyPage userInfo={userInfo} />
+          {userInfo.token ? (
+            <MyPage userInfo={userInfo} />
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
       </Switch>
     </div>

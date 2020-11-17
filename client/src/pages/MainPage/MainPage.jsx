@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Nav from '../../components/Nav/Nav';
 import styles from './MainPage.module.css';
 import Cards from '../../components/Cards/Cards';
-import FAKE_DATA from './fakeData';
+// import FAKE_DATA from './fakeData';
 import AddCardModal from '../../components/AddCardModal/AddCardModal';
 import SetDateModal from '../../components/SetDateModal/SetDateModal';
 
@@ -27,6 +28,22 @@ const MainPage = ({ getLoginToken, token }) => {
 
   // 처음 렌더링될 때 cards 받아오는 logic(에러 처리는 미완성)
   const [cardsData, setCardsData] = useState({});
+
+  //  addNewCard / 새로운 카드 추가
+  const addNewCard = (cardId, title, type) => {
+    const newData = {};
+    if (type === 'note') {
+      newData[cardId] = { type, title, text: '' };
+    } else {
+      newData[cardId] = {
+        type: 'toDo',
+        title,
+        content: {},
+      };
+    }
+
+    setCardsData({ ...cardsData, ...newData });
+  };
 
   // NoteCard / text 수정
   const modifyNoteCardData = (cardId, newText) => {
@@ -66,41 +83,36 @@ const MainPage = ({ getLoginToken, token }) => {
     setCardsData({ ...cardsData, ...newData });
   };
 
+  // *** getAllCards(tk, date)
+  const getAllCards = async (tk, dates) => {
+    try {
+      const response = await axios //
+        .post(
+          'https://4512b5b7f744.ngrok.io/main/getAllCards',
+          { date: dates },
+          { headers: { Authorization: `Bearer ${tk}` } },
+        );
+
+      setCardsData(response.data.cards);
+    } catch (err) {
+      throw err;
+    }
+  };
+
   // 마운트 시 데이터 받아오기
   useEffect(() => {
-    // const getAllCards = async (tk, dates) => {
-    //   try {
-    //     const response = await axios.post(
-    //       'main/getAllCards',
-    //       {
-    //         date: dates,
-    //       },
-    // {
-    //   headers: {
-    //     Authorization: `Bearer ${tk}`,
-    //   },
-    // },
-    //     );
-    //     setCardsData(response.data);
-    //   } catch (err) {
-    //     if (err.response) {
-    //       throw err;
-    //     }
-    //   }
-    // };
+    // queryString의 존재유무로 유입경로 분기
+    const params = window.location.search;
+    if (params) {
+      const query = params.substring(1);
+      const oAuthToken = query.split('token=')[1];
+      getLoginToken(oAuthToken);
+      getAllCards(oAuthToken, new Date().toLocaleDateString('en-US'));
+    } else {
+      getAllCards(token, new Date().toLocaleDateString('en-US'));
+    }
 
-    // const dates = new Date().toLocaleDateString();
-    // const params = window.location.search;
-    // social 로그인 성공시에 이메일과 닉네임을 jwt 토큰으로 받아오는 로직
-    // if (params) {
-    //   const query = params.substring(1);
-    //   const tokens = query.split('token=')[1];
-    //   getLoginToken(tokens);
-    //   getAllCards(tokens, dates);
-    // } else {
-    //   getAllCards(token, dates);
-    // }
-    setCardsData(FAKE_DATA);
+    // setCardsData(FAKE_DATA);
   }, []);
 
   // AddCardModal 상태관리
@@ -119,9 +131,18 @@ const MainPage = ({ getLoginToken, token }) => {
         isModalOn={isSetDateOn}
         handleModal={handleSetDateModal}
         token={token}
+        /* ***************************** */
+        /* setCardsData를 직접 가져가서 처리하는 것보다는 getAllCards 함수를 전달해서,
+        함수 하나로 재활용 처리하는게 좋을 것 같아요.
+        getAllCards(tk, date) -> 인자로 토큰, date */
         setCardsData={setCardsData}
       />
-      <AddCardModal isModalOn={isAddCardOn} handleModal={handleAddCardModal} />
+      <AddCardModal
+        isModalOn={isAddCardOn}
+        handleModal={handleAddCardModal}
+        token={token}
+        addNewCard={addNewCard}
+      />
       <Nav />
       <section className={styles.page}>
         <div className={styles.container}>
