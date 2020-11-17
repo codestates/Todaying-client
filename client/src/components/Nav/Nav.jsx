@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-
+import todayingIcon from '../../images/Today-ing.png';
 import styles from './Nav.module.css';
 
 const Nav = () => {
@@ -8,7 +8,14 @@ const Nav = () => {
   return (
     <>
       <div className={styles.nav}>
-        <h4 className={styles.title}>Today-ing</h4>
+        <div
+          className={styles.title}
+          onClick={() => {
+            history.push('/main');
+          }}
+        >
+          <img className={styles.logoImg} src={todayingIcon} alt="logo" />
+        </div>
 
         <div className={styles.menu}>
           <button

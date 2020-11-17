@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Card from '../Card/Card';
 import styles from './Cards.module.css';
 import calendarIcon from '../../images/calendar_wh.png';

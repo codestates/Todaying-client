@@ -7,8 +7,7 @@ import DeleteModal from '../../components/DeleteModal/DeleteModal';
 import NicknameModal from '../../components/NicknameModal/NicknameModal';
 
 const MyPage = ({ userInfo, changeNickname }) => {
-  const [email] = useState(userInfo.email);
-  const [nickname] = useState(userInfo.nickname);
+  const { email, nickname } = userInfo;
   const [isModalOn, setIsModalOn] = useState(false);
   const [modalName, setModal] = useState('');
 
