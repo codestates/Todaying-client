@@ -3,9 +3,8 @@ import { React, useState } from 'react';
 import styles from './SetDateModal.module.css';
 import PureModal from '../PureModal/PureModal';
 
-const SetDateModal = ({ isModalOn, handleModal, token, setCardsData }) => {
+const SetDateModal = ({ isModalOn, handleModal, token, getAllCards }) => {
   const [isValid, setIsValid] = useState(false);
-  const [dateInput, setDateInput] = useState(null);
   const [date, setDate] = useState('');
 
   const handleSubmit = async (e) => {
@@ -29,7 +28,7 @@ const SetDateModal = ({ isModalOn, handleModal, token, setCardsData }) => {
         },
       );
       console.log(response.data);
-      setCardsData(response.data);
+      getAllCards(response.data);
     } catch (err) {
       if (err.response) {
         throw err;
