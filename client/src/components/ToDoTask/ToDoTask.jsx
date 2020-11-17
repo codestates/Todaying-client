@@ -29,7 +29,7 @@ const ToDoTask = ({
     setIsDeleted(!isDeleted);
     try {
       await axios.post(
-        'https://387b5293dc84.ngrok.io/main/deleteTask',
+        'https://112dd5aebf32.ngrok.io/main/deleteTask',
         {
           taskId,
         },
@@ -54,7 +54,7 @@ const ToDoTask = ({
     setChecked(!checked);
     try {
       await axios.post(
-        'https://387b5293dc84.ngrok.io/main/updateTask',
+        'https://112dd5aebf32.ngrok.io/main/updateTask',
         {
           cardId,
           taskId,
@@ -81,7 +81,7 @@ const ToDoTask = ({
     modifyToDoCardData({ cardId, taskId, newTask: e.target.value });
     try {
       const response = await axios.post(
-        'https://387b5293dc84.ngrok.io/main/updateTask',
+        'https://112dd5aebf32.ngrok.io/main/updateTask',
         {
           cardId,
           taskId,

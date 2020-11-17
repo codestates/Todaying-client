@@ -14,6 +14,11 @@
   margin: 0;
   display: inline-block;
   font-family: 'Archivo Narrow', sans-serif;
+  cursor: pointer;
+}
+
+.logoImg{
+  width:9rem;
 }
 
 .menu {
@@ -62,7 +67,6 @@
   }
 
   .title {
-    font-size: 1.5rem;
     margin-left: 0.5rem;
   }
 

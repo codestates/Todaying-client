@@ -27,7 +27,7 @@ const AddCardModal = ({ isModalOn, handleModal, addNewCard, token }) => {
     try {
       const response = await axios //
         .post(
-          'https://387b5293dc84.ngrok.io/main/addCard',
+          'https://112dd5aebf32.ngrok.io/main/addCard',
           { title, type: selectRef.current.value },
           { headers: { Authorization: `Bearer ${token}` } },
         );

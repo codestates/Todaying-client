@@ -31,7 +31,7 @@ const Card = ({
     try {
       axios //
         .post(
-          'https://387b5293dc84.ngrok.io/main/updateTitle',
+          'https://112dd5aebf32.ngrok.io/main/updateTitle',
           { cardId, title: target.value },
           { headers: { Authorization: `Bearer ${token}` } },
         );
@@ -46,7 +46,7 @@ const Card = ({
     try {
       axios //
         .post(
-          'https://387b5293dc84.ngrok.io/main/deleteCard',
+          'https://112dd5aebf32.ngrok.io/main/deleteCard',
           { cardId, type: card.type },
           { headers: { Authorization: `Bearer ${token}` } },
         );

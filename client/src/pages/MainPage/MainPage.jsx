@@ -26,6 +26,7 @@ const MainPage = ({ getLoginToken, token }) => {
     day: getDay(),
   };
 
+  const [selectedDate, setSelectedDate] = useState(date);
   // 처음 렌더링될 때 cards 받아오는 logic(에러 처리는 미완성)
   const [cardsData, setCardsData] = useState({});
 
@@ -38,7 +39,6 @@ const MainPage = ({ getLoginToken, token }) => {
       // ToDo 카드인 경우에는 default task ID를 받아서, 빈 tasks를 같이 데이터에 넣어줌
       const defaultTasks = {};
       taskId.forEach((id) => (defaultTasks[id] = { task: '', isDone: false }));
-
       newData[cardId] = {
         type: 'toDo',
         title,
@@ -54,7 +54,6 @@ const MainPage = ({ getLoginToken, token }) => {
   const deleteCard = (cardId) => {
     const newData = { ...cardsData };
     delete newData[cardId];
-
     setCardsData({ ...newData });
   };
 
@@ -99,20 +98,18 @@ const MainPage = ({ getLoginToken, token }) => {
   const getAllCards = async (tk, dates) => {
     try {
       const response = await axios.post(
-        'https://387b5293dc84.ngrok.io/main/getAllCards',
+        'https://112dd5aebf32.ngrok.io/main/getAllCards',
         { date: dates },
         { headers: { Authorization: `Bearer ${tk}` } },
+        { withCredentials: true },
       );
-      console.log(response.data);
       setCardsData(response.data);
     } catch (err) {
       throw err;
     }
   };
 
-  // 마운트 시 데이터 받아오기
   useEffect(() => {
-    // queryString의 존재유무로 유입경로 분기
     const params = window.location.search;
     if (params) {
       const query = params.substring(1);
@@ -122,10 +119,8 @@ const MainPage = ({ getLoginToken, token }) => {
     } else {
       getAllCards(token, new Date().toLocaleDateString('en-US'));
     }
-    // setCardsData(FAKE_DATA);
   }, []);
 
-  // AddCardModal 상태관리
   const [isAddCardOn, setIsAddCardOn] = useState(false);
   const handleAddCardModal = () => {
     setIsAddCardOn((prev) => !prev);
@@ -135,9 +130,11 @@ const MainPage = ({ getLoginToken, token }) => {
   const handleSetDateModal = () => {
     setIsSetDateOn((prev) => !prev);
   };
+
   return (
     <>
       <SetDateModal
+        setTodayingDate={setSelectedDate}
         isModalOn={isSetDateOn}
         handleModal={handleSetDateModal}
         token={token}
@@ -154,7 +151,7 @@ const MainPage = ({ getLoginToken, token }) => {
         <div className={styles.container}>
           <div
             className={styles.date}
-          >{`${date.year}.${date.month}.${date.date} ${date.day}`}</div>
+          >{`${selectedDate.year}.${selectedDate.month}.${selectedDate.date} ${selectedDate.day}`}</div>
           {Object.keys(cardsData).length === 0 ? (
             <div className={styles.msg_container}>
               <p className={styles.noCardMsg}>No cards yet</p>
