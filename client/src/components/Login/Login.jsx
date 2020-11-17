@@ -51,7 +51,7 @@ const Login = ({ getLoginToken }) => {
     } else {
       try {
         const response = await axios.post(
-          'https://4512b5b7f744.ngrok.io/user/signin',
+          'https://387b5293dc84.ngrok.io/user/signin',
           {
             email,
             password,
@@ -61,7 +61,6 @@ const Login = ({ getLoginToken }) => {
 
         // 응답으로 온 token 최상단 컴포넌트로 끌어올려주기.
         getLoginToken(response.data);
-
         setEmail('');
         setPassword('');
         // 리디렉션

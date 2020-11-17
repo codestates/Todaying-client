@@ -95,7 +95,7 @@ const SignUp = ({
 
     try {
       const response = await axios.post(
-        'https://4512b5b7f744.ngrok.io/user/signup',
+        'https://387b5293dc84.ngrok.io/user/signup',
         {
           email,
           password,

@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
+import axios from 'axios';
 import styles from './ToDoTasks.module.css';
 import ToDoTask from '../ToDoTask/ToDoTask';
-// import axios from 'axios';
 
 const ToDoTasks = ({
   token,
@@ -12,30 +12,35 @@ const ToDoTasks = ({
   deleteToDoCardData,
 }) => {
   // dummy Data용 counter
-  const [tasks, setTasks] = useState(todoTasks);
-  const [isSpread, setSpread] = useState(false);
+  const [tasks] = useState(todoTasks);
+  const [isSpread] = useState(false);
 
-  const addTask = async () => {
-    console.log('add a task');
-    // try {
-    //   const response = await axios.post(
-    //     'main/addTask',
-    //     {
-    //       cardId,
-    //     },
-    //     {
-    //       headers: {
-    //         Authorization: `Bearer ${token}`,
-    //       },
-    //     },
-    //   );
-    //   const taskId = response.data;
-    //   modifyToDoCardData({ cardId, taskId, newTask: '', newIsDone: false });
-    // } catch (err) {
-    //   if (err.response) {
-    //     throw err;
-    //   }
-    // }
+  const addTask = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        'https://387b5293dc84.ngrok.io/main/addTask',
+        {
+          cardId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      const newTaskId = response.data.taskId;
+      modifyToDoCardData({
+        cardId,
+        taskId: newTaskId,
+        newTask: '',
+        newIsDone: false,
+      });
+    } catch (err) {
+      if (err.response) {
+        throw err;
+      }
+    }
   };
 
   return (

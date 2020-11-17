@@ -22,7 +22,7 @@ const NicknameModal = ({
   const changeNickname = async () => {
     try {
       const response = await axios.post(
-        'https://5a08b783965d.ngrok.io/mypage/editnickname',
+        'https://387b5293dc84.ngrok.io/mypage/editnickname',
         {
           email: 'test2@mail.com',
           nickname,

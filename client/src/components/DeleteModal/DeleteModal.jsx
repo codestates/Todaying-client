@@ -6,7 +6,7 @@ import Modal from '../Modal/Modal';
 import checkIcon from '../../images/check.png';
 import errorIcon from '../../images/error.png';
 
-const DeleteModal = ({ userInform, modalName, isModalOn, handleModal }) => {
+const DeleteModal = ({ modalName, isModalOn, handleModal }) => {
   const history = useHistory();
   const [isValid, setValid] = useState(null);
   const [password, setPassword] = useState('');

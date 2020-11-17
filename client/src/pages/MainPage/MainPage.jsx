@@ -62,7 +62,6 @@ const MainPage = ({ getLoginToken, token }) => {
     };
     const newData = {};
     newData[cardId] = { ...cardsData[cardId], content: newTasks };
-
     setCardsData({ ...cardsData, ...newData });
   };
 
@@ -86,14 +85,13 @@ const MainPage = ({ getLoginToken, token }) => {
   // *** getAllCards(tk, date)
   const getAllCards = async (tk, dates) => {
     try {
-      const response = await axios //
-        .post(
-          'https://4512b5b7f744.ngrok.io/main/getAllCards',
-          { date: dates },
-          { headers: { Authorization: `Bearer ${tk}` } },
-        );
-
-      setCardsData(response.data.cards);
+      const response = await axios.post(
+        'https://387b5293dc84.ngrok.io/main/getAllCards',
+        { date: dates },
+        { headers: { Authorization: `Bearer ${tk}` } },
+      );
+      console.log(response.data);
+      setCardsData(response.data);
     } catch (err) {
       throw err;
     }
@@ -111,7 +109,6 @@ const MainPage = ({ getLoginToken, token }) => {
     } else {
       getAllCards(token, new Date().toLocaleDateString('en-US'));
     }
-
     // setCardsData(FAKE_DATA);
   }, []);
 
@@ -135,7 +132,7 @@ const MainPage = ({ getLoginToken, token }) => {
         /* setCardsData를 직접 가져가서 처리하는 것보다는 getAllCards 함수를 전달해서,
         함수 하나로 재활용 처리하는게 좋을 것 같아요.
         getAllCards(tk, date) -> 인자로 토큰, date */
-        setCardsData={setCardsData}
+        getAllCards={getAllCards}
       />
       <AddCardModal
         isModalOn={isAddCardOn}
