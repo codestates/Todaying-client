@@ -6,17 +6,11 @@ import PwdModal from '../../components/pwdModal/pwdModal';
 import DeleteModal from '../../components/DeleteModal/DeleteModal';
 import NicknameModal from '../../components/NicknameModal/NicknameModal';
 
-const MyPage = () => {
-  // 로그인이 성공했을 때, 아직 확실치는 않지만, 이메일과 닉네임을 state에 넣고 있을 것(props로 받아오던 어떻게 하던)
-  const [email] = useState('dayfly@codestates.com');
-  const [nickname] = useState('dayfly');
-  // 위의 두개는 로그인하고 받아온 이메일, 닉네임 정보
-
+const MyPage = ({ userInfo, changeNickname }) => {
+  const [email] = useState(userInfo.email);
+  const [nickname] = useState(userInfo.nickname);
   const [isModalOn, setIsModalOn] = useState(false);
-  // modal 팝업이 보이나 안보이나를 결정하는 state
-
   const [modalName, setModal] = useState('');
-  // modal의 종류를 결정하는 state
 
   const handleModal = () => {
     setIsModalOn((prevState) => !prevState);
@@ -24,24 +18,27 @@ const MyPage = () => {
   const handleModalName = (name) => {
     setModal(name);
   };
-  // 순서대로 modal 팝업을 보이게 할지 결정하는 함수, 그리고 어떤 모달 팝업을 띄울지 결정하는 함수
 
   return (
     <div className={styles.mypage}>
       {modalName === 'password' ? (
         <PwdModal
+          userInfo={userInfo}
           isModalOn={isModalOn}
           handleModal={handleModal}
           modalName={modalName}
         />
       ) : modalName === 'delete' ? (
         <DeleteModal
+          userInfo={userInfo}
           isModalOn={isModalOn}
           handleModal={handleModal}
           modalName={modalName}
         />
       ) : modalName === 'nickname' ? (
         <NicknameModal
+          changeNickname={changeNickname}
+          userInfo={userInfo}
           nickname={nickname}
           isModalOn={isModalOn}
           modalName={modalName}

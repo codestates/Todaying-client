@@ -5,11 +5,9 @@ import Modal from '../Modal/Modal';
 import checkIcon from '../../images/check.png';
 import errorIcon from '../../images/error.png';
 
-const PwdModal = ({ modalName, isModalOn, handleModal }) => {
-  // 여기서부터 password modal 관련한 로직
-  // 1) 패스워드 입력을 했는지 여부(+) null이면 버튼 못누르고, 에러 메시지 띄우도록 + change 버튼 비활성화
-  // 2) 패스워드 불일치시에는 불일치 에러 메시지
-  // 3) 패스워드와 confirm패스워드가 다를 떄도 에러 메시지로 처리
+const PwdModal = ({ userInfo, modalName, isModalOn, handleModal }) => {
+  const [email] = useState(userInfo.email);
+
   const [password, setPassword] = useState({
     newPassword: '',
     confirmPassword: '',
@@ -34,7 +32,6 @@ const PwdModal = ({ modalName, isModalOn, handleModal }) => {
   };
 
   const checkForm = ({ target }) => {
-    // 만약 비밀번호가 틀렸으면 새로 수정하면 에러는 더이상 보여줄 필요가 없음
     setIsError(false);
 
     if (target.name === 'newPassword') {
@@ -64,15 +61,19 @@ const PwdModal = ({ modalName, isModalOn, handleModal }) => {
   };
 
   const changePassword = async () => {
-    const obj = {
-      email: 'test2@mail.com',
-      newPassword: password.newPassword,
-      currentPassword: password.currentPassword,
-    };
     try {
       const response = await axios.post(
         'https://387b5293dc84.ngrok.io/mypage/editpassword',
-        obj,
+        {
+          email,
+          newPassword: password.newPassword,
+          currentPassword: password.currentPassword,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        },
         { withCredentials: true },
       );
       if (response.data === 'success') {
@@ -82,10 +83,8 @@ const PwdModal = ({ modalName, isModalOn, handleModal }) => {
       if (err.response) {
         if (err.response.status === 403) {
           setIsError('403');
-          // 비밀번호 에러
         } else if (err.response.status === 422) {
           setIsError('422');
-          // 닉네임 혹은 이메일 누락의 경우
         }
       } else {
         throw err;

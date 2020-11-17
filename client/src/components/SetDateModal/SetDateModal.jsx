@@ -4,18 +4,23 @@ import PureModal from '../PureModal/PureModal';
 
 const SetDateModal = ({ isModalOn, handleModal, token, getAllCards }) => {
   const [isValid, setIsValid] = useState(false);
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(null);
+
+  const handleClose = () => {
+    handleModal();
+    setDate(null);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const dateArr = date.value.split('-');
-
-    const year = dateArr[0];
-    const month = dateArr[1];
-    const dates = dateArr[2];
-    const searchDate = `${month}/${dates}/${year}`;
     try {
+      const dateArr = date.split('-');
+      const year = dateArr[0];
+      const month = dateArr[1];
+      const dates = dateArr[2];
+      const searchDate = `${month}/${dates}/${year}`;
       getAllCards(token, searchDate);
+      handleClose();
     } catch (err) {
       if (err.response) {
         throw err;
@@ -23,11 +28,8 @@ const SetDateModal = ({ isModalOn, handleModal, token, getAllCards }) => {
     }
   };
 
-  const handleClose = () => {
-    handleModal();
-  };
-
   const handleDate = async (e) => {
+    setDate(e.target.value);
     if (e.target.value !== null) {
       setIsValid(true);
     } else {
@@ -44,10 +46,8 @@ const SetDateModal = ({ isModalOn, handleModal, token, getAllCards }) => {
         <form className={styles.date_form}>
           <input
             type="date"
+            date={date}
             className={styles.date}
-            ref={(ref) => {
-              setDate(ref);
-            }}
             onChange={handleDate}
           />
 

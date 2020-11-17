@@ -17,6 +17,10 @@ function App() {
     setUserInfo({ token, email, nickname });
   };
 
+  const changeNickname = (nickname) => {
+    setUserInfo({ ...userInfo, nickname });
+  };
+
   return (
     <div>
       <Switch>
@@ -34,7 +38,7 @@ function App() {
         </Route>
         <Route path="/mypage">
           {userInfo.token ? (
-            <MyPage userInfo={userInfo} />
+            <MyPage userInfo={userInfo} changeNickname={changeNickname} />
           ) : (
             <Redirect to="/" />
           )}

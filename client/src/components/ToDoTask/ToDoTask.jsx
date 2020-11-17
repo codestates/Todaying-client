@@ -28,7 +28,7 @@ const ToDoTask = ({
     deleteToDoCardData(cardId, taskId);
     setIsDeleted(!isDeleted);
     try {
-      const response = await axios.post(
+      await axios.post(
         'https://387b5293dc84.ngrok.io/main/deleteTask',
         {
           taskId,
@@ -38,8 +38,8 @@ const ToDoTask = ({
             Authorization: `Bearer ${token}`,
           },
         },
+        { withCredentials: true },
       );
-      console.log(response);
     } catch (err) {
       if (err.response) {
         throw err;
@@ -66,6 +66,7 @@ const ToDoTask = ({
             Authorization: `Bearer ${token}`,
           },
         },
+        { withCredentials: true },
       );
     } catch (err) {
       if (err.response) {
