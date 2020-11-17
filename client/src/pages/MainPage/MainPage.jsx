@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import moment from 'moment';
 import Nav from '../../components/Nav/Nav';
 import styles from './MainPage.module.css';
 import Cards from '../../components/Cards/Cards';
-import FAKE_DATA from './fakeData';
+// import FAKE_DATA from './fakeData';
 import AddCardModal from '../../components/AddCardModal/AddCardModal';
 import SetDateModal from '../../components/SetDateModal/SetDateModal';
 
@@ -45,7 +47,6 @@ const MainPage = ({ getLoginToken, token }) => {
     };
     const newData = {};
     newData[cardId] = { ...cardsData[cardId], content: newTasks };
-
     setCardsData({ ...cardsData, ...newData });
   };
 
@@ -68,39 +69,38 @@ const MainPage = ({ getLoginToken, token }) => {
 
   // 마운트 시 데이터 받아오기
   useEffect(() => {
-    // const getAllCards = async (tk, dates) => {
-    //   try {
-    //     const response = await axios.post(
-    //       'main/getAllCards',
-    //       {
-    //         date: dates,
-    //       },
-    // {
-    //   headers: {
-    //     Authorization: `Bearer ${tk}`,
-    //   },
-    // },
-    //     );
-    //     setCardsData(response.data);
-    //   } catch (err) {
-    //     if (err.response) {
-    //       throw err;
-    //     }
-    //   }
-    // };
+    const getAllCards = async (tk, dates) => {
+      try {
+        const response = await axios.post(
+          'https://387b5293dc84.ngrok.io/main/getAllCards',
+          {
+            date: moment().format('MM/DD/YYYY'),
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${tk}`,
+            },
+          },
+        );
+        setCardsData(response.data);
+      } catch (err) {
+        if (err.response) {
+          throw err;
+        }
+      }
+    };
 
-    // const dates = new Date().toLocaleDateString();
-    // const params = window.location.search;
-    // social 로그인 성공시에 이메일과 닉네임을 jwt 토큰으로 받아오는 로직
-    // if (params) {
-    //   const query = params.substring(1);
-    //   const tokens = query.split('token=')[1];
-    //   getLoginToken(tokens);
-    //   getAllCards(tokens, dates);
-    // } else {
-    //   getAllCards(token, dates);
-    // }
-    setCardsData(FAKE_DATA);
+    const dates = new Date().toLocaleDateString();
+    const params = window.location.search;
+    if (params) {
+      const query = params.substring(1);
+      const tokens = query.split('token=')[1];
+      getLoginToken(tokens);
+      getAllCards(tokens, dates);
+    } else {
+      getAllCards(token, dates);
+    }
+    // setCardsData(FAKE_DATA);
   }, []);
 
   // AddCardModal 상태관리

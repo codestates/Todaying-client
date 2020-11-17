@@ -1,4 +1,4 @@
-// import axios from 'axios';
+import axios from 'axios';
 import { React, useState } from 'react';
 import styles from './SetDateModal.module.css';
 import PureModal from '../PureModal/PureModal';
@@ -9,30 +9,32 @@ const SetDateModal = ({ isModalOn, handleModal, token, setCardsData }) => {
   const [date, setDate] = useState('');
 
   const handleSubmit = async (e) => {
-    // e.preventDefault();
-    // const dateArr = date.split('-');
-    // const year = dateArr[0];
-    // const month = dateArr[1];
-    // const dates = dateArr[2];
-    // const searchDate = `${month}/${dates}/${year}`;
-    // try {
-    //   const response = await axios.post(
-    //     'main/getAllCards',
-    //     {
-    //       date: searchDate,
-    //     },
-    //     {
-    //       headers: {
-    //         Authorization: `Bearer ${token}`,
-    //       },
-    //     },
-    //   );
-    //   setCardsData(response.data);
-    // } catch (err) {
-    //   if (err.response) {
-    //     throw err;
-    //   }
-    // }
+    e.preventDefault();
+    const dateArr = date.value.split('-');
+
+    const year = dateArr[0];
+    const month = dateArr[1];
+    const dates = dateArr[2];
+    const searchDate = `${month}/${dates}/${year}`;
+    try {
+      const response = await axios.post(
+        'https://387b5293dc84.ngrok.io/main/getAllCards',
+        {
+          date: searchDate,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      console.log(response.data);
+      setCardsData(response.data);
+    } catch (err) {
+      if (err.response) {
+        throw err;
+      }
+    }
   };
 
   const handleClose = () => {
