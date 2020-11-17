@@ -39,6 +39,7 @@ const Card = ({
               setTitle(e.target.value);
             }}
             onBlur={handleModifyCardTitle}
+            spellCheck="false"
           />
           <div className={styles.card_header_setting}>
             {isEditOn ? (

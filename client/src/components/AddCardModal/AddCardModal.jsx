@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import axios from 'axios';
 import React, { createRef, useState } from 'react';
 import PureModal from '../PureModal/PureModal';
 import styles from './AddCardModal.module.css';
@@ -51,7 +51,7 @@ const AddCardModal = ({ isModalOn, handleModal }) => {
           />
 
           {isValid ? (
-            <button type="button" className={styles.btn} onClick={handleSubmit}>
+            <button type="submit" className={styles.btn} onClick={handleSubmit}>
               Add
             </button>
           ) : (
