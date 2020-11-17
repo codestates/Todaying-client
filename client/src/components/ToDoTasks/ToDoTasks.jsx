@@ -1,7 +1,6 @@
 import { React, useState } from 'react';
 import styles from './ToDoTasks.module.css';
 import ToDoTask from '../ToDoTask/ToDoTask';
-import sortDown from '../../images/sort-down.png';
 // import axios from 'axios';
 
 const ToDoTasks = ({
@@ -64,15 +63,6 @@ const ToDoTasks = ({
       <div className={styles.bottomSide}>
         <div className={styles.addTask} onClick={addTask}>
           + add a task
-        </div>
-        <div
-          className={styles.sortDown}
-          src={sortDown}
-          onClick={() => {
-            setSpread(!isSpread);
-          }}
-        >
-          sortdown
         </div>
       </div>
     </>
