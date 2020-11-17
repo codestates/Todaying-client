@@ -12,6 +12,7 @@ const Cards = ({
   deleteToDoCardData,
   handleAddCardModal,
   handleSetDateModal,
+  deleteCard,
 }) => {
   return (
     <>
@@ -26,6 +27,7 @@ const Cards = ({
             modifyToDoCardData={modifyToDoCardData}
             modifyCardTitle={modifyCardTitle}
             deleteToDoCardData={deleteToDoCardData}
+            deleteCard={deleteCard}
           />
         ))}
       </div>

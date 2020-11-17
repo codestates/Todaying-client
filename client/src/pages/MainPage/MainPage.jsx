@@ -30,18 +30,32 @@ const MainPage = ({ getLoginToken, token }) => {
   const [cardsData, setCardsData] = useState({});
 
   //  addNewCard / 새로운 카드 추가
-  const addNewCard = (cardId, title, type) => {
+  const addNewCard = (cardId, title, type, taskId) => {
     const newData = {};
     if (type === 'note') {
       newData[cardId] = { type, title, text: '' };
     } else {
+      // ToDo 카드인 경우에는 default task ID를 받아서, 빈 tasks를 같이 데이터에 넣어줌
+      const defaultTasks = {};
+      taskId.forEach((id) => (defaultTasks[id] = { task: '', isDone: false }));
+
       newData[cardId] = {
         type: 'toDo',
         title,
-        content: {},
+        content: {
+          ...defaultTasks,
+        },
       };
     }
     setCardsData({ ...cardsData, ...newData });
+  };
+
+  // deleteCard
+  const deleteCard = (cardId) => {
+    const newData = { ...cardsData };
+    delete newData[cardId];
+
+    setCardsData({ ...newData });
   };
 
   // NoteCard / text 수정
@@ -127,10 +141,6 @@ const MainPage = ({ getLoginToken, token }) => {
         isModalOn={isSetDateOn}
         handleModal={handleSetDateModal}
         token={token}
-        /* ***************************** */
-        /* setCardsData를 직접 가져가서 처리하는 것보다는 getAllCards 함수를 전달해서,
-        함수 하나로 재활용 처리하는게 좋을 것 같아요.
-        getAllCards(tk, date) -> 인자로 토큰, date */
         getAllCards={getAllCards}
       />
       <AddCardModal
@@ -145,6 +155,16 @@ const MainPage = ({ getLoginToken, token }) => {
           <div
             className={styles.date}
           >{`${date.year}.${date.month}.${date.date} ${date.day}`}</div>
+          {Object.keys(cardsData).length === 0 ? (
+            <div className={styles.msg_container}>
+              <p className={styles.noCardMsg}>No cards yet</p>
+              <p className={styles.noCardMsg2} onClick={handleAddCardModal}>
+                Add your Today-ing!
+              </p>
+            </div>
+          ) : (
+            ''
+          )}
 
           <Cards
             token={token}
@@ -155,6 +175,7 @@ const MainPage = ({ getLoginToken, token }) => {
             deleteToDoCardData={deleteToDoCardData}
             handleAddCardModal={handleAddCardModal}
             handleSetDateModal={handleSetDateModal}
+            deleteCard={deleteCard}
           />
         </div>
       </section>

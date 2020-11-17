@@ -1,13 +1,8 @@
 import React, { createRef, useEffect, useState } from 'react';
+import axios from 'axios';
 import styles from './NoteCard.module.css';
 
-const NoteCard = ({
-  text: content,
-  cardId,
-  setCardsData,
-  cardsData,
-  modifyNoteCardData,
-}) => {
+const NoteCard = ({ text: content, cardId, modifyNoteCardData, token }) => {
   // ***** 개선 방안 찾아보기!! *****
   // textarea 늘어날 때는 늘어나는 scrollHeight만큼 캐치해서 height을 늘려주면 문제없는데.
   // text를 delete 할 때는 scrollHeight가 반응해서 줄어들지가 않기 때문에....
@@ -30,6 +25,17 @@ const NoteCard = ({
   // 🌟 Blur이벤트 발생시 최상단 cardsData에 반영
   const handleChangeNoteText = ({ target }) => {
     modifyNoteCardData(cardId, target.value);
+
+    try {
+      axios //
+        .post(
+          'https://387b5293dc84.ngrok.io/main/updateNoteText',
+          { cardId, text: target.value },
+          { headers: { Authorization: `Bearer ${token}` } },
+        );
+    } catch (err) {
+      throw err;
+    }
   };
 
   return (

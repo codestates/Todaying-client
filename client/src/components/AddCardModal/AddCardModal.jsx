@@ -32,8 +32,12 @@ const AddCardModal = ({ isModalOn, handleModal, addNewCard, token }) => {
           { headers: { Authorization: `Bearer ${token}` } },
         );
 
-      const { cardId: id, title: ti, type: ty } = response.data;
-      await addNewCard(id, ti, ty);
+      const { cardId: id, title: ti, type: ty, taskId } = response.data;
+      if (!taskId) {
+        await addNewCard(id, ti, ty);
+      } else {
+        await addNewCard(id, ti, ty, taskId);
+      }
 
       handleClose();
     } catch (err) {

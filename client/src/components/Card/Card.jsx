@@ -1,4 +1,5 @@
 import { React, useState } from 'react';
+import axios from 'axios';
 import styles from './Card.module.css';
 import editIcon from '../../images/edit.png';
 import NoteCard from '../NoteCard/NoteCard';
@@ -14,6 +15,7 @@ const Card = ({
   modifyToDoCardData,
   modifyCardTitle,
   deleteToDoCardData,
+  deleteCard,
 }) => {
   // Title 변경 상태 관리
   const [title, setTitle] = useState(card.title);
@@ -25,6 +27,32 @@ const Card = ({
   // 🌟 Card Title / Blur이벤트 발생시 최상단 cardsData에 반영
   const handleModifyCardTitle = ({ target }) => {
     modifyCardTitle(cardId, target.value);
+
+    try {
+      axios //
+        .post(
+          'https://387b5293dc84.ngrok.io/main/updateTitle',
+          { cardId, title: target.value },
+          { headers: { Authorization: `Bearer ${token}` } },
+        );
+    } catch (err) {
+      throw err;
+    }
+  };
+
+  const handleDelete = () => {
+    deleteCard(cardId);
+
+    try {
+      axios //
+        .post(
+          'https://387b5293dc84.ngrok.io/main/deleteCard',
+          { cardId, type: card.type },
+          { headers: { Authorization: `Bearer ${token}` } },
+        );
+    } catch (err) {
+      throw err;
+    }
   };
 
   return (
@@ -44,19 +72,12 @@ const Card = ({
           <div className={styles.card_header_setting}>
             {isEditOn ? (
               <>
-                <span
-                  className={styles.btn_delete}
-                  onClick={() => {
-                    alert('카드 삭제!');
-                  }}
-                >
+                <span className={styles.btn_delete} onClick={handleDelete}>
                   Delete
                 </span>
                 <span
                   className={styles.btn_done}
-                  onClick={() => {
-                    setIsEditOn(false);
-                  }}
+                  onClick={() => setIsEditOn(false)}
                 >
                   Done
                 </span>
