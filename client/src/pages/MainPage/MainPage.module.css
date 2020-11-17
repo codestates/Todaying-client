@@ -10,14 +10,14 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding-bottom: 20rem;
+  padding: 0 1.2rem 20rem 1.2rem;
 }
 
 .date {
   margin: 0;
   padding: 0;
-  margin-left: 1.75rem;
-  margin-top: 5rem;
+  /* margin-left: 1.75rem; */
+  margin-top: 5.5rem;
   font-family: 'Baloo Bhai 2', cursive;
   font-size: 2rem;
   line-height: 2rem;

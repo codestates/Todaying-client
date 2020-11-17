@@ -6,6 +6,7 @@ import githubIcon from '../../images/github.png';
 import facebookIcon from '../../images/facebook.png';
 import SignUp from '../../components/SignUp/SignUp';
 import Login from '../../components/Login/Login';
+import logo from '../../images/Today-ing.png';
 
 const LandingPage = ({ getLoginToken }) => {
   const [isModalOn, setIsModalOn] = useState(false);
@@ -41,7 +42,8 @@ const LandingPage = ({ getLoginToken }) => {
       </div>
 
       <div className={styles.container}>
-        <h1 className={styles.title}>Today-ing</h1>
+        <img className={styles.logo} src={logo} alt="logo" />
+
         <h3 className={styles.description}>Write out your plan every day</h3>
         <div className={styles.box}>
           <Login getLoginToken={getLoginToken} />

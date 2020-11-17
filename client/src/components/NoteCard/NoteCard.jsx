@@ -42,6 +42,7 @@ const NoteCard = ({
         onBlur={handleChangeNoteText}
         style={{ height }}
         value={text}
+        spellCheck="false"
       />
     </>
   );
