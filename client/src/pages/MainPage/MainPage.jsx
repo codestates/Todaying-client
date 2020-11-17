@@ -41,7 +41,6 @@ const MainPage = ({ getLoginToken, token }) => {
         content: {},
       };
     }
-
     setCardsData({ ...cardsData, ...newData });
   };
 

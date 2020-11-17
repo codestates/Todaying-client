@@ -5,18 +5,13 @@ import Modal from '../Modal/Modal';
 // import axios from 'axios';
 
 const NicknameModal = ({
-  // userInforms,
+  changeNickname: chNickname,
+  userInfo,
   modalName,
-  nickname: propsnickname,
   isModalOn,
   handleModal,
 }) => {
-  const [nickname, setNickname] = useState(propsnickname);
-  // const [userInform, setUserInforn] = useState({
-  //   email: userInform.email,
-  //   nickname: userInform.nickname,
-  // });
-  // 오류 상태 관리
+  const [nickname, setNickname] = useState(userInfo.nickname);
   const [isError, setIsError] = useState(false);
 
   const changeNickname = async () => {
@@ -24,11 +19,17 @@ const NicknameModal = ({
       const response = await axios.post(
         'https://387b5293dc84.ngrok.io/mypage/editnickname',
         {
-          email: 'test2@mail.com',
+          email: userInfo.email,
           nickname,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+          },
         },
         { withCredentials: true },
       );
+      chNickname(nickname);
       if (response.data === 'success') {
         handleModal();
       }
@@ -36,20 +37,13 @@ const NicknameModal = ({
       if (err.response) {
         if (err.response.status === 500) {
           setIsError('500');
-          // 서버측 에러
         } else if (err.response.status === 422) {
           setIsError('422');
-          // 닉네임 혹은 이메일 누락의 경우
         }
       } else {
         throw err;
       }
     }
-    // axios.post('www.example.com/changeNickname', {
-    // body에 바꿀 nickname 넣어서 post요청 =>
-    // if(success) {
-    // } else {
-    // }
   };
 
   return (

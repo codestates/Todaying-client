@@ -12,7 +12,7 @@ const ToDoTasks = ({
   deleteToDoCardData,
 }) => {
   // dummy Data용 counter
-  const [tasks] = useState(todoTasks);
+  const [tasks, setTasks] = useState(todoTasks);
   const [isSpread] = useState(false);
 
   const addTask = async (e) => {
@@ -28,8 +28,15 @@ const ToDoTasks = ({
             Authorization: `Bearer ${token}`,
           },
         },
+        { withCredentials: true },
       );
       const newTaskId = response.data.taskId;
+      const newTask = {};
+      newTask[newTaskId] = {
+        task: '',
+        isDone: false,
+      };
+      setTasks({ ...tasks, ...newTask });
       modifyToDoCardData({
         cardId,
         taskId: newTaskId,

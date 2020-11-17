@@ -45,7 +45,6 @@ const Login = ({ getLoginToken }) => {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-
     if (!isValid.email || !isValid.password) {
       setIsError(true);
     } else {

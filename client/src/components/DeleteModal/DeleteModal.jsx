@@ -6,16 +6,13 @@ import Modal from '../Modal/Modal';
 import checkIcon from '../../images/check.png';
 import errorIcon from '../../images/error.png';
 
-const DeleteModal = ({ modalName, isModalOn, handleModal }) => {
+const DeleteModal = ({ userInfo, modalName, isModalOn, handleModal }) => {
   const history = useHistory();
   const [isValid, setValid] = useState(null);
   const [password, setPassword] = useState('');
   const [removal, setDelete] = useState(false);
-
-  // 오류 상태 관리
   const [isError, setIsError] = useState(false);
 
-  // 유효성 검사
   const handleChangePassword = ({ target }) => {
     setPassword(target.value);
     if (target.value.length <= 0) {
@@ -25,14 +22,18 @@ const DeleteModal = ({ modalName, isModalOn, handleModal }) => {
     }
   };
 
-  // 회원 탈퇴 로직
   const deleteAccount = async () => {
     try {
       const response = await axios.post(
-        'https://5a08b783965d.ngrok.io/mypage/delete',
+        'https://387b5293dc84.ngrok.io/mypage/delete',
         {
-          email: 'test100@mail.com',
+          email: userInfo.email,
           password,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+          },
         },
         { withCredentials: true },
       );
@@ -46,11 +47,10 @@ const DeleteModal = ({ modalName, isModalOn, handleModal }) => {
       if (err.response) {
         if (err.response.status === 403) {
           setIsError('403');
-
-          // 비밀번호가 틀린 경우
         } else if (err.response.status === 422) {
           setIsError('422');
-          // 비밀번호 혹은 이메일 누락의 경우
+        } else {
+          setIsError('500');
         }
       } else {
         throw err;
@@ -107,7 +107,9 @@ const DeleteModal = ({ modalName, isModalOn, handleModal }) => {
               <div className={styles.error}>wrong password !</div>
             ) : isError === '422' ? (
               <div className={styles.error}>server error, please try later</div>
-            ) : null
+            ) : (
+              <div className={styles.error}>server error, please try later</div>
+            )
           ) : null}
           {isValid ? (
             <button
