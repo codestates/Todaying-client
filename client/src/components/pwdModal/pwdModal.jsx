@@ -71,7 +71,7 @@ const PwdModal = ({ modalName, isModalOn, handleModal }) => {
     };
     try {
       const response = await axios.post(
-        'https://5a08b783965d.ngrok.io/mypage/editpassword',
+        'https://387b5293dc84.ngrok.io/mypage/editpassword',
         obj,
         { withCredentials: true },
       );

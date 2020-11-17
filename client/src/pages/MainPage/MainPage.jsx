@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import moment from 'moment';
 import Nav from '../../components/Nav/Nav';
 import styles from './MainPage.module.css';
 import Cards from '../../components/Cards/Cards';
@@ -86,14 +85,13 @@ const MainPage = ({ getLoginToken, token }) => {
   // *** getAllCards(tk, date)
   const getAllCards = async (tk, dates) => {
     try {
-      const response = await axios //
-        .post(
-          'https://4512b5b7f744.ngrok.io/main/getAllCards',
-          { date: dates },
-          { headers: { Authorization: `Bearer ${tk}` } },
-        );
-
-      setCardsData(response.data.cards);
+      const response = await axios.post(
+        'https://387b5293dc84.ngrok.io/main/getAllCards',
+        { date: dates },
+        { headers: { Authorization: `Bearer ${tk}` } },
+      );
+      console.log(response.data);
+      setCardsData(response.data);
     } catch (err) {
       throw err;
     }
@@ -111,7 +109,6 @@ const MainPage = ({ getLoginToken, token }) => {
     } else {
       getAllCards(token, new Date().toLocaleDateString('en-US'));
     }
-
     // setCardsData(FAKE_DATA);
   }, []);
 

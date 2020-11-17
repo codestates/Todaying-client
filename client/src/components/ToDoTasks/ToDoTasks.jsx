@@ -12,8 +12,8 @@ const ToDoTasks = ({
   deleteToDoCardData,
 }) => {
   // dummy Data용 counter
-  const [tasks, setTasks] = useState(todoTasks);
-  const [isSpread, setSpread] = useState(false);
+  const [tasks] = useState(todoTasks);
+  const [isSpread] = useState(false);
 
   const addTask = async (e) => {
     e.preventDefault();

@@ -61,7 +61,6 @@ const Login = ({ getLoginToken }) => {
 
         // 응답으로 온 token 최상단 컴포넌트로 끌어올려주기.
         getLoginToken(response.data);
-
         setEmail('');
         setPassword('');
         // 리디렉션

@@ -8,8 +8,8 @@ import NicknameModal from '../../components/NicknameModal/NicknameModal';
 
 const MyPage = () => {
   // 로그인이 성공했을 때, 아직 확실치는 않지만, 이메일과 닉네임을 state에 넣고 있을 것(props로 받아오던 어떻게 하던)
-  const [email, setEmail] = useState('dayfly@codestates.com');
-  const [nickname, setNickname] = useState('dayfly');
+  const [email] = useState('dayfly@codestates.com');
+  const [nickname] = useState('dayfly');
   // 위의 두개는 로그인하고 받아온 이메일, 닉네임 정보
 
   const [isModalOn, setIsModalOn] = useState(false);

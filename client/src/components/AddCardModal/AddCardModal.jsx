@@ -27,7 +27,7 @@ const AddCardModal = ({ isModalOn, handleModal, addNewCard, token }) => {
     try {
       const response = await axios //
         .post(
-          'https://4512b5b7f744.ngrok.io/main/addCard',
+          'https://387b5293dc84.ngrok.io/main/addCard',
           { title, type: selectRef.current.value },
           { headers: { Authorization: `Bearer ${token}` } },
         );
@@ -50,7 +50,7 @@ const AddCardModal = ({ isModalOn, handleModal, addNewCard, token }) => {
         <form className={styles.add_flexcontainer}>
           <select id="noteType" className={styles.add_select} ref={selectRef}>
             <option value="note">Note</option>
-            <option value="todolist">To Do List</option>
+            <option value="toDo">To Do List</option>
           </select>
 
           <input

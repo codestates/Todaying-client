@@ -53,7 +53,7 @@ const ToDoTask = ({
     modifyToDoCardData({ cardId, taskId, newIsDone: !checked });
     setChecked(!checked);
     try {
-      const response = await axios.post(
+      await axios.post(
         'https://387b5293dc84.ngrok.io/main/updateTask',
         {
           cardId,
@@ -67,7 +67,6 @@ const ToDoTask = ({
           },
         },
       );
-      console.log(response);
     } catch (err) {
       if (err.response) {
         throw err;
