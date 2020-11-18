@@ -7,7 +7,10 @@ import Cards from '../../components/Cards/Cards';
 import AddCardModal from '../../components/AddCardModal/AddCardModal';
 import SetDateModal from '../../components/SetDateModal/SetDateModal';
 
-const MainPage = ({ getLoginToken, token }) => {
+const MainPage = ({ getLoginToken, token, cardsData, setCardsData }) => {
+  // 메인페이지 <-> 마이페이지 전환 시, 데이터를 다시 불러올 필요가 없는데 getAllCards 요청을 막고자 데이터 원천을 상위로 올렸습니다.
+  // const [cardsData, setCardsData] = useState({});
+
   const [selectedDate, setSelectedDate] = useState('');
   const setDate = (dateSelected) => {
     let day = dateSelected.getDay();
@@ -26,8 +29,6 @@ const MainPage = ({ getLoginToken, token }) => {
     };
     setSelectedDate(date);
   };
-  // 처음 렌더링될 때 cards 받아오는 logic(에러 처리는 미완성)
-  const [cardsData, setCardsData] = useState({});
 
   //  addNewCard / 새로운 카드 추가
   const addNewCard = (cardId, title, type, taskId) => {
@@ -108,6 +109,9 @@ const MainPage = ({ getLoginToken, token }) => {
   };
 
   useEffect(() => {
+    // if (Object.keys(cardsData).length > 0) return;
+    console.log(cardsData);
+
     const today = new Date();
     setDate(today);
     const params = window.location.search;

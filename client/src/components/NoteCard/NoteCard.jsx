@@ -38,16 +38,9 @@ const NoteCard = ({ text: content, cardId, modifyNoteCardData, token }) => {
     }
   };
 
-  const checkEnterPress = (e) => {
-    if (e.keyCode === 13) {
-      e.target.blur();
-    }
-  };
-
   return (
     <>
       <textarea
-        onKeyDown={checkEnterPress}
         ref={textareaEl}
         className={styles.textArea}
         placeholder="write here"

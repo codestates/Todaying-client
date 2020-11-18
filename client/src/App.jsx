@@ -7,6 +7,8 @@ import MyPage from './pages/MyPage/MyPage';
 import Nav from './components/Nav/Nav';
 
 function App() {
+  const [cardsData, setCardsData] = useState({});
+
   const [userInfo, setUserInfo] = useState({
     token: null,
     email: null,
@@ -35,12 +37,22 @@ function App() {
           {userInfo.token ? (
             <>
               <Nav handleLogout={handleLogout} />
-              <MainPage token={userInfo.token} getLoginToken={getLoginToken} />
+              <MainPage
+                token={userInfo.token}
+                getLoginToken={getLoginToken}
+                cardsData={cardsData}
+                setCardsData={setCardsData}
+              />
             </>
           ) : window.location.search ? (
             <>
               <Nav handleLogout={handleLogout} />
-              <MainPage token={userInfo.token} getLoginToken={getLoginToken} />
+              <MainPage
+                token={userInfo.token}
+                getLoginToken={getLoginToken}
+                cardsData={cardsData}
+                setCardsData={setCardsData}
+              />
             </>
           ) : (
             <Redirect to="/" />

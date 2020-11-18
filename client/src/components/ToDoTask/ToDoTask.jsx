@@ -15,7 +15,6 @@ const ToDoTask = ({
   modifyToDoCardData,
   deleteToDoCardData,
 }) => {
-  // const [isDeleted, setIsDeleted] = useState(false);
   const [checked, setChecked] = useState(isDone);
   const [text, setText] = useState(task);
 
