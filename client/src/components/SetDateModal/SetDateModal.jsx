@@ -3,7 +3,7 @@ import styles from './SetDateModal.module.css';
 import PureModal from '../PureModal/PureModal';
 
 const SetDateModal = ({
-  setTodyingDate,
+  setDate,
   isModalOn,
   handleModal,
   token,
@@ -20,16 +20,6 @@ const SetDateModal = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const getDay = (d) => {
-      if (d === 1) return 'Monday';
-      if (d === 2) return 'Tuesday';
-      if (d === 3) return 'Wednesday';
-      if (d === 4) return 'Thursday';
-      if (d === 5) return 'Friday';
-      if (d === 6) return 'Saturday';
-      if (d === 0) return 'Sunday';
-    };
-
     try {
       const dateArr = dateRef.current.value.split('-');
       const year = dateArr[0];
@@ -37,16 +27,9 @@ const SetDateModal = ({
       const date = dateArr[2];
       const searchDate = `${month}/${date}/${year}`;
       getAllCards(token, searchDate);
-      let day = new Date(dateRef.current.value).getDay();
-      day = getDay(day);
-      const dates = {
-        year: Number(year),
-        month: Number(month),
-        date: Number(date),
-        day,
-      };
+      const day = new Date(dateRef.current.value);
+      setDate(day);
       handleClose();
-      setTodyingDate(dates);
     } catch (err) {
       if (err.response) {
         throw err;

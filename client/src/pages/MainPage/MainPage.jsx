@@ -8,25 +8,24 @@ import AddCardModal from '../../components/AddCardModal/AddCardModal';
 import SetDateModal from '../../components/SetDateModal/SetDateModal';
 
 const MainPage = ({ getLoginToken, token }) => {
-  const today = new Date();
-  const getDay = () => {
-    const d = today.getDay();
-    if (d === 1) return 'Monday';
-    if (d === 2) return 'Tuesday';
-    if (d === 3) return 'Wednesday';
-    if (d === 4) return 'Thursday';
-    if (d === 5) return 'Friday';
-    if (d === 6) return 'Saturday';
-    if (d === 0) return 'Sunday';
+  const [selectedDate, setSelectedDate] = useState('');
+  const setDate = (dateSelected) => {
+    let day = dateSelected.getDay();
+    if (day === 1) day = 'Monday';
+    if (day === 2) day = 'Tuesday';
+    if (day === 3) day = 'Wednesday';
+    if (day === 4) day = 'Thursday';
+    if (day === 5) day = 'Friday';
+    if (day === 6) day = 'Saturday';
+    if (day === 0) day = 'Sunday';
+    const date = {
+      year: dateSelected.getFullYear(),
+      month: dateSelected.getMonth() + 1,
+      date: dateSelected.getDate(),
+      day,
+    };
+    setSelectedDate(date);
   };
-  const date = {
-    year: today.getFullYear(),
-    month: today.getMonth() + 1,
-    date: today.getDate(),
-    day: getDay(),
-  };
-
-  const [selectedDate, setSelectedDate] = useState(date);
   // 처음 렌더링될 때 cards 받아오는 logic(에러 처리는 미완성)
   const [cardsData, setCardsData] = useState({});
 
@@ -110,6 +109,8 @@ const MainPage = ({ getLoginToken, token }) => {
   };
 
   useEffect(() => {
+    const today = new Date();
+    setDate(today);
     const params = window.location.search;
     if (params) {
       const query = params.substring(1);
@@ -134,7 +135,7 @@ const MainPage = ({ getLoginToken, token }) => {
   return (
     <>
       <SetDateModal
-        setTodayingDate={setSelectedDate}
+        setDate={setDate}
         isModalOn={isSetDateOn}
         handleModal={handleSetDateModal}
         token={token}
