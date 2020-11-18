@@ -17,7 +17,7 @@ const NicknameModal = ({
   const handleChangeNickname = async () => {
     try {
       const response = await axios.post(
-        ' https://112dd5aebf32.ngrok.io/mypage/editnickname',
+        ' https://todaying.cf/mypage/editnickname',
         {
           email: userInfo.email,
           nickname,

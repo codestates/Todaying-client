@@ -63,7 +63,7 @@ const PwdModal = ({ userInfo, modalName, isModalOn, handleModal }) => {
   const changePassword = async () => {
     try {
       const response = await axios.post(
-        'https://112dd5aebf32.ngrok.io/mypage/editpassword',
+        'https://todaying.cf/mypage/editpassword',
         {
           email,
           newPassword: password.newPassword,

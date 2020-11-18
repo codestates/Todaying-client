@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from './ToDoTasks.module.css';
 import ToDoTask from '../ToDoTask/ToDoTask';
@@ -12,14 +12,18 @@ const ToDoTasks = ({
   deleteToDoCardData,
 }) => {
   // dummy Data용 counter
-  const [tasks, setTasks] = useState(todoTasks);
-  const [isSpread] = useState(false);
+  const [tasks, setTasks] = useState({});
+
+  useEffect(() => {
+    setTasks(todoTasks);
+  }, [todoTasks]);
 
   const addTask = async (e) => {
     e.preventDefault();
+
     try {
       const response = await axios.post(
-        'https://112dd5aebf32.ngrok.io/main/addTask',
+        'https://todaying.cf/main/addTask',
         {
           cardId,
         },
@@ -30,13 +34,15 @@ const ToDoTasks = ({
         },
         { withCredentials: true },
       );
+
       const newTaskId = response.data.taskId;
       const newTask = {};
       newTask[newTaskId] = {
         task: '',
         isDone: false,
       };
-      setTasks({ ...tasks, ...newTask });
+      // setTasks({ ...tasks, ...newTask });
+
       modifyToDoCardData({
         cardId,
         taskId: newTaskId,
@@ -52,7 +58,7 @@ const ToDoTasks = ({
 
   return (
     <>
-      <div className={`${styles.card_tasks} ${isSpread && styles.isSpread}`}>
+      <div className={styles.card_tasks}>
         {tasks
           ? Object.keys(tasks).map((key) => {
               const eachTask = tasks[key];

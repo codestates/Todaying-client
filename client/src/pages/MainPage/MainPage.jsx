@@ -37,7 +37,7 @@ const MainPage = ({ getLoginToken, token }) => {
     } else {
       // ToDo 카드인 경우에는 default task ID를 받아서, 빈 tasks를 같이 데이터에 넣어줌
       const defaultTasks = {};
-      taskId.forEach((id) => (defaultTasks[id] = { task: '', isDone: false }));
+      taskId.forEach((id) => (defaultTasks[id] = { task: '', isDone: '0' }));
       newData[cardId] = {
         type: 'toDo',
         title,
@@ -73,6 +73,7 @@ const MainPage = ({ getLoginToken, token }) => {
     };
     const newData = {};
     newData[cardId] = { ...cardsData[cardId], content: newTasks };
+    console.log({ ...cardsData, ...newData });
     setCardsData({ ...cardsData, ...newData });
   };
 
@@ -97,11 +98,12 @@ const MainPage = ({ getLoginToken, token }) => {
   const getAllCards = async (tk, dates) => {
     try {
       const response = await axios.post(
-        'https://112dd5aebf32.ngrok.io/main/getAllCards',
+        'https://todaying.cf/main/getAllCards',
         { date: dates },
         { headers: { Authorization: `Bearer ${tk}` } },
         { withCredentials: true },
       );
+      console.log(response.date);
       setCardsData(response.data);
     } catch (err) {
       throw err;
