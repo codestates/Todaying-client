@@ -28,7 +28,7 @@ function App() {
           <LandingPage getLoginToken={getLoginToken} />
         </Route>
         <Route path="/main">
-          {true ? (
+          {userInfo.token ? (
             <MainPage token={userInfo.token} getLoginToken={getLoginToken} />
           ) : window.location.search ? (
             <MainPage token={userInfo.token} getLoginToken={getLoginToken} />
@@ -37,7 +37,7 @@ function App() {
           )}
         </Route>
         <Route path="/mypage">
-          {true ? (
+          {userInfo ? (
             <MyPage userInfo={userInfo} changeNickname={changeNickname} />
           ) : (
             <Redirect to="/" />

@@ -29,7 +29,7 @@ const NoteCard = ({ text: content, cardId, modifyNoteCardData, token }) => {
     try {
       axios //
         .post(
-          'https://112dd5aebf32.ngrok.io/main/updateNoteText',
+          'https://todaying.cf/main/updateNoteText',
           { cardId, text: target.value },
           { headers: { Authorization: `Bearer ${token}` } },
         );
