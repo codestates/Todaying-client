@@ -5,21 +5,20 @@ import ToDoTask from '../ToDoTask/ToDoTask';
 
 const ToDoTasks = ({
   token,
-  tasks: todoTasks,
+  tasks,
   editOn,
   cardId,
   modifyToDoCardData,
   deleteToDoCardData,
 }) => {
   // dummy Data용 counter
-  const [tasks, setTasks] = useState(todoTasks);
   const [isSpread] = useState(false);
 
   const addTask = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'https://112dd5aebf32.ngrok.io/main/addTask',
+        'https://todaying.cf/main/addTask',
         {
           cardId,
         },
@@ -36,7 +35,6 @@ const ToDoTasks = ({
         task: '',
         isDone: false,
       };
-      setTasks({ ...tasks, ...newTask });
       modifyToDoCardData({
         cardId,
         taskId: newTaskId,

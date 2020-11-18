@@ -11,7 +11,7 @@ function App() {
     email: null,
     nickname: null,
   });
-
+  console.log(document.cookie);
   const getLoginToken = (token) => {
     const { email, nickname } = jwt.decode(token);
     setUserInfo({ token, email, nickname });

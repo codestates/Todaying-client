@@ -25,7 +25,7 @@ const DeleteModal = ({ userInfo, modalName, isModalOn, handleModal }) => {
   const deleteAccount = async () => {
     try {
       const response = await axios.post(
-        'https://112dd5aebf32.ngrok.io/mypage/delete',
+        'https://todaying.cf/mypage/delete',
         {
           email: userInfo.email,
           password,

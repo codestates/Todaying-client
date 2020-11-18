@@ -95,7 +95,7 @@ const SignUp = ({
 
     try {
       const response = await axios.post(
-        'https://112dd5aebf32.ngrok.io/user/signup',
+        'https://todaying.cf/user/signup',
         {
           email,
           password,

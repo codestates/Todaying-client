@@ -20,16 +20,15 @@ const ToDoTask = ({
   const [text, setText] = useState(task);
 
   const setInputText = (e) => {
-    setText(e.target.value.trim());
+    setText(e.target.value);
   };
 
   // task를 화면단에서 제거하고, 최상위 state에서 삭제해서 re-render하며, 실제 실행되는 서버에 삭제 요청을 보내는 함수
   const deleteTask = async () => {
     deleteToDoCardData(cardId, taskId);
-    setIsDeleted(!isDeleted);
     try {
       await axios.post(
-        'https://112dd5aebf32.ngrok.io/main/deleteTask',
+        'https://todaying.cf/main/deleteTask',
         {
           taskId,
         },
@@ -54,7 +53,7 @@ const ToDoTask = ({
     setChecked(!checked);
     try {
       await axios.post(
-        'https://112dd5aebf32.ngrok.io/main/updateTask',
+        'https://todaying.cf/main/updateTask',
         {
           cardId,
           taskId,
@@ -81,7 +80,7 @@ const ToDoTask = ({
     modifyToDoCardData({ cardId, taskId, newTask: e.target.value });
     try {
       const response = await axios.post(
-        'https://112dd5aebf32.ngrok.io/main/updateTask',
+        'https://todaying.cf/main/updateTask',
         {
           cardId,
           taskId,
@@ -94,7 +93,6 @@ const ToDoTask = ({
           },
         },
       );
-      console.log(response);
     } catch (err) {
       if (err.response) {
         throw err;

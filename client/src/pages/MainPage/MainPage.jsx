@@ -80,7 +80,6 @@ const MainPage = ({ getLoginToken, token }) => {
   const deleteToDoCardData = (cardId, taskId) => {
     const newTasks = { ...cardsData[cardId].content };
     delete newTasks[taskId];
-
     const newData = {};
     newData[cardId] = { ...cardsData[cardId], content: newTasks };
     setCardsData({ ...cardsData, ...newData });
@@ -97,7 +96,7 @@ const MainPage = ({ getLoginToken, token }) => {
   const getAllCards = async (tk, dates) => {
     try {
       const response = await axios.post(
-        'https://112dd5aebf32.ngrok.io/main/getAllCards',
+        'https://todaying.cf/main/getAllCards',
         { date: dates },
         { headers: { Authorization: `Bearer ${tk}` } },
         { withCredentials: true },
