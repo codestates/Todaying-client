@@ -37,7 +37,6 @@ function App() {
           )}
         </Route>
         <Route path="/mypage">
-          {/* userInfo.token */}
           {true ? (
             <MyPage userInfo={userInfo} changeNickname={changeNickname} />
           ) : (
