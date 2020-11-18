@@ -1,16 +1,14 @@
 import React from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-// import axios from 'axios';
 import todayingIcon from '../../images/Today-ing.png';
 import userIcon from '../../images/user.png';
 import logoutIcon from '../../images/logout.png';
 import styles from './Nav.module.css';
 
-const Nav = () => {
+const Nav = ({ handleLogout }) => {
   const history = useHistory();
-  const handleLogout = () => {
-    console.log('logout!');
-    history.push('/');
+  const logout = () => {
+    handleLogout();
   };
 
   return (
@@ -36,7 +34,7 @@ const Nav = () => {
             className={styles.mob_logout}
             src={logoutIcon}
             alt="logout"
-            onClick={handleLogout}
+            onClick={logout}
           />
           <NavLink
             to="/mypage"

@@ -55,11 +55,19 @@ const Card = ({
     }
   };
 
+  const checkEnterPress = (e) => {
+    // keyCode 13이 enter
+    if (e.keyCode === 13) {
+      e.target.blur();
+    }
+  };
+
   return (
     <div className={styles.card}>
       <div className={styles.card_container}>
         <div className={styles.card_header}>
           <input
+            onKeyDown={checkEnterPress}
             spellCheck="false"
             type="text"
             className={styles.card_header_title}

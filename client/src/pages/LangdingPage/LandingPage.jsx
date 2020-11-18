@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import styles from './LandingPage.module.css';
 import googleIcon from '../../images/google.png';
 import githubIcon from '../../images/github.png';
@@ -7,7 +6,7 @@ import facebookIcon from '../../images/facebook.png';
 import SignUp from '../../components/SignUp/SignUp';
 import Login from '../../components/Login/Login';
 import logo from '../../images/Today-ing.png';
-import Footer from '../../components/Footer/Footer';
+// import Footer from '../../components/Footer/Footer';
 
 const LandingPage = ({ getLoginToken }) => {
   const [isModalOn, setIsModalOn] = useState(false);
@@ -87,7 +86,7 @@ const LandingPage = ({ getLoginToken }) => {
         <h3 className={styles.desc}>Notes your daily thoughts</h3>
         <h3 className={styles.desc}>Track your daily habits</h3>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

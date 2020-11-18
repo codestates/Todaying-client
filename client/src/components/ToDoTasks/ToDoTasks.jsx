@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React } from 'react';
 import axios from 'axios';
 import styles from './ToDoTasks.module.css';
 import ToDoTask from '../ToDoTask/ToDoTask';
@@ -11,11 +11,9 @@ const ToDoTasks = ({
   modifyToDoCardData,
   deleteToDoCardData,
 }) => {
-  // dummy Data용 counter
-  const [isSpread] = useState(false);
-
   const addTask = async (e) => {
     e.preventDefault();
+
     try {
       const response = await axios.post(
         'https://todaying.cf/main/addTask',
@@ -29,6 +27,7 @@ const ToDoTasks = ({
         },
         { withCredentials: true },
       );
+
       const newTaskId = response.data.taskId;
       const newTask = {};
       newTask[newTaskId] = {
@@ -50,7 +49,7 @@ const ToDoTasks = ({
 
   return (
     <>
-      <div className={`${styles.card_tasks} ${isSpread && styles.isSpread}`}>
+      <div className={styles.card_tasks}>
         {tasks
           ? Object.keys(tasks).map((key) => {
               const eachTask = tasks[key];

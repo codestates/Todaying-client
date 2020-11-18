@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import LandingPage from './pages/LangdingPage/LandingPage';
 import MainPage from './pages/MainPage/MainPage';
 import MyPage from './pages/MyPage/MyPage';
+import Nav from './components/Nav/Nav';
 
 function App() {
   const [userInfo, setUserInfo] = useState({
@@ -11,7 +12,6 @@ function App() {
     email: null,
     nickname: null,
   });
-  console.log(document.cookie);
   const getLoginToken = (token) => {
     const { email, nickname } = jwt.decode(token);
     setUserInfo({ token, email, nickname });
@@ -21,6 +21,10 @@ function App() {
     setUserInfo({ ...userInfo, nickname });
   };
 
+  const handleLogout = async () => {
+    await setUserInfo({ ...userInfo, token: null });
+  };
+
   return (
     <div>
       <Switch>
@@ -28,17 +32,26 @@ function App() {
           <LandingPage getLoginToken={getLoginToken} />
         </Route>
         <Route path="/main">
-          {true ? (
-            <MainPage token={userInfo.token} getLoginToken={getLoginToken} />
+          {userInfo.token ? (
+            <>
+              <Nav handleLogout={handleLogout} />
+              <MainPage token={userInfo.token} getLoginToken={getLoginToken} />
+            </>
           ) : window.location.search ? (
-            <MainPage token={userInfo.token} getLoginToken={getLoginToken} />
+            <>
+              <Nav handleLogout={handleLogout} />
+              <MainPage token={userInfo.token} getLoginToken={getLoginToken} />
+            </>
           ) : (
             <Redirect to="/" />
           )}
         </Route>
         <Route path="/mypage">
-          {true ? (
-            <MyPage userInfo={userInfo} changeNickname={changeNickname} />
+          {userInfo ? (
+            <>
+              <Nav handleLogout={handleLogout} />
+              <MyPage userInfo={userInfo} changeNickname={changeNickname} />
+            </>
           ) : (
             <Redirect to="/" />
           )}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Nav from '../../components/Nav/Nav';
+// import Nav from '../../components/Nav/Nav';
 import styles from './MainPage.module.css';
 import Cards from '../../components/Cards/Cards';
 // import FAKE_DATA from './fakeData';
@@ -37,7 +37,7 @@ const MainPage = ({ getLoginToken, token }) => {
     } else {
       // ToDo 카드인 경우에는 default task ID를 받아서, 빈 tasks를 같이 데이터에 넣어줌
       const defaultTasks = {};
-      taskId.forEach((id) => (defaultTasks[id] = { task: '', isDone: false }));
+      taskId.forEach((id) => (defaultTasks[id] = { task: '', isDone: '0' }));
       newData[cardId] = {
         type: 'toDo',
         title,
@@ -146,7 +146,7 @@ const MainPage = ({ getLoginToken, token }) => {
         token={token}
         addNewCard={addNewCard}
       />
-      <Nav />
+      {/* <Nav /> */}
       <section className={styles.page}>
         <div className={styles.container}>
           <div

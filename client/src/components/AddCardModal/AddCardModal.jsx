@@ -62,6 +62,7 @@ const AddCardModal = ({ isModalOn, handleModal, addNewCard, token }) => {
             className={styles.title}
             placeholder="Title"
             value={title}
+            spellCheck="false"
             onChange={(e) => {
               setTitle(e.target.value);
               titleValidation(e.target.value);
