@@ -13,7 +13,7 @@
   padding-right: 3rem;
   width: 47.5rem;
   padding-top: 6rem;
-  padding-bottom: 5rem;
+  padding-bottom: 60rem;
   text-align: left;
   left: 22%;
 }
@@ -113,6 +113,8 @@
   }
 
   .information {
+    min-width: 21rem;
+
     width: 100%;
     left: 0%;
     padding: 2rem;
