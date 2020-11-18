@@ -6,6 +6,8 @@ import MainPage from './pages/MainPage/MainPage';
 import MyPage from './pages/MyPage/MyPage';
 
 function App() {
+  const [cardsData, setCardsData] = useState({});
+
   const [userInfo, setUserInfo] = useState({
     token: null,
     email: null,
@@ -29,9 +31,19 @@ function App() {
         </Route>
         <Route path="/main">
           {userInfo.token ? (
-            <MainPage token={userInfo.token} getLoginToken={getLoginToken} />
+            <MainPage
+              token={userInfo.token}
+              getLoginToken={getLoginToken}
+              cardsData={cardsData}
+              setCardsData={setCardsData}
+            />
           ) : window.location.search ? (
-            <MainPage token={userInfo.token} getLoginToken={getLoginToken} />
+            <MainPage
+              token={userInfo.token}
+              getLoginToken={getLoginToken}
+              cardsData={cardsData}
+              setCardsData={setCardsData}
+            />
           ) : (
             <Redirect to="/" />
           )}

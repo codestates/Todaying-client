@@ -20,7 +20,9 @@ const ToDoTask = ({
   const [text, setText] = useState(task);
 
   const setInputText = (e) => {
-    setText(e.target.value.trim());
+    // 테스트 중 trim() 때문에 task에 띄어쓰기가 불가능한 버그가 있어서 제거했습니다.
+    // setText(e.target.value.trim());
+    setText(e.target.value);
   };
 
   // task를 화면단에서 제거하고, 최상위 state에서 삭제해서 re-render하며, 실제 실행되는 서버에 삭제 요청을 보내는 함수
