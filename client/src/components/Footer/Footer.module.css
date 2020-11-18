@@ -1,17 +1,22 @@
 .footer {
   background-color: #0083ba;
+
   position: fixed;
   bottom: 0;
+
   color: white;
   font-size: 0.6rem;
-  text-align: center;
   width: 100%;
-  padding: 0.4rem;
+
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media screen and (max-width: 62rem) {
   .footer {
-    font-size: 1rem;
-    padding: 0.1rem;
+    font-size: 0.6rem;
+    /* padding: 0.1rem; */
   }
 }

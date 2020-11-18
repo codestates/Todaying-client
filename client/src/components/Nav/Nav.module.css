@@ -1,37 +1,77 @@
 .nav {
   background-color: #0083ba;
+  color: white;
   position: fixed;
   top: 0;
-  color: white;
-  font-size: 2.4rem;
-
-  padding: 0.4rem 2.5rem;
-  z-index: 99;
+  z-index: 1;
   width: 100%;
+
+  height: 4rem;
+  padding: 1.063rem 1.75rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .title {
-  margin: 0;
-  display: inline-block;
-  font-family: 'Archivo Narrow', sans-serif;
   cursor: pointer;
+  min-width: 12rem;
 }
 
-.logoImg{
-  width:9rem;
+.logoImg {
+  margin-top: 0.4rem;
+  width: 9rem;
 }
 
 .menu {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  float: right;
-  margin-top: 0.5rem;
 }
 
-.menu_home,
+.menu_mypage,
+.menu_logout {
+  text-decoration: none;
+  color: white;
+  border: solid 1px transparent;
+  padding: 0.4rem 0.6rem;
+  margin-left: 1rem;
+  cursor: pointer;
+
+  font-size: 1rem;
+  border-radius: 0.4rem;
+
+  transition: all 200ms ease-in-out;
+}
+
+.menu_mypage:hover,
+.menu_logout:hover {
+  border: 1px solid rgba(255, 255, 255, 0.511);
+
+  opacity: 0.9;
+  color: white;
+  transform: scale(1.02);
+  background-color: #00648f;
+}
+
+.menu_mypage.active {
+  border: 1px solid rgba(255, 255, 255, 0.511);
+}
+
+.mob_logout,
+.mob_mypage {
+  display: none;
+  width: 1.6rem;
+  margin-left: 1.2rem;
+  cursor: pointer;
+}
+
+/* .menu_home,
 .menu_logout,
-.menu_my_page {
-  background-image: -webkit-linear-gradient(left, #0083ba 50%, white 50%);
+.menu_my_page { */
+/* background-image: -webkit-linear-gradient(left, #0083ba 50%, white 50%);
   background-image: linear-gradient(to right, #0083ba 50%, white 50%);
   background-position: 0;
   background-size: 200%;
@@ -47,53 +87,68 @@
   border-radius: 0.2rem;
   outline: none;
   font-size: 1.1rem;
-}
+} */
 
-.menu_home:hover,
+/* .menu_home:hover,
 .menu_logout:hover,
 .menu_my_page:hover {
   background-position: -100%;
   color: #00abf2;
   cursor: pointer;
-}
+} */
 
 @media screen and (max-width: 48rem) {
   .nav {
-    min-width: 21rem;
+    padding: 1.063rem 1rem;
+    /* min-width: 21rem;
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    align-items: center;
+    align-items: center; */
   }
 
   .title {
-    margin-left: 0.5rem;
+    /* margin-left: 0.5rem; */
+  }
+
+  .logoImg {
+    width: 7rem;
   }
 
   .menu {
-    margin-top: 0.5rem;
+    /* margin-top: 0.5rem; */
   }
 
   .menu_home,
   .menu_logout,
   .menu_my_page {
-    background-color: #0083ba;
+    /* background-color: #0083ba;
     background-image: unset;
     font-size: 1rem;
     height: 1.8rem;
     margin-left: 1rem;
-    padding: 0.3rem;
+    padding: 0.3rem; */
+  }
+
+  .mob_logout,
+  .mob_mypage {
+    display: block;
+  }
+
+  .menu_mypage,
+  .menu_logout {
+    display: none;
   }
 
   .menu_home:hover,
   .menu_logout:hover,
   .menu_my_page:hover {
-    background-position: unset;
+    /* background-position: unset;
     color: #00abf2;
-    cursor: pointer;
+    cursor: pointer; */
   }
 
   .menu_logout {
-    margin-right: -0.1rem;
+    /* margin-right: -0.1rem; */
   }
 }
