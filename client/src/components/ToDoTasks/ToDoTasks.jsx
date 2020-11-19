@@ -31,16 +31,12 @@ const ToDoTasks = ({
       );
 
       const newTaskId = response.data.taskId;
-      const newTask = {};
-      newTask[newTaskId] = {
-        task: '',
-        isDone: false,
-      };
+
       modifyToDoCardData({
         cardId,
         taskId: newTaskId,
         newTask: '',
-        newIsDone: false,
+        newIsDone: '0',
       });
     } catch (err) {
       if (err.response) {

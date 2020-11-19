@@ -21,9 +21,10 @@ const LandingPage = ({ getLoginToken, handleSpinner }) => {
         'https://accounts.google.com/o/oauth2/v2/auth?client_id=617535918494-33pln0uqg6aeu3lam22b7go4c7n2ra6c.apps.googleusercontent.com&redirect_uri=https://todaying.cf/auth/google&response_type=code&scope=openid%20profile%20email';
     } else if (e.target.name === 'github') {
       window.location.href =
-        'https://github.com/login/oauth/authorize?client_id=5eab3157a830fb8a372f&scope=user&redirect_uri=http://todaying.cf/auth/git';
+        'https://github.com/login/oauth/authorize?client_id=5eab3157a830fb8a372f&scope=user&redirect_uri=https://todaying.cf/auth/git';
     } else if (e.target.name === 'facebook') {
-      console.log('facebook  !!!');
+      // console.log('facebook  !!!');
+      alert('Facebook Login!');
     }
   };
 
