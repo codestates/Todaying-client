@@ -8,7 +8,7 @@ import AddCardModal from '../../components/AddCardModal/AddCardModal';
 import SetDateModal from '../../components/SetDateModal/SetDateModal';
 
 const MainPage = ({ getLoginToken, token, cardsData, setCardsData }) => {
-  // 메인페이지 <-> 마이페이지 전환 시, 데이터를 다시 불러올 필요가 없는데 getAllCards 요청을 막고자 데이터 원천을 상위로 올렸습니다.
+  // 메인페이지 <-> 마이페이지 전환 시, 데이터를 다시 불러올 필요가 없는데 매번 getAllCards 요청을 막고자 데이터 원천을 상위로 올렸습니다.
   // const [cardsData, setCardsData] = useState({});
 
   const [selectedDate, setSelectedDate] = useState('');
@@ -27,6 +27,7 @@ const MainPage = ({ getLoginToken, token, cardsData, setCardsData }) => {
       date: dateSelected.getDate(),
       day,
     };
+
     setSelectedDate(date);
   };
 
@@ -149,6 +150,7 @@ const MainPage = ({ getLoginToken, token, cardsData, setCardsData }) => {
         handleModal={handleAddCardModal}
         token={token}
         addNewCard={addNewCard}
+        selectedDate={selectedDate}
       />
       {/* <Nav /> */}
       <section className={styles.page}>

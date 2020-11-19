@@ -3,7 +3,13 @@ import React, { createRef, useState } from 'react';
 import PureModal from '../PureModal/PureModal';
 import styles from './AddCardModal.module.css';
 
-const AddCardModal = ({ isModalOn, handleModal, addNewCard, token }) => {
+const AddCardModal = ({
+  isModalOn,
+  handleModal,
+  addNewCard,
+  token,
+  selectedDate,
+}) => {
   const selectRef = createRef();
   const [title, setTitle] = useState('');
   const [isValid, setIsValid] = useState(false);
@@ -23,12 +29,25 @@ const AddCardModal = ({ isModalOn, handleModal, addNewCard, token }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const MM =
+      selectedDate.month.toString().length < 2
+        ? `0${selectedDate.month}`
+        : selectedDate.month;
+    const DD =
+      selectedDate.date.toString().length < 2
+        ? `0${selectedDate.date}`
+        : selectedDate.date;
 
+    console.log(MM, '/', DD, '/', selectedDate.year);
     try {
       const response = await axios //
         .post(
           'https://todaying.cf/main/addCard',
-          { title, type: selectRef.current.value },
+          {
+            title,
+            type: selectRef.current.value,
+            date: `${MM}/${DD}/${selectedDate.year}`,
+          },
           { headers: { Authorization: `Bearer ${token}` } },
         );
 
