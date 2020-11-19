@@ -5,7 +5,13 @@ import Modal from '../Modal/Modal';
 import checkIcon from '../../images/check.png';
 import errorIcon from '../../images/error.png';
 
-const PwdModal = ({ userInfo, modalName, isModalOn, handleModal }) => {
+const PwdModal = ({
+  userInfo,
+  modalName,
+  isModalOn,
+  handleModal,
+  handleSpinner,
+}) => {
   const [email] = useState(userInfo.email);
 
   const [password, setPassword] = useState({
@@ -62,6 +68,7 @@ const PwdModal = ({ userInfo, modalName, isModalOn, handleModal }) => {
 
   const changePassword = async () => {
     try {
+      handleSpinner();
       const response = await axios.post(
         'https://todaying.cf/mypage/editpassword',
         {
@@ -89,6 +96,8 @@ const PwdModal = ({ userInfo, modalName, isModalOn, handleModal }) => {
       } else {
         throw err;
       }
+    } finally {
+      handleSpinner();
     }
   };
 

@@ -14,6 +14,7 @@ const SignUp = ({
   handleModal,
   handleSocialLogin,
   getLoginToken,
+  handleSpinner,
 }) => {
   const history = useHistory();
   const [form, setForm] = useState({
@@ -94,6 +95,7 @@ const SignUp = ({
     const { email, password, nickname } = form;
 
     try {
+      handleSpinner();
       const response = await axios.post(
         'https://todaying.cf/user/signup',
         {
@@ -129,6 +131,8 @@ const SignUp = ({
       } else {
         throw err;
       }
+    } finally {
+      handleSpinner();
     }
   };
 

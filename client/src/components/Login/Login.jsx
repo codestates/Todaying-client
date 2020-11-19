@@ -5,7 +5,7 @@ import styles from './Login.module.css';
 import emailIcon from '../../images/baseline_email_white_18dp.png';
 import passwordIcon from '../../images/baseline_lock_white_18dp.png';
 
-const Login = ({ getLoginToken }) => {
+const Login = ({ getLoginToken, handleSpinner }) => {
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -49,6 +49,7 @@ const Login = ({ getLoginToken }) => {
       setIsError(true);
     } else {
       try {
+        handleSpinner();
         const response = await axios.post(
           ' https://todaying.cf/user/signin',
           {
@@ -72,6 +73,8 @@ const Login = ({ getLoginToken }) => {
         } else {
           throw err;
         }
+      } finally {
+        handleSpinner();
       }
     }
   };

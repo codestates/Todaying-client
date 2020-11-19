@@ -6,7 +6,13 @@ import Modal from '../Modal/Modal';
 import checkIcon from '../../images/check.png';
 import errorIcon from '../../images/error.png';
 
-const DeleteModal = ({ userInfo, modalName, isModalOn, handleModal }) => {
+const DeleteModal = ({
+  userInfo,
+  modalName,
+  isModalOn,
+  handleModal,
+  handleSpinner,
+}) => {
   const history = useHistory();
   const [isValid, setValid] = useState(null);
   const [password, setPassword] = useState('');
@@ -24,6 +30,7 @@ const DeleteModal = ({ userInfo, modalName, isModalOn, handleModal }) => {
 
   const deleteAccount = async () => {
     try {
+      handleSpinner();
       const response = await axios.post(
         'https://todaying.cf/mypage/delete',
         {
@@ -55,6 +62,8 @@ const DeleteModal = ({ userInfo, modalName, isModalOn, handleModal }) => {
       } else {
         throw err;
       }
+    } finally {
+      handleSpinner();
     }
   };
 

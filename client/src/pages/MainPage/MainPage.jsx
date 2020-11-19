@@ -7,7 +7,13 @@ import Cards from '../../components/Cards/Cards';
 import AddCardModal from '../../components/AddCardModal/AddCardModal';
 import SetDateModal from '../../components/SetDateModal/SetDateModal';
 
-const MainPage = ({ getLoginToken, token, cardsData, setCardsData }) => {
+const MainPage = ({
+  getLoginToken,
+  token,
+  cardsData,
+  setCardsData,
+  handleSpinner,
+}) => {
   // 메인페이지 <-> 마이페이지 전환 시, 데이터를 다시 불러올 필요가 없는데 매번 getAllCards 요청을 막고자 데이터 원천을 상위로 올렸습니다.
   // const [cardsData, setCardsData] = useState({});
 
@@ -97,6 +103,7 @@ const MainPage = ({ getLoginToken, token, cardsData, setCardsData }) => {
   // *** getAllCards(tk, date)
   const getAllCards = async (tk, dates) => {
     try {
+      handleSpinner();
       const response = await axios.post(
         'https://todaying.cf/main/getAllCards',
         { date: dates },
@@ -106,6 +113,8 @@ const MainPage = ({ getLoginToken, token, cardsData, setCardsData }) => {
       setCardsData(response.data);
     } catch (err) {
       throw err;
+    } finally {
+      handleSpinner();
     }
   };
 
@@ -151,6 +160,7 @@ const MainPage = ({ getLoginToken, token, cardsData, setCardsData }) => {
         token={token}
         addNewCard={addNewCard}
         selectedDate={selectedDate}
+        handleSpinner={handleSpinner}
       />
       {/* <Nav /> */}
       <section className={styles.page}>
@@ -179,6 +189,7 @@ const MainPage = ({ getLoginToken, token, cardsData, setCardsData }) => {
             handleAddCardModal={handleAddCardModal}
             handleSetDateModal={handleSetDateModal}
             deleteCard={deleteCard}
+            handleSpinner={handleSpinner}
           />
         </div>
       </section>
