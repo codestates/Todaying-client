@@ -9,12 +9,14 @@ const NicknameModal = ({
   modalName,
   isModalOn,
   handleModal,
+  handleSpinner,
 }) => {
   const [nickname, setNickname] = useState(userInfo.nickname);
   const [isError, setIsError] = useState(false);
 
   const handleChangeNickname = async () => {
     try {
+      handleSpinner();
       const response = await axios.post(
         ' https://todaying.cf/mypage/editnickname',
         {
@@ -42,6 +44,8 @@ const NicknameModal = ({
       } else {
         throw err;
       }
+    } finally {
+      handleSpinner();
     }
   };
 

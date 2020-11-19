@@ -9,6 +9,7 @@ const AddCardModal = ({
   addNewCard,
   token,
   selectedDate,
+  handleSpinner,
 }) => {
   const selectRef = createRef();
   const [title, setTitle] = useState('');
@@ -38,8 +39,8 @@ const AddCardModal = ({
         ? `0${selectedDate.date}`
         : selectedDate.date;
 
-    console.log(MM, '/', DD, '/', selectedDate.year);
     try {
+      handleSpinner();
       const response = await axios //
         .post(
           'https://todaying.cf/main/addCard',
@@ -61,6 +62,8 @@ const AddCardModal = ({
       handleClose();
     } catch (err) {
       throw err;
+    } finally {
+      handleSpinner();
     }
   };
 

@@ -8,7 +8,7 @@ import Login from '../../components/Login/Login';
 import logo from '../../images/Today-ing.png';
 // import Footer from '../../components/Footer/Footer';
 
-const LandingPage = ({ getLoginToken }) => {
+const LandingPage = ({ getLoginToken, handleSpinner }) => {
   const [isModalOn, setIsModalOn] = useState(false);
 
   const handleModal = () => {
@@ -34,6 +34,7 @@ const LandingPage = ({ getLoginToken }) => {
         handleModal={handleModal}
         handleSocialLogin={handleSocialLogin}
         getLoginToken={getLoginToken}
+        handleSpinner={handleSpinner}
       />
 
       <div className={styles.section}>
@@ -46,7 +47,7 @@ const LandingPage = ({ getLoginToken }) => {
 
         <h3 className={styles.description}>Write out your plan every day</h3>
         <div className={styles.box}>
-          <Login getLoginToken={getLoginToken} />
+          <Login getLoginToken={getLoginToken} handleSpinner={handleSpinner} />
           <button
             type="button"
             className={styles.btn_newAccount}
