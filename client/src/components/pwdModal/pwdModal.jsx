@@ -66,6 +66,21 @@ const PwdModal = ({
     }
   };
 
+  const handleClose = () => {
+    handleModal();
+    setPassword({
+      newPassword: '',
+      confirmPassword: '',
+      currentPassword: '',
+    });
+    setValid({
+      isValid: false,
+      newPasswordValid: null,
+      confirmPasswordValid: null,
+      currentPasswordValid: null,
+    });
+    setIsError(false);
+  };
   const changePassword = async () => {
     try {
       handleSpinner();
@@ -84,7 +99,7 @@ const PwdModal = ({
         { withCredentials: true },
       );
       if (response.data === 'success') {
-        handleModal();
+        handleClose();
       }
     } catch (err) {
       if (err.response) {

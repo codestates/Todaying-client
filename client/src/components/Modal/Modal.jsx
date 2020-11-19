@@ -18,7 +18,7 @@ const Modal = ({
   setIsErrorNickname,
   setIsErrorSignup,
   modalName,
-
+  nickname,
   isModalOn,
   handleModal,
   children,
@@ -29,7 +29,7 @@ const Modal = ({
 
   const handleModalReset = (modalname) => {
     if (modalname === 'nickname') {
-      setNickname('dayfly');
+      setNickname(nickname);
       setIsErrorNickname(false);
     } else if (modalname === 'password') {
       setPassword({
