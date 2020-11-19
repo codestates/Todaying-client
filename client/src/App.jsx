@@ -23,8 +23,8 @@ function App() {
     setUserInfo({ ...userInfo, nickname });
   };
 
-  const handleLogout = async () => {
-    await setUserInfo({ ...userInfo, token: null });
+  const handleLogout = () => {
+    setUserInfo({ ...userInfo, token: null });
   };
 
   return (
@@ -59,7 +59,7 @@ function App() {
           )}
         </Route>
         <Route path="/mypage">
-          {userInfo ? (
+          {userInfo.token ? (
             <>
               <Nav handleLogout={handleLogout} />
               <MyPage userInfo={userInfo} changeNickname={changeNickname} />

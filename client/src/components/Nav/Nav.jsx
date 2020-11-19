@@ -44,7 +44,7 @@ const Nav = ({ handleLogout }) => {
             My Page
           </NavLink>
 
-          <div onClick={handleLogout} className={styles.menu_logout}>
+          <div onClick={logout} className={styles.menu_logout}>
             Logout
           </div>
         </div>
