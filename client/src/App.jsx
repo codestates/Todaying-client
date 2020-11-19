@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import LandingPage from './pages/LangdingPage/LandingPage';
 import MainPage from './pages/MainPage/MainPage';
 import MyPage from './pages/MyPage/MyPage';
+import Nav from './components/Nav/Nav';
 
 function App() {
   const [cardsData, setCardsData] = useState({});
@@ -13,7 +14,6 @@ function App() {
     email: null,
     nickname: null,
   });
-
   const getLoginToken = (token) => {
     const { email, nickname } = jwt.decode(token);
     setUserInfo({ token, email, nickname });
@@ -21,6 +21,10 @@ function App() {
 
   const changeNickname = (nickname) => {
     setUserInfo({ ...userInfo, nickname });
+  };
+
+  const handleLogout = () => {
+    setUserInfo({ ...userInfo, token: null });
   };
 
   return (
@@ -31,26 +35,35 @@ function App() {
         </Route>
         <Route path="/main">
           {userInfo.token ? (
-            <MainPage
-              token={userInfo.token}
-              getLoginToken={getLoginToken}
-              cardsData={cardsData}
-              setCardsData={setCardsData}
-            />
+            <>
+              <Nav handleLogout={handleLogout} />
+              <MainPage
+                token={userInfo.token}
+                getLoginToken={getLoginToken}
+                cardsData={cardsData}
+                setCardsData={setCardsData}
+              />
+            </>
           ) : window.location.search ? (
-            <MainPage
-              token={userInfo.token}
-              getLoginToken={getLoginToken}
-              cardsData={cardsData}
-              setCardsData={setCardsData}
-            />
+            <>
+              <Nav handleLogout={handleLogout} />
+              <MainPage
+                token={userInfo.token}
+                getLoginToken={getLoginToken}
+                cardsData={cardsData}
+                setCardsData={setCardsData}
+              />
+            </>
           ) : (
             <Redirect to="/" />
           )}
         </Route>
         <Route path="/mypage">
-          {userInfo ? (
-            <MyPage userInfo={userInfo} changeNickname={changeNickname} />
+          {userInfo.token ? (
+            <>
+              <Nav handleLogout={handleLogout} />
+              <MyPage userInfo={userInfo} changeNickname={changeNickname} />
+            </>
           ) : (
             <Redirect to="/" />
           )}

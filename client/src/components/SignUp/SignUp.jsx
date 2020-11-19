@@ -154,6 +154,7 @@ const SignUp = ({
             value={form.email}
             placeholder="Email"
             onChange={handleChangeForm}
+            spellCheck="false"
           />
           {isValid.email === null ? (
             ''
@@ -202,6 +203,7 @@ const SignUp = ({
 
         <div className={styles.nickname_container}>
           <input
+            spellCheck="false"
             name="nickname"
             className={styles.input_nickname}
             type="text"

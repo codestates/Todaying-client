@@ -59,6 +59,7 @@ const NicknameModal = ({
       <div className={styles.alert}>please enter new nickname here</div>
       <div className={styles.container_nickname}></div>
       <input
+        spellCheck="false"
         className={styles.input_nickname}
         type="text"
         placeholder={nickname}

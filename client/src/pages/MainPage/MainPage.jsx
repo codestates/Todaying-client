@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Nav from '../../components/Nav/Nav';
+// import Nav from '../../components/Nav/Nav';
 import styles from './MainPage.module.css';
 import Cards from '../../components/Cards/Cards';
 // import FAKE_DATA from './fakeData';
@@ -75,7 +75,6 @@ const MainPage = ({ getLoginToken, token, cardsData, setCardsData }) => {
     };
     const newData = {};
     newData[cardId] = { ...cardsData[cardId], content: newTasks };
-    console.log({ ...cardsData, ...newData });
     setCardsData({ ...cardsData, ...newData });
   };
 
@@ -83,7 +82,6 @@ const MainPage = ({ getLoginToken, token, cardsData, setCardsData }) => {
   const deleteToDoCardData = (cardId, taskId) => {
     const newTasks = { ...cardsData[cardId].content };
     delete newTasks[taskId];
-
     const newData = {};
     newData[cardId] = { ...cardsData[cardId], content: newTasks };
     setCardsData({ ...cardsData, ...newData });
@@ -105,7 +103,6 @@ const MainPage = ({ getLoginToken, token, cardsData, setCardsData }) => {
         { headers: { Authorization: `Bearer ${tk}` } },
         { withCredentials: true },
       );
-      console.log(response.date);
       setCardsData(response.data);
     } catch (err) {
       throw err;
@@ -155,7 +152,7 @@ const MainPage = ({ getLoginToken, token, cardsData, setCardsData }) => {
         addNewCard={addNewCard}
         selectedDate={selectedDate}
       />
-      <Nav />
+      {/* <Nav /> */}
       <section className={styles.page}>
         <div className={styles.container}>
           <div

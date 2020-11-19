@@ -1,6 +1,6 @@
 import { React, useState } from 'react';
 import styles from './MyPage.module.css';
-import Nav from '../../components/Nav/Nav';
+// import Nav from '../../components/Nav/Nav';
 import Footer from '../../components/Footer/Footer';
 import PwdModal from '../../components/pwdModal/pwdModal';
 import DeleteModal from '../../components/DeleteModal/DeleteModal';
@@ -44,7 +44,7 @@ const MyPage = ({ userInfo, changeNickname }) => {
           handleModal={handleModal}
         />
       ) : null}
-      <Nav />
+      {/* <Nav /> */}
       <div className={styles.information}>
         <div className={styles.information_user}>
           <h3 className={styles.title}>User Informations</h3>

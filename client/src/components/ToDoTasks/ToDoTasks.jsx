@@ -1,23 +1,16 @@
-import { React, useEffect, useState } from 'react';
+import { React } from 'react';
 import axios from 'axios';
 import styles from './ToDoTasks.module.css';
 import ToDoTask from '../ToDoTask/ToDoTask';
 
 const ToDoTasks = ({
   token,
-  tasks: todoTasks,
+  tasks,
   editOn,
   cardId,
   modifyToDoCardData,
   deleteToDoCardData,
 }) => {
-  // dummy Data용 counter
-  const [tasks, setTasks] = useState({});
-
-  useEffect(() => {
-    setTasks(todoTasks);
-  }, [todoTasks]);
-
   const addTask = async (e) => {
     e.preventDefault();
 
@@ -41,8 +34,6 @@ const ToDoTasks = ({
         task: '',
         isDone: false,
       };
-      // setTasks({ ...tasks, ...newTask });
-
       modifyToDoCardData({
         cardId,
         taskId: newTaskId,
