@@ -10,11 +10,13 @@ const ToDoTasks = ({
   cardId,
   modifyToDoCardData,
   deleteToDoCardData,
+  handleSpinner,
 }) => {
   const addTask = async (e) => {
     e.preventDefault();
 
     try {
+      handleSpinner();
       const response = await axios.post(
         'https://todaying.cf/main/addTask',
         {
@@ -44,6 +46,8 @@ const ToDoTasks = ({
       if (err.response) {
         throw err;
       }
+    } finally {
+      handleSpinner();
     }
   };
 

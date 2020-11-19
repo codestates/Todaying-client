@@ -6,7 +6,7 @@ import PwdModal from '../../components/pwdModal/pwdModal';
 import DeleteModal from '../../components/DeleteModal/DeleteModal';
 import NicknameModal from '../../components/NicknameModal/NicknameModal';
 
-const MyPage = ({ userInfo, changeNickname }) => {
+const MyPage = ({ userInfo, changeNickname, handleSpinner }) => {
   const { email, nickname } = userInfo;
   const [isModalOn, setIsModalOn] = useState(false);
   const [modalName, setModal] = useState('');
@@ -26,6 +26,7 @@ const MyPage = ({ userInfo, changeNickname }) => {
           isModalOn={isModalOn}
           handleModal={handleModal}
           modalName={modalName}
+          handleSpinner={handleSpinner}
         />
       ) : modalName === 'delete' ? (
         <DeleteModal
@@ -33,6 +34,7 @@ const MyPage = ({ userInfo, changeNickname }) => {
           isModalOn={isModalOn}
           handleModal={handleModal}
           modalName={modalName}
+          handleSpinner={handleSpinner}
         />
       ) : modalName === 'nickname' ? (
         <NicknameModal
@@ -42,6 +44,7 @@ const MyPage = ({ userInfo, changeNickname }) => {
           isModalOn={isModalOn}
           modalName={modalName}
           handleModal={handleModal}
+          handleSpinner={handleSpinner}
         />
       ) : null}
       {/* <Nav /> */}

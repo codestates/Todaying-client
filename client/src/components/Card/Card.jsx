@@ -16,6 +16,7 @@ const Card = ({
   modifyCardTitle,
   deleteToDoCardData,
   deleteCard,
+  handleSpinner,
 }) => {
   // Title 변경 상태 관리
   const [title, setTitle] = useState(card.title);
@@ -123,6 +124,7 @@ const Card = ({
               cardId={cardId}
               modifyToDoCardData={modifyToDoCardData}
               deleteToDoCardData={deleteToDoCardData}
+              handleSpinner={handleSpinner}
             />
           ) : (
             ''
