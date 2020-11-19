@@ -41,13 +41,7 @@ function App() {
       <Spinner spinIsOn={spinIsOn} />
       <Switch>
         <Route path="/" exact>
-          <LandingPage
-            getLoginToken={getLoginToken}
-            handleSpinner={handleSpinner}
-          />
-        </Route>
-        <Route path="/main">
-          {userInfo.token ? (
+          {window.location.search ? (
             <>
               <Nav handleLogout={handleLogout} />
               <MainPage
@@ -58,7 +52,16 @@ function App() {
                 handleSpinner={handleSpinner}
               />
             </>
-          ) : window.location.search ? (
+          ) : (
+            <LandingPage
+              getLoginToken={getLoginToken}
+              handleSpinner={handleSpinner}
+            />
+          )}
+        </Route>
+
+        <Route path="/main">
+          {userInfo.token ? (
             <>
               <Nav handleLogout={handleLogout} />
               <MainPage
