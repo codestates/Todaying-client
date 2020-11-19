@@ -2,7 +2,6 @@ import { React, useState } from 'react';
 import axios from 'axios';
 import styles from './NicknameModal.module.css';
 import Modal from '../Modal/Modal';
-// import axios from 'axios';
 
 const NicknameModal = ({
   changeNickname,

@@ -60,6 +60,21 @@ const PwdModal = ({ userInfo, modalName, isModalOn, handleModal }) => {
     }
   };
 
+  const handleClose = () => {
+    handleModal();
+    setPassword({
+      newPassword: '',
+      confirmPassword: '',
+      currentPassword: '',
+    });
+    setValid({
+      isValid: false,
+      newPasswordValid: null,
+      confirmPasswordValid: null,
+      currentPasswordValid: null,
+    });
+    setIsError(false);
+  };
   const changePassword = async () => {
     try {
       const response = await axios.post(
@@ -77,7 +92,7 @@ const PwdModal = ({ userInfo, modalName, isModalOn, handleModal }) => {
         { withCredentials: true },
       );
       if (response.data === 'success') {
-        handleModal();
+        handleClose();
       }
     } catch (err) {
       if (err.response) {
