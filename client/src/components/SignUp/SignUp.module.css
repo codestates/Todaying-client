@@ -1,0 +1,171 @@
+/* Inside Box */
+
+.form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+/* Input Container */
+.email_container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.pwd_container {
+  position: relative;
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+.pwdCheck_container {
+  margin-top: 0.25rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.nickname_container {
+  margin-top: 0.75rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Icons */
+.checkIcon {
+  position: absolute;
+  width: 1rem;
+  right: 0.5rem;
+}
+.errorIcon {
+  position: absolute;
+  width: 1rem;
+  right: 0.5rem;
+}
+
+/* Inputs */
+.input_email {
+  width: 100%;
+  padding-left: 0.75rem;
+  height: 2.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 0;
+  outline: none;
+}
+
+.input_password {
+  width: 100%;
+
+  padding-left: 0.75rem;
+  height: 2.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 0;
+  outline: none;
+}
+.input_password_check {
+  width: 100%;
+
+  padding-left: 0.75rem;
+  height: 2.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 0;
+  outline: none;
+}
+
+.input_nickname {
+  width: 100%;
+
+  padding-left: 0.75rem;
+  height: 2.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 0;
+  outline: none;
+}
+
+.error {
+  /* width: 100%; */
+  text-align: center;
+  margin: 0;
+  color: #ff6969;
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+}
+
+.btn_off {
+  height: 2.2rem;
+  margin-top: 0.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid white;
+  background: #dfdfdf;
+  color: white;
+  font-size: 1.25rem;
+  transition: all 250ms ease-in-out;
+  outline: none;
+}
+
+.btn {
+  height: 2.2rem;
+  margin-top: 0.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid white;
+  background: #00abf2;
+  color: white;
+  font-size: 1.25rem;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn:hover {
+  transform: scale(1.03);
+}
+
+/*  */
+
+.msg {
+  color: white;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+.logins {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 7rem;
+}
+
+.googleIcon {
+  width: 1.5rem;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+
+.googleIcon:hover {
+  transform: scale(1.2);
+}
+
+.githubIcon {
+  width: 1.5rem;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+}
+
+.githubIcon:hover {
+  transform: scale(1.2);
+}
+
+.facebookIcon {
+  width: 1.5rem;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+}
+
+.facebookIcon:hover {
+  transform: scale(1.2);
+}

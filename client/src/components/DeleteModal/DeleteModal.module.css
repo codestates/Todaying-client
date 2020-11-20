@@ -1,0 +1,133 @@
+.title {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.delete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.delete1 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.delete2,
+.delete3 {
+  color: lightgrey;
+  font-size: 1.5rem;
+}
+
+.pwdCollect {
+  color: lightgrey;
+  margin-bottom: 0.5rem;
+}
+
+.input_delete {
+  width: 100%;
+  padding-left: 0.75rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 0;
+  outline: none;
+}
+
+.container_delete {
+  display: flex;
+  width: 60%;
+  position: relative;
+}
+
+/* Icons */
+.checkIcon {
+  position: absolute;
+  width: 1rem;
+  top: 0.6rem;
+  right: 0.5rem;
+}
+.errorIcon {
+  position: absolute;
+  width: 1rem;
+  top: 0.6rem;
+  right: 0.5rem;
+}
+
+.alert_1,
+.alert_2 {
+  color: white;
+}
+
+.alert_2 {
+  margin-bottom: 1rem;
+}
+
+.warning {
+  margin-top: 0.5rem;
+  color: #f70b0fe7;
+}
+
+.error {
+  color:#ff6969;
+}
+
+.btn_off {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  width: 80%;
+  padding: 0.8rem;
+  color: white;
+  font-weight: unset;
+  border-radius: 1.5rem;
+  background-color: #dfdfdf;
+  border: 1px solid white;
+  transition: all 250ms ease-in-out;
+  outline: none;
+}
+
+.btn {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  width: 80%;
+  padding: 0.8rem;
+  color: white;
+  font-weight: unset;
+  border-radius: 1.5rem;
+  background-color: #0083ba;
+  border: 1px solid white;
+  transition: all 250ms ease-in-out;
+  outline: none;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #00abf2;
+  color: white;
+}
+
+
+@media screen and (max-width: 62rem) {
+  .alert_1,
+  .alert_2 {
+    font-size: 0.8rem;
+  }
+
+  .warning {
+    font-size: 0.9rem;
+  }
+  
+  .delete1 {
+    color: white;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+  }
+  .delete2,
+  .delete3 {
+    color: lightgrey;
+    font-size: 1.2rem;
+  }
+}

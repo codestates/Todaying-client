@@ -1,0 +1,172 @@
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.bgTop {
+  height: 50vh;
+  background-color: #0083ba;
+}
+
+.bgBottom {
+  height: 50vh;
+  background-color: white;
+}
+
+.container {
+  min-width: 21rem;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 20rem;
+  color: white;
+  pointer-events: none;
+  /* font-size: 4.5rem; */
+  /* font-family: MarkerFelt-Wide; */
+}
+
+.description {
+  margin: 0;
+  color: white;
+  font-weight: normal;
+  font-size: 1.5rem;
+  pointer-events: none;
+}
+
+.box {
+  margin-top: 2rem;
+  width: 30rem;
+  height: 24rem;
+  background: #00648f;
+  border-radius: 28px;
+  box-shadow: 2px 4px 9px 0 rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 3rem;
+}
+
+.btn_newAccount {
+  width: 85%;
+  height: 2.75rem;
+  margin-top: 1rem;
+  border-radius: 1.5rem;
+  border: 1px solid white;
+  background: #00648f;
+  color: white;
+  font-size: 1.25rem;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn_newAccount:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
+.logins {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  width: 13rem;
+}
+
+.googleLogin {
+  padding: -5rem !important;
+  margin-left: -0.5rem;
+  box-shadow: unset !important;
+  border: 0 !important;
+  background-color: #00648f !important;
+}
+
+.googleIcon {
+  width: 3rem;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+
+.googleIcon:hover {
+  transform: scale(1.2);
+}
+
+.githubIcon {
+  width: 3rem;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+}
+
+.githubIcon:hover {
+  transform: scale(1.2);
+}
+
+.facebookIcon {
+  width: 3rem;
+  transition: all 250ms ease-in-out;
+  cursor: pointer;
+}
+
+.facebookIcon:hover {
+  transform: scale(1.2);
+}
+
+.desc1 {
+  pointer-events: none;
+  margin: 0;
+  margin-top: 1.5rem;
+  color: #00648f;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+.desc {
+  pointer-events: none;
+  margin: 0.2rem 0 0 0;
+  padding: 0;
+  color: #00648f;
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 62rem) {
+  .logo {
+    width: 16rem;
+  }
+
+  .description {
+    font-size: 1.25rem;
+  }
+
+  .box {
+    width: 20rem;
+  }
+
+  .btn_newAccount {
+    font-size: 1rem;
+  }
+
+  .logins {
+    width: 10rem;
+  }
+
+  .googleIcon,
+  .githubIcon,
+  .facebookIcon {
+    width: 2rem;
+  }
+
+  .desc,
+  .desc1 {
+    font-size: 1rem;
+  }
+}
