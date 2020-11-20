@@ -10,24 +10,29 @@
 반대로 미래에 어떤 일을 해야 할지 기입할 수도 있습니다.<br>
 일반적인 ToDoList와는 차별화된 서비스를 제공하는 Todaying 앱을 만나보세요! :smiley: :thumbsup:</p>
 
----
+---------------------------------------
 
 # **Development Stack:computer:**
 
 ![GitHub message](https://img.shields.io/badge/STACK-FRONT-lightgrey?style=for-the-badge)
-
-> ![npm type definitions](https://img.shields.io/badge/Front--end-javascript-yellow?style=flat-square&logo=JAVAscript) > ![npm type definitions](https://img.shields.io/badge/Front--end-react-blue?style=flat-square&logo=react) > ![npm type definitions](https://img.shields.io/badge/Front--end-HTML5-red?style=flat-square&logo=html5) > ![npm type definitions](https://img.shields.io/badge/Front--end-CSS3-blue?style=flat-square&logo=css3)
+>![npm type definitions](https://img.shields.io/badge/Front--end-javascript-yellow?style=flat-square&logo=JAVAscript)
+![npm type definitions](https://img.shields.io/badge/Front--end-react-blue?style=flat-square&logo=react)
+![npm type definitions](https://img.shields.io/badge/Front--end-HTML5-red?style=flat-square&logo=html5)
+![npm type definitions](https://img.shields.io/badge/Front--end-CSS3-blue?style=flat-square&logo=css3)
 
 ![GitHub message](https://img.shields.io/badge/STACK-BACK-lightgrey?style=for-the-badge)
+>![npm type definitions](https://img.shields.io/badge/Back--end-node.js-green?style=flat-square&logo=node.js)
+![npm type definitions](https://img.shields.io/badge/Back--end-express-9cf?style=flat-square&logo=node.js)
+![npm type definitions](https://img.shields.io/badge/Back--end-mySQL-orange?style=flat-square&logo=mysql)
+![npm type definitions](https://img.shields.io/badge/back--end-JWT-purple?style=flat-square&logo=JSON%20Web%20Tokens)
 
-> ![npm type definitions](https://img.shields.io/badge/Back--end-node.js-green?style=flat-square&logo=node.js) > ![npm type definitions](https://img.shields.io/badge/Back--end-express-9cf?style=flat-square&logo=node.js) > ![npm type definitions](https://img.shields.io/badge/Back--end-mySQL-orange?style=flat-square&logo=mysql) > ![npm type definitions](https://img.shields.io/badge/back--end-JWT-purple?style=flat-square&logo=JSON%20Web%20Tokens)
-
----
-
+---------------------------------------
 # **Workflow**
 
 **Client-Side(React Components)**<br><br>
 <img src="./README_IMAGE/components.png" width="650px" height="500px" alt="Components"></img><br/>
 
 **Server-Side(Data Schema)**<br><br>
+
 <img src="./README_IMAGE/database_schema.png" width="650px" height="500px" alt="data_schema"></img><br/>
+
