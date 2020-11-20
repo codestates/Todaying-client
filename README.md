@@ -19,7 +19,7 @@
 ![npm type definitions](https://img.shields.io/badge/Front--end-react-blue?style=flat-square&logo=react)
 ![npm type definitions](https://img.shields.io/badge/Front--end-HTML5-red?style=flat-square&logo=html5)
 ![npm type definitions](https://img.shields.io/badge/Front--end-CSS3-blue?style=flat-square&logo=css3)
-![GitHub message](https://img.shields.io/badge/STACK-BACK-lightgrey?style=for-the-badge)
+![GitHub message](https://img.shields.io/badge/STACK-BACK-lightgrey?style=for-the-badge)<br>
 >![npm type definitions](https://img.shields.io/badge/Back--end-node.js-green?style=flat-square&logo=node.js)
 ![npm type definitions](https://img.shields.io/badge/Back--end-express-9cf?style=flat-square&logo=node.js)
 ![npm type definitions](https://img.shields.io/badge/Back--end-mySQL-orange?style=flat-square&logo=mysql)
@@ -29,7 +29,7 @@
 # **Workflow**
 
 ## **Client-Side(React Components)**<br>
-<img src="./README_IMAGE/components.png" width="450px" height="450px" alt="Components"></img><br/>
+<img src="./README_IMAGE/components.png" width="600px" height="500px" alt="Components"></img><br/>
 
 ## **Server-Side(Data Schema)**<br>
-<img src="./README_IMAGE/data_schema.png" width="450px" height="450px" alt="data_schema"></img><br/>
+<img src="./README_IMAGE/data_schema.png" width="600px" height="500px" alt="data_schema"></img><br/>
