@@ -23,7 +23,8 @@ const LandingPage = ({ getLoginToken, handleSpinner }) => {
       window.location.href =
         'https://github.com/login/oauth/authorize?client_id=5eab3157a830fb8a372f&scope=user&redirect_uri=https://todaying.cf/auth/git';
     } else if (e.target.name === 'facebook') {
-      console.log('facebook  !!!');
+      // console.log('facebook  !!!');
+      alert('Facebook Login!');
     }
   };
 

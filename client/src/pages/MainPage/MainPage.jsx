@@ -116,12 +116,11 @@ const MainPage = ({
     } finally {
       handleSpinner();
     }
+
+    window.scrollTo(0, 0);
   };
 
   useEffect(() => {
-    // if (Object.keys(cardsData).length > 0) return;
-    console.log(cardsData);
-
     const today = new Date();
     setDate(today);
     const params = window.location.search;
