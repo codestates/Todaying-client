@@ -12,7 +12,7 @@
 ---------------------------------------
 
 
-# **Development Stack:컴퓨터: :렌치: :망치:  **
+# **Development Stack:computer:  **
 
 ![GitHub message](https://img.shields.io/badge/STACK-FRONT-lightgrey?style=for-the-badge)
 >![npm type definitions](https://img.shields.io/badge/Front--end-javascript-yellow?style=flat-square&logo=JAVAscript)
