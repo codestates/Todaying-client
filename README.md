@@ -12,7 +12,7 @@
 
 ---------------------------------------
 
-# **Development Stack:computer:**
+# **Development Stack :computer:**
 
 ![GitHub message](https://img.shields.io/badge/STACK-FRONT-lightgrey?style=for-the-badge)
 >![npm type definitions](https://img.shields.io/badge/Front--end-javascript-yellow?style=flat-square&logo=JAVAscript)
@@ -27,7 +27,7 @@
 ![npm type definitions](https://img.shields.io/badge/back--end-JWT-purple?style=flat-square&logo=JSON%20Web%20Tokens)
 
 ---------------------------------------
-# **Workflow**
+# **Workflow :rainbow:**
 
 **Client-Side(React Components)**<br><br>
 <img src="./README_IMAGE/components.png" width="650px" height="500px" alt="Components"></img><br/>
