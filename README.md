@@ -18,9 +18,9 @@
 >![npm type definitions](https://img.shields.io/badge/Front--end-javascript-yellow?style=flat-square&logo=JAVAscript)
 ![npm type definitions](https://img.shields.io/badge/Front--end-react-blue?style=flat-square&logo=react)
 ![npm type definitions](https://img.shields.io/badge/Front--end-HTML5-red?style=flat-square&logo=html5)
-![npm type definitions](https://img.shields.io/badge/Front--end-CSS3-blue?style=flat-square&logo=css3)
+![npm type definitions](https://img.shields.io/badge/Front--end-CSS3-blue?style=flat-square&logo=css3)<br>
 ![GitHub message](https://img.shields.io/badge/STACK-BACK-lightgrey?style=for-the-badge)<br>
->![npm type definitions](https://img.shields.io/badge/Back--end-node.js-green?style=flat-square&logo=node.js)<br>
+>![npm type definitions](https://img.shields.io/badge/Back--end-node.js-green?style=flat-square&logo=node.js)
 ![npm type definitions](https://img.shields.io/badge/Back--end-express-9cf?style=flat-square&logo=node.js)
 ![npm type definitions](https://img.shields.io/badge/Back--end-mySQL-orange?style=flat-square&logo=mysql)
 ![npm type definitions](https://img.shields.io/badge/back--end-JWT-purple?style=flat-square&logo=JSON%20Web%20Tokens)
