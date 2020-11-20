@@ -30,7 +30,7 @@
 # **Workflow**
 
 ## **Client-Side(React Components)**<br>
-<img src="./README_IMAGE/components.png" width="600px" height="500px" alt="Components"></img><br/>
+<img src="./README_IMAGE/components.png" width="650px" height="500px" alt="Components"></img><br/>
 
 ## **Server-Side(Data Schema)**<br>
-<img src="./README_IMAGE/data_schema.png" width="600px" height="500px" alt="data_schema"></img><br/>
+<img src="./README_IMAGE/data_schema.png" width="650px" height="500px" alt="data_schema"></img><br/>
