@@ -1,0 +1,15 @@
+.textArea {
+  margin-top: 0.4rem;
+  font-size: 1rem;
+  width: 100%;
+
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  resize: none;
+}
+
+.textArea::placeholder {
+  color: rgb(142, 142, 142);
+}

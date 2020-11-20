@@ -1,0 +1,74 @@
+/* Cards */
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .addCard {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+  text-decoration: underline;
+  color: #555555;
+  cursor: pointer;
+} */
+
+.addCard {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  font-size: 2.5rem;
+  width: 4.5rem;
+  height: 4.5rem;
+  line-height: 4.5rem;
+  background: #0097d7;
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-weight: 900;
+  cursor: pointer;
+}
+.setDate {
+  border-radius: 50%;
+  position: fixed;
+  right: 2rem;
+  bottom: 8rem;
+  cursor: pointer;
+  width: 4.5rem;
+  height: 4.5rem;
+  background: #0097d7;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.calendarIcon {
+  padding: 1rem;
+  width: 4.5rem;
+  height: 4.5rem;
+}
+
+/* media */
+@media screen and (max-width: 48rem) {
+  .addCard {
+    width: 3.5rem;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    font-size: 2rem;
+    right: 0.8rem;
+    bottom: 1.5rem;
+  }
+
+  .calendarIcon {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .setDate {
+    right: 0.8rem;
+    bottom: 6rem;
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
