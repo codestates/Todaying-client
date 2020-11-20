@@ -1,6 +1,7 @@
 <img src="./README_IMAGE/Logo.png" width="600px" height="200px" alt="TodayingLogo"></img><br/>
 
 # **Todaying :pencil2::blue_book:**
+
 <p>
 팀명 : dayfly<br>
 프로젝트명 : Todaying<br>
@@ -10,7 +11,6 @@
 일반적인 ToDoList와는 차별화된 서비스를 제공하는 Todaying 앱을 만나보세요! :smiley: :thumbsup:</p>
 
 ---------------------------------------
-
 
 # **Development Stack:computer:**
 
@@ -33,4 +33,6 @@
 <img src="./README_IMAGE/components.png" width="650px" height="500px" alt="Components"></img><br/>
 
 **Server-Side(Data Schema)**<br><br>
-<img src="./README_IMAGE/data_schema.png" width="650px" height="500px" alt="data_schema"></img><br/>
+
+<img src="./README_IMAGE/database_schema.png" width="650px" height="500px" alt="data_schema"></img><br/>
+
