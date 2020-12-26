@@ -34,5 +34,9 @@
 
 **Server-Side(Data Schema)**<br><br>
 
+![메인 플로우 (2)](https://user-images.githubusercontent.com/68472067/103150946-94c08200-47bc-11eb-97d9-957c1336ef70.png)
+
+
+# **DB Schema**
 <img src="./README_IMAGE/database_schema.png" width="650px" height="500px" alt="data_schema"></img><br/>
 
