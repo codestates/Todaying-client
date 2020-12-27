@@ -29,7 +29,7 @@
 ---------------------------------------
 # **Workflow :rainbow:**
 
-**Client-Side**<br><br>
+## Client-Side
 **1) React Components**<br><br>
 <img src="./README_IMAGE/components.png" width="650px" height="500px" alt="Components"></img><br/>
 
@@ -61,7 +61,7 @@
 
 --- 
 
-**Server-Side(Data Schema)**<br><br>
+## Server-Side(Data Schema)
 
 ![메인 플로우 (2)](https://user-images.githubusercontent.com/68472067/103150946-94c08200-47bc-11eb-97d9-957c1336ef70.png)
 
