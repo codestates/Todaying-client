@@ -123,14 +123,20 @@ const MainPage = ({
   useEffect(() => {
     const today = new Date();
     setDate(today);
+    const dateData = new Date().toLocaleDateString('en-US').split('');
+    if (dateData[1] === '/') {
+      dateData.unshift('0');
+    }
     const params = window.location.search;
     if (params) {
       const query = params.substring(1);
       const oAuthToken = query.split('token=')[1];
+
       getLoginToken(oAuthToken);
-      getAllCards(oAuthToken, new Date().toLocaleDateString('en-US'));
+
+      getAllCards(oAuthToken, dateData.join(''));
     } else {
-      getAllCards(token, new Date().toLocaleDateString('en-US'));
+      getAllCards(token, dateData.join(''));
     }
   }, []);
 
